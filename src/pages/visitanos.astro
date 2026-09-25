@@ -1,9 +1,142 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WeeklySchedule from '../components/home/WeeklySchedule.astro';
+import { site } from '../config/site';
+
+const { venue, street, city, country } = site.location;
+const description = `Conoce la ubicación y los horarios semanales de la ${site.name} en ${venue}, ${street}, ${city}.`;
 ---
 
-<BaseLayout title="Visítanos">
-	<main id="main-content" class="container">
-		<h1>Visítanos</h1>
+<BaseLayout title="Visítanos" description={description}>
+	<main id="main-content">
+		<header class="page-header">
+			<div class="container">
+				<h1>Visítanos</h1>
+				<p>Te invitamos a acompañarnos en nuestras reuniones semanales en {city}.</p>
+			</div>
+		</header>
+
+		<section class="section" aria-labelledby="ubicacion">
+			<div class="container split">
+				<h2 id="ubicacion">Dónde nos reunimos</h2>
+				<address>
+					<span class="address__venue">{venue}</span>
+					<span>{street}</span>
+					<span>{`${city}, ${country}`}</span>
+				</address>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="horarios">
+			<div class="container">
+				<div class="section__header">
+					<h2 id="horarios">Horarios</h2>
+					<p>Estas son nuestras reuniones semanales.</p>
+				</div>
+				<WeeklySchedule />
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="primera-visita">
+			<div class="container split">
+				<h2 id="primera-visita">Primera visita</h2>
+				<div class="prose">
+					<p>
+						Si es tu primera vez con nosotros, puedes acompañarnos en cualquiera de nuestras
+						reuniones semanales.
+					</p>
+					<p>Consulta arriba la ubicación y el horario que mejor se adapte a tu visita.</p>
+				</div>
+			</div>
+		</section>
 	</main>
 </BaseLayout>
+
+<style>
+	.page-header {
+		padding-block: var(--space-12);
+		background-color: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.02em;
+	}
+
+	.page-header p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+	}
+
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--bordered {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.section--surface {
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: var(--font-size-2xl);
+		letter-spacing: -0.01em;
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	address {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		font-style: normal;
+		font-size: var(--font-size-lg);
+	}
+
+	.address__venue {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+	}
+
+	.section__header {
+		margin-bottom: var(--space-8);
+	}
+
+	.section__header p {
+		margin-top: var(--space-2);
+		color: var(--color-text-muted);
+	}
+
+	.prose {
+		display: grid;
+		gap: var(--space-4);
+		max-width: var(--content-max);
+	}
+
+	@media (min-width: 48rem) {
+		.page-header {
+			padding-block: var(--space-16);
+		}
+
+		.section {
+			padding-block: var(--space-16);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.split {
+			grid-template-columns: 1fr 2fr;
+			gap: var(--space-12);
+		}
+	}
+</style>
