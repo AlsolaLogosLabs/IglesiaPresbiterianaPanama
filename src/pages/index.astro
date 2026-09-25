@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import WeeklySchedule from '../components/home/WeeklySchedule.astro';
@@ -6,6 +7,17 @@ import { site } from '../config/site';
 
 const { venue, street, city, country } = site.location;
 const youtube = site.social.find((link) => link.name === 'YouTube');
+
+const sermons = (await getCollection('sermons')).sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const latestSermon = sermons[0];
+const dateFormat = new Intl.DateTimeFormat('es-PA', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+	timeZone: 'UTC',
+});
 
 const homeURL = new URL(site.routes.home, Astro.site).href;
 const structuredData = {
@@ -72,22 +84,67 @@ const structuredData = {
 		</div>
 
 		<section class="section section--inverse" aria-labelledby="sermones">
-			<div class="container split">
-				<div>
+			{latestSermon ? (
+				<div class="container">
 					<h2 id="sermones">Sermones</h2>
-					<p>Consulta nuestra sección de sermones y nuestro canal oficial en YouTube.</p>
+					<div class="latest">
+						<img
+							class="latest__thumb"
+							src={`https://i.ytimg.com/vi/${latestSermon.data.youtubeId}/hqdefault.jpg`}
+							alt={`Miniatura del sermón «${latestSermon.data.title}»`}
+							width="480"
+							height="360"
+							loading="lazy"
+							decoding="async"
+						/>
+						<div class="latest__content">
+							<p class="latest__label">Último sermón</p>
+							<h3 class="latest__title">
+								<a href={`${site.routes.sermons}${latestSermon.id}/`}>{latestSermon.data.title}</a>
+							</h3>
+							<p class="latest__meta">
+								<time datetime={latestSermon.data.date.toISOString().slice(0, 10)}>
+									{dateFormat.format(latestSermon.data.date)}
+								</time>
+								{latestSermon.data.preacher && <span>{latestSermon.data.preacher}</span>}
+							</p>
+							{latestSermon.data.scripture && (
+								<p class="latest__scripture">{latestSermon.data.scripture}</p>
+							)}
+							<div class="actions">
+								<a class="button" href={`${site.routes.sermons}${latestSermon.id}/`}>
+									Ver sermón
+								</a>
+								<a class="button button--secondary" href={site.routes.sermons}>
+									Todos los sermones
+								</a>
+								{youtube && (
+									<a class="button button--secondary" href={youtube.url} rel="noopener">
+										Canal oficial en YouTube
+									</a>
+								)}
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="actions">
-					<a class="button" href={site.routes.sermons}>
-						Ver sermones
-					</a>
-					{youtube && (
-						<a class="button button--secondary" href={youtube.url} rel="noopener">
-							Ver canal oficial en YouTube
+			) : (
+				<div class="container split">
+					<div>
+						<h2 id="sermones">Sermones</h2>
+						<p>Consulta nuestra sección de sermones y nuestro canal oficial en YouTube.</p>
+					</div>
+					<div class="actions">
+						<a class="button" href={site.routes.sermons}>
+							Ver sermones
 						</a>
-					)}
+						{youtube && (
+							<a class="button button--secondary" href={youtube.url} rel="noopener">
+								Ver canal oficial en YouTube
+							</a>
+						)}
+					</div>
 				</div>
-			</div>
+			)}
 		</section>
 
 		<section class="section section--surface" aria-labelledby="primera-visita">
@@ -218,6 +275,61 @@ const structuredData = {
 		flex: 1 1 12rem;
 	}
 
+	.latest {
+		display: grid;
+		gap: var(--space-6);
+		margin-top: var(--space-8);
+	}
+
+	.latest__thumb {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-radius: var(--radius-md);
+	}
+
+	.latest__content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		min-width: 0;
+	}
+
+	.section--inverse .latest__content p {
+		margin-top: 0;
+	}
+
+	.latest__label {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+
+	.latest__title {
+		font-size: var(--font-size-xl);
+		text-transform: none;
+		letter-spacing: normal;
+		line-height: var(--line-height-tight);
+		color: var(--color-inverse-text);
+		overflow-wrap: break-word;
+	}
+
+	.latest__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-1) var(--space-3);
+	}
+
+	.section--inverse .latest__scripture {
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-inverse-text);
+	}
+
+	.latest .actions {
+		margin-top: var(--space-3);
+	}
+
 	/* Primera visita */
 	.visit {
 		display: grid;
@@ -272,6 +384,12 @@ const structuredData = {
 		.split {
 			grid-template-columns: 1fr auto;
 			align-items: end;
+		}
+
+		.latest {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			align-items: center;
+			gap: var(--space-12);
 		}
 	}
 </style>
