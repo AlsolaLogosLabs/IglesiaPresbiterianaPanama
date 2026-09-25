@@ -6,9 +6,15 @@ const currentPath = withSlash(Astro.url.pathname);
 const isCurrent = (href: string) => withSlash(href) === currentPath;
 ---
 
+<a class="skip-link" href="#main-content">
+	Saltar al contenido
+</a>
+
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href="/">{site.name}</a>
+		<a class="site-header__brand" href="/">
+			{site.name}
+		</a>
 
 		<!-- Mobile/tablet: menú desplegable sin JavaScript -->
 		<details class="site-nav site-nav--mobile">
@@ -42,6 +48,25 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 </header>
 
 <style>
+	.skip-link {
+		position: absolute;
+		top: var(--space-2);
+		left: var(--space-2);
+		z-index: 100;
+		padding: var(--space-3) var(--space-4);
+		border-radius: var(--radius-md);
+		background-color: var(--color-inverse-bg);
+		color: var(--color-inverse-text);
+		font-weight: var(--font-weight-semibold);
+		transform: translateY(calc(-100% - var(--space-4)));
+	}
+
+	.skip-link:focus {
+		transform: none;
+		outline: 3px solid var(--color-text);
+		outline-offset: 2px;
+	}
+
 	.site-header {
 		position: relative;
 		z-index: 10;

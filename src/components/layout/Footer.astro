@@ -11,25 +11,33 @@ const { venue, street, city, country } = site.location;
 			<div>
 				<p class="site-footer__name">{site.name}</p>
 				<address>
-					{venue}<br />
-					{street}<br />
+					{venue}
+					<br />
+					{street}
+					<br />
 					{city}, {country}
 				</address>
 			</div>
 
 			<nav aria-labelledby="footer-social">
-				<p class="site-footer__label" id="footer-social">Redes sociales</p>
+				<p class="site-footer__label" id="footer-social">
+					Redes sociales
+				</p>
 				<ul class="site-footer__social">
 					{site.social.map((link) => (
 						<li>
-							<a href={link.url} rel="noopener">{link.name}</a>
+							<a href={link.url} rel="noopener">
+								{link.name}
+							</a>
 						</li>
 					))}
 				</ul>
 			</nav>
 		</div>
 
-		<p class="site-footer__copy">&copy; {year} {site.name}</p>
+		<p class="site-footer__copy">
+			&copy; {year} {site.name}
+		</p>
 	</div>
 </footer>
 

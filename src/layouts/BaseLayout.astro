@@ -25,6 +25,7 @@ const pageTitle = title ? `${title} | ${site.name}` : site.name;
 	</head>
 	<body>
 		<Header />
+		<!-- Cada página debe renderizar <main id="main-content"> (destino del skip link) -->
 		<slot />
 		<Footer />
 	</body>

@@ -9,7 +9,7 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 ---
 
 <BaseLayout>
-	<main>
+	<main id="main-content">
 		<Hero />
 
 		<section class="section" aria-labelledby="horarios">
@@ -26,16 +26,20 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 			<section class="intro" aria-labelledby="bienvenida">
 				<h2 id="bienvenida">Bienvenida</h2>
 				<p>
-					Si nos visitas por primera vez, queremos darte la bienvenida. Acompáñanos en
-					cualquiera de nuestras reuniones semanales.
+					Si nos visitas por primera vez, queremos darte la bienvenida. Acompáñanos en cualquiera de
+					nuestras reuniones semanales.
 				</p>
-				<a class="button button--secondary" href="/nosotros/">Conócenos</a>
+				<a class="button button--secondary" href="/nosotros/">
+					Conócenos
+				</a>
 			</section>
 
 			<section class="intro" aria-labelledby="creencias">
 				<h2 id="creencias">Lo que creemos</h2>
 				<p>En esta sección puedes conocer lo que creemos como iglesia.</p>
-				<a class="button button--secondary" href="/lo-que-creemos/">Conoce lo que creemos</a>
+				<a class="button button--secondary" href="/lo-que-creemos/">
+					Conoce lo que creemos
+				</a>
 			</section>
 		</div>
 
@@ -46,7 +50,9 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 					<p>Puedes consultar los sermones en la sección correspondiente del sitio.</p>
 				</div>
 				<div class="actions">
-					<a class="button" href="/sermones/">Ver sermones</a>
+					<a class="button" href="/sermones/">
+						Ver sermones
+					</a>
 					{youtube && (
 						<a class="button button--secondary" href={youtube.url} rel="noopener">
 							Ver canal oficial en YouTube
@@ -62,11 +68,15 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 					<h2 id="primera-visita">Primera visita</h2>
 					<h3>Dónde nos reunimos</h3>
 					<address>
-						{venue}<br />
-						{street}<br />
+						{venue}
+						<br />
+						{street}
+						<br />
 						{city}, {country}
 					</address>
-					<a class="button" href="/visitanos/">Cómo visitarnos</a>
+					<a class="button" href="/visitanos/">
+						Cómo visitarnos
+					</a>
 				</div>
 				<div>
 					<h3>Cuándo nos reunimos</h3>
