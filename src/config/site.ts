@@ -9,6 +9,11 @@ export interface SocialLink {
 	url: string;
 }
 
+export interface NavItem {
+	label: string;
+	href: string;
+}
+
 export const site = {
 	name: 'Iglesia Presbiteriana de Panamá',
 	description: 'Sitio oficial de la Iglesia Presbiteriana de Panamá.',
@@ -28,4 +33,12 @@ export const site = {
 		{ name: 'Instagram', url: 'https://www.instagram.com/iglesiapresbiterianadepanama' },
 		{ name: 'YouTube', url: 'https://youtube.com/@iglesiapresbiterianadepanama' },
 	] satisfies SocialLink[],
+	nav: [
+		{ label: 'Inicio', href: '/' },
+		{ label: 'Nosotros', href: '/nosotros/' },
+		{ label: 'Lo que creemos', href: '/lo-que-creemos/' },
+		{ label: 'Sermones', href: '/sermones/' },
+		{ label: 'Visítanos', href: '/visitanos/' },
+		{ label: 'Contacto', href: '/contacto/' },
+	] satisfies NavItem[],
 } as const;

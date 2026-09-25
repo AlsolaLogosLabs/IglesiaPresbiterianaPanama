@@ -1,0 +1,77 @@
+---
+import { site } from '../../config/site';
+
+const year = new Date().getFullYear();
+const { venue, street, city, country } = site.location;
+---
+
+<footer class="site-footer">
+	<div class="container site-footer__inner">
+		<div>
+			<p class="site-footer__name">{site.name}</p>
+			<address>
+				{venue}<br />
+				{street}<br />
+				{city}, {country}
+			</address>
+		</div>
+
+		<nav aria-label="Redes sociales">
+			<ul class="site-footer__social">
+				{site.social.map((link) => (
+					<li>
+						<a href={link.url} rel="noopener">{link.name}</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<p class="site-footer__copy">&copy; {year} {site.name}</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: var(--space-12);
+		padding-block: var(--space-8);
+		border-top: 1px solid var(--color-border);
+		background-color: var(--color-surface);
+		font-size: var(--font-size-sm);
+	}
+
+	.site-footer__inner {
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	.site-footer__name {
+		font-weight: 700;
+	}
+
+	address {
+		font-style: normal;
+	}
+
+	.site-footer__social {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-4);
+		list-style: none;
+		padding: 0;
+	}
+
+	.site-footer__copy {
+		color: var(--color-text-muted);
+	}
+
+	@media (min-width: 48rem) {
+		.site-footer__inner {
+			grid-template-columns: 1fr auto;
+			align-items: start;
+		}
+
+		.site-footer__copy {
+			grid-column: 1 / -1;
+		}
+	}
+</style>

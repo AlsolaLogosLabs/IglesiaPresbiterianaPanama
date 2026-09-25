@@ -1,5 +1,7 @@
 ---
 import { site } from '../config/site';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -22,6 +24,8 @@ const pageTitle = title ? `${title} | ${site.name}` : site.name;
 		<link rel="icon" href="/favicon.ico" />
 	</head>
 	<body>
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
