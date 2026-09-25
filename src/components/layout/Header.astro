@@ -10,7 +10,7 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 	<div class="container site-header__inner">
 		<a class="site-header__brand" href="/">{site.name}</a>
 
-		<!-- Mobile: menú desplegable sin JavaScript -->
+		<!-- Mobile/tablet: menú desplegable sin JavaScript -->
 		<details class="site-nav site-nav--mobile">
 			<summary>Menú</summary>
 			<nav aria-label="Principal">
@@ -43,22 +43,33 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 
 <style>
 	.site-header {
+		position: relative;
+		z-index: 10;
 		border-bottom: 1px solid var(--color-border);
 		background-color: var(--color-bg);
 	}
 
 	.site-header__inner {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		gap: var(--space-2) var(--space-4);
-		padding-block: var(--space-3);
+		gap: var(--space-4);
+		min-height: 4rem;
+		padding-block: var(--space-2);
 	}
 
 	.site-header__brand {
-		font-weight: 700;
+		min-width: 0;
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+		letter-spacing: -0.01em;
 		text-decoration: none;
+		overflow-wrap: anywhere;
+	}
+
+	.site-header__brand:hover {
+		text-decoration: underline;
 	}
 
 	.site-nav__list {
@@ -67,40 +78,79 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 	}
 
 	.site-nav a {
-		display: block;
-		padding: var(--space-2) var(--space-1);
+		display: flex;
+		align-items: center;
+		min-height: var(--tap-target);
 		text-decoration: none;
 	}
 
-	.site-nav a:hover,
-	.site-nav a[aria-current='page'] {
+	.site-nav a:hover {
 		text-decoration: underline;
 	}
 
 	.site-nav a[aria-current='page'] {
-		font-weight: 700;
+		font-weight: var(--font-weight-bold);
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.35em;
 	}
 
-	/* Mobile */
-	.site-header {
-		position: relative;
+	/* Mobile / tablet */
+	.site-nav--mobile {
+		flex-shrink: 0;
 	}
 
 	.site-nav--mobile summary {
-		cursor: pointer;
-		padding: var(--space-2) var(--space-3);
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		min-height: var(--tap-target);
+		padding-inline: var(--space-4);
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius-sm);
+		border-radius: var(--radius-md);
+		font-weight: var(--font-weight-semibold);
+		list-style: none;
+		cursor: pointer;
+	}
+
+	.site-nav--mobile summary::-webkit-details-marker {
+		display: none;
+	}
+
+	/* Indicador abierto/cerrado */
+	.site-nav--mobile summary::after {
+		content: '';
+		width: 0.5em;
+		height: 0.5em;
+		border-right: 2px solid currentColor;
+		border-bottom: 2px solid currentColor;
+		transform: translateY(-25%) rotate(45deg);
+	}
+
+	.site-nav--mobile[open] summary {
+		background-color: var(--color-surface);
+		border-color: var(--color-text);
+	}
+
+	.site-nav--mobile[open] summary::after {
+		transform: translateY(25%) rotate(-135deg);
 	}
 
 	.site-nav--mobile nav {
 		position: absolute;
 		inset-inline: 0;
 		top: 100%;
-		z-index: 10;
-		padding: var(--space-2) var(--container-padding);
+		padding: var(--space-2) var(--container-padding) var(--space-4);
 		background-color: var(--color-bg);
 		border-bottom: 1px solid var(--color-border);
+	}
+
+	.site-nav--mobile li + li {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.site-nav--mobile a {
+		padding-block: var(--space-2);
 	}
 
 	.site-nav--desktop {
@@ -108,7 +158,11 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 	}
 
 	/* Desktop */
-	@media (min-width: 48rem) {
+	@media (min-width: 64rem) {
+		.site-header__inner {
+			min-height: 4.5rem;
+		}
+
 		.site-nav--mobile {
 			display: none;
 		}
@@ -119,8 +173,17 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 
 		.site-nav--desktop .site-nav__list {
 			display: flex;
-			flex-wrap: wrap;
-			gap: var(--space-4);
+			gap: var(--space-1);
+		}
+
+		.site-nav--desktop a {
+			padding-inline: var(--space-3);
+			border-radius: var(--radius-sm);
+			white-space: nowrap;
+		}
+
+		.site-nav--desktop a:hover {
+			background-color: var(--color-surface);
 		}
 	}
 </style>

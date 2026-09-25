@@ -16,6 +16,8 @@ html {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	min-height: 100vh;
 	font-family: var(--font-sans);
 	font-size: var(--font-size-base);
@@ -48,7 +50,7 @@ a {
 }
 
 :focus-visible {
-	outline: 2px solid currentColor;
+	outline: 2px solid var(--focus-color, currentColor);
 	outline-offset: 2px;
 }
 
@@ -59,14 +61,32 @@ a {
 	padding-inline: var(--container-padding);
 }
 
+@media (min-width: 48rem) {
+	:root {
+		--container-padding: var(--space-8);
+	}
+}
+
+main {
+	flex: 1;
+}
+
+main.container {
+	padding-block: var(--space-12);
+}
+
 .button {
-	display: inline-block;
-	padding: var(--space-3) var(--space-6);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: var(--tap-target);
+	padding: var(--space-2) var(--space-6);
 	border: 2px solid var(--color-text);
 	border-radius: var(--radius-md);
 	background-color: var(--color-text);
 	color: var(--color-bg);
-	font-weight: 600;
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-tight);
 	text-align: center;
 	text-decoration: none;
 }
@@ -83,11 +103,11 @@ a {
 
 .button--secondary:hover {
 	background-color: var(--color-bg);
-	text-decoration: underline;
 	border-color: var(--color-text);
+	text-decoration: underline;
 }
 
 .button:focus-visible {
-	outline: 3px solid var(--color-text);
+	outline: 3px solid var(--focus-color, var(--color-text));
 	outline-offset: 3px;
 }

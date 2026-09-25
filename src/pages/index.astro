@@ -14,35 +14,38 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 
 		<section class="section" aria-labelledby="horarios">
 			<div class="container">
-				<h2 id="horarios">Horarios</h2>
+				<div class="section__header">
+					<h2 id="horarios">Horarios</h2>
+					<p>Nuestras reuniones semanales.</p>
+				</div>
 				<WeeklySchedule />
 			</div>
 		</section>
 
-		<section class="section section--alt" aria-labelledby="bienvenida">
-			<div class="container">
+		<div class="container intro-pair">
+			<section class="intro" aria-labelledby="bienvenida">
 				<h2 id="bienvenida">Bienvenida</h2>
 				<p>
 					Si nos visitas por primera vez, queremos darte la bienvenida. Acompáñanos en
 					cualquiera de nuestras reuniones semanales.
 				</p>
 				<a class="button button--secondary" href="/nosotros/">Conócenos</a>
-			</div>
-		</section>
+			</section>
 
-		<section class="section" aria-labelledby="creencias">
-			<div class="container">
+			<section class="intro" aria-labelledby="creencias">
 				<h2 id="creencias">Lo que creemos</h2>
 				<p>En esta sección puedes conocer lo que creemos como iglesia.</p>
 				<a class="button button--secondary" href="/lo-que-creemos/">Conoce lo que creemos</a>
-			</div>
-		</section>
+			</section>
+		</div>
 
-		<section class="section section--alt" aria-labelledby="sermones">
-			<div class="container">
-				<h2 id="sermones">Sermones</h2>
-				<p>Puedes consultar los sermones en la sección correspondiente del sitio.</p>
-				<div class="section__actions">
+		<section class="section section--inverse" aria-labelledby="sermones">
+			<div class="container split">
+				<div>
+					<h2 id="sermones">Sermones</h2>
+					<p>Puedes consultar los sermones en la sección correspondiente del sitio.</p>
+				</div>
+				<div class="actions">
 					<a class="button" href="/sermones/">Ver sermones</a>
 					{youtube && (
 						<a class="button button--secondary" href={youtube.url} rel="noopener">
@@ -53,24 +56,22 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 			</div>
 		</section>
 
-		<section class="section" aria-labelledby="primera-visita">
-			<div class="container">
-				<h2 id="primera-visita">Primera visita</h2>
-				<div class="visit">
-					<div>
-						<h3>Dónde nos reunimos</h3>
-						<address>
-							{venue}<br />
-							{street}<br />
-							{city}, {country}
-						</address>
-					</div>
-					<div>
-						<h3>Cuándo nos reunimos</h3>
-						<WeeklySchedule />
-					</div>
+		<section class="section section--surface" aria-labelledby="primera-visita">
+			<div class="container visit">
+				<div class="visit__info">
+					<h2 id="primera-visita">Primera visita</h2>
+					<h3>Dónde nos reunimos</h3>
+					<address>
+						{venue}<br />
+						{street}<br />
+						{city}, {country}
+					</address>
+					<a class="button" href="/visitanos/">Cómo visitarnos</a>
 				</div>
-				<a class="button" href="/visitanos/">Cómo visitarnos</a>
+				<div>
+					<h3>Cuándo nos reunimos</h3>
+					<WeeklySchedule variant="compact" />
+				</div>
 			</div>
 		</section>
 	</main>
@@ -78,58 +79,161 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 
 <style>
 	.section {
-		padding-block: var(--space-12);
+		padding-block: var(--space-16);
 	}
 
-	.section--alt {
+	.section--surface {
 		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
 	}
 
-	.section .container > * + * {
-		margin-top: var(--space-6);
+	.section--inverse {
+		--focus-color: var(--color-inverse-text);
+		background-color: var(--color-inverse-bg);
+		color: var(--color-inverse-text);
 	}
 
 	h2 {
-		font-size: var(--font-size-xl);
-	}
-
-	p {
-		max-width: 40rem;
+		font-size: var(--font-size-2xl);
+		letter-spacing: -0.01em;
 	}
 
 	h3 {
-		font-size: var(--font-size-lg);
-		margin-bottom: var(--space-3);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--color-text-muted);
 	}
 
-	address {
-		font-style: normal;
+	p {
+		max-width: var(--content-max);
 	}
 
-	.section__actions {
+	.section__header {
+		margin-bottom: var(--space-8);
+	}
+
+	.section__header p {
+		margin-top: var(--space-2);
+		color: var(--color-text-muted);
+	}
+
+	/* Bienvenida + Lo que creemos */
+	.intro-pair {
+		display: grid;
+		padding-bottom: var(--space-16);
+	}
+
+	.intro {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
+		padding-block: var(--space-8);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.intro .button {
+		margin-top: var(--space-2);
+	}
+
+	/* Sermones */
+	.section--inverse p {
+		margin-top: var(--space-4);
+		color: var(--color-inverse-muted);
+	}
+
+	.section--inverse .button {
+		background-color: var(--color-inverse-text);
+		border-color: var(--color-inverse-text);
+		color: var(--color-inverse-bg);
+	}
+
+	.section--inverse .button:hover {
+		background-color: var(--color-inverse-muted);
+		border-color: var(--color-inverse-muted);
+	}
+
+	.section--inverse .button--secondary {
+		background-color: transparent;
+		color: var(--color-inverse-text);
+	}
+
+	.section--inverse .button--secondary:hover {
+		background-color: transparent;
+		border-color: var(--color-inverse-text);
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-8);
+	}
+
+	.actions {
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--space-3);
 	}
 
+	.actions .button {
+		flex: 1 1 12rem;
+	}
+
+	/* Primera visita */
 	.visit {
 		display: grid;
-		gap: var(--space-8);
+		gap: var(--space-12);
+	}
+
+	.visit__info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.visit__info h2 {
+		margin-bottom: var(--space-8);
+	}
+
+	.visit h3 {
+		margin-bottom: var(--space-3);
+	}
+
+	address {
+		font-style: normal;
+		font-size: var(--font-size-lg);
+	}
+
+	.visit__info .button {
+		margin-top: var(--space-8);
 	}
 
 	@media (min-width: 48rem) {
 		.section {
-			padding-block: var(--space-16);
+			padding-block: var(--space-20);
 		}
 
-		h2 {
-			font-size: var(--font-size-2xl);
+		.intro-pair {
+			grid-template-columns: 1fr 1fr;
+			column-gap: var(--space-12);
+			padding-block: var(--space-4) var(--space-20);
+		}
+
+		.actions .button {
+			flex: 0 0 auto;
+		}
+
+		.visit {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-16);
 		}
 	}
 
 	@media (min-width: 64rem) {
-		.visit {
-			grid-template-columns: 1fr 3fr;
+		.split {
+			grid-template-columns: 1fr auto;
+			align-items: end;
 		}
 	}
 </style>

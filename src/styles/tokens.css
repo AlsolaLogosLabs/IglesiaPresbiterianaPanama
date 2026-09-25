@@ -8,10 +8,13 @@
 	--space-8: 2rem;
 	--space-12: 3rem;
 	--space-16: 4rem;
+	--space-20: 5rem;
 
 	/* Layout */
 	--container-max: 72rem;
 	--container-padding: var(--space-4);
+	--content-max: 40rem;
+	--tap-target: 2.75rem;
 
 	/* Typography */
 	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -20,8 +23,10 @@
 	--font-size-lg: 1.125rem;
 	--font-size-xl: 1.5rem;
 	--font-size-2xl: 2rem;
-	--font-size-3xl: 2.75rem;
-	--line-height-tight: 1.2;
+	--font-size-3xl: clamp(2.25rem, 1.6rem + 3vw, 3.5rem);
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+	--line-height-tight: 1.15;
 	--line-height-base: 1.6;
 
 	/* Radius */
@@ -35,4 +40,7 @@
 	--color-text: #1a1a1a;
 	--color-text-muted: #595959;
 	--color-border: #d9d9d9;
+	--color-inverse-bg: #1a1a1a;
+	--color-inverse-text: #ffffff;
+	--color-inverse-muted: #bfbfbf;
 }
