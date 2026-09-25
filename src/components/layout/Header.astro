@@ -3,7 +3,11 @@ import { site } from '../../config/site';
 
 const withSlash = (path: string) => (path.endsWith('/') ? path : `${path}/`);
 const currentPath = withSlash(Astro.url.pathname);
-const isCurrent = (href: string) => withSlash(href) === currentPath;
+// Inicio solo coincide exacto; las demás secciones incluyen sus subpáginas.
+const isCurrent = (href: string) =>
+	href === site.routes.home
+		? withSlash(href) === currentPath
+		: currentPath.startsWith(withSlash(href));
 ---
 
 <a class="skip-link" href="#main-content">

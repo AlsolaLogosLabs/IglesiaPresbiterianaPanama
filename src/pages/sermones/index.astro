@@ -1,9 +1,241 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../config/site';
+
+const sermons = (await getCollection('sermons')).sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const youtube = site.social.find((link) => link.name === 'YouTube');
+const dateFormat = new Intl.DateTimeFormat('es-PA', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+	timeZone: 'UTC',
+});
 ---
 
-<BaseLayout title="Sermones">
-	<main id="main-content" class="container">
-		<h1>Sermones</h1>
+<BaseLayout
+	title="Sermones"
+	description={`Sermones de la ${site.name} y acceso a nuestro canal oficial en YouTube.`}
+>
+	<main id="main-content">
+		<header class="page-header">
+			<div class="container">
+				<h1>Sermones</h1>
+				<p>Consulta los sermones publicados por la {site.name}.</p>
+				{youtube && (
+					<a class="button button--secondary" href={youtube.url} rel="noopener">
+						Ver canal oficial en YouTube
+					</a>
+				)}
+			</div>
+		</header>
+
+		{sermons.length === 0 ? (
+			<section class="section" aria-labelledby="proximamente">
+				<div class="container empty">
+					<h2 id="proximamente">Próximamente</h2>
+					<p>Estamos preparando los sermones para publicarlos en esta sección.</p>
+					{youtube && (
+						<>
+							<p>Puedes visitar mientras tanto nuestro canal oficial en YouTube.</p>
+							<a class="button" href={youtube.url} rel="noopener">
+								Ver canal oficial en YouTube
+							</a>
+						</>
+					)}
+				</div>
+			</section>
+		) : (
+			<section class="section" aria-labelledby="listado">
+				<div class="container">
+					<h2 id="listado" class="visually-hidden">
+						Listado de sermones
+					</h2>
+					<ul class="sermon-list">
+						{sermons.map((sermon) => (
+							<li>
+								<article class="sermon-card">
+									<img
+										src={`https://i.ytimg.com/vi/${sermon.data.youtubeId}/hqdefault.jpg`}
+										alt={`Miniatura del sermón «${sermon.data.title}»`}
+										width="480"
+										height="360"
+										loading="lazy"
+										decoding="async"
+									/>
+									<div class="sermon-card__body">
+										<h3>
+											<a href={`${site.routes.sermons}${sermon.id}/`}>{sermon.data.title}</a>
+										</h3>
+										<p class="sermon-card__meta">
+											<time datetime={sermon.data.date.toISOString().slice(0, 10)}>
+												{dateFormat.format(sermon.data.date)}
+											</time>
+											{sermon.data.preacher && <span>{sermon.data.preacher}</span>}
+										</p>
+										{sermon.data.scripture && (
+											<p class="sermon-card__detail">{sermon.data.scripture}</p>
+										)}
+										{sermon.data.series && (
+											<p class="sermon-card__detail">Serie: {sermon.data.series}</p>
+										)}
+										{sermon.data.description && <p>{sermon.data.description}</p>}
+									</div>
+								</article>
+							</li>
+						))}
+					</ul>
+				</div>
+			</section>
+		)}
 	</main>
 </BaseLayout>
+
+<style>
+	.page-header {
+		padding-block: var(--space-12);
+		background-color: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.02em;
+	}
+
+	.page-header p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+	}
+
+	.page-header .button {
+		margin-top: var(--space-6);
+	}
+
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	h2 {
+		font-size: var(--font-size-2xl);
+		letter-spacing: -0.01em;
+	}
+
+	.empty {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
+	}
+
+	.empty p {
+		max-width: var(--content-max);
+	}
+
+	.empty .button {
+		margin-top: var(--space-2);
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	.sermon-list {
+		display: grid;
+		gap: var(--space-6);
+		list-style: none;
+		padding: 0;
+	}
+
+	.sermon-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background-color: var(--color-bg);
+	}
+
+	.sermon-card img {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		background-color: var(--color-surface);
+	}
+
+	.sermon-card__body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding: var(--space-4) var(--space-6) var(--space-6);
+	}
+
+	h3 {
+		font-size: var(--font-size-lg);
+	}
+
+	h3 a {
+		text-decoration: none;
+	}
+
+	/* Toda la tarjeta es clicable a través del enlace del título */
+	h3 a::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+	}
+
+	.sermon-card:hover h3 a {
+		text-decoration: underline;
+	}
+
+	.sermon-card:focus-within {
+		outline: 3px solid var(--color-text);
+		outline-offset: 2px;
+	}
+
+	h3 a:focus-visible {
+		outline: none;
+	}
+
+	.sermon-card__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-1) var(--space-3);
+		font-size: var(--font-size-sm);
+		color: var(--color-text-muted);
+	}
+
+	.sermon-card__detail {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+	}
+
+	@media (min-width: 48rem) {
+		.page-header,
+		.section {
+			padding-block: var(--space-16);
+		}
+
+		.sermon-list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.sermon-list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>
