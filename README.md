@@ -2,7 +2,7 @@
 
 Sitio web oficial de la Iglesia Presbiteriana de Panamá.
 
-Construido con Astro y TypeScript, arquitectura estática, desplegado en GitHub Pages.
+Construido con Astro y TypeScript, arquitectura estática, con despliegue previsto en GitHub Pages.
 
 ## Comandos
 
