@@ -25,9 +25,26 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 	year: 'numeric',
 	timeZone: 'UTC',
 });
+
+const sermonURL = new URL(Astro.url.pathname, Astro.site).href;
+const thumbnailURL = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+const embedURL = `https://www.youtube-nocookie.com/embed/${youtubeId}`;
+// Solo la fecha verificada (YYYY-MM-DD); no se conoce la hora de publicación.
+const uploadDate = date.toISOString().slice(0, 10);
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'VideoObject',
+	'@id': `${sermonURL}#video`,
+	name: title,
+	thumbnailUrl: thumbnailURL,
+	uploadDate,
+	embedUrl: embedURL,
+	...(sermon.data.description ? { description: sermon.data.description } : {}),
+};
 ---
 
 <BaseLayout title={title} description={description}>
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	<main id="main-content">
 		<header class="page-header">
 			<div class="container">
@@ -68,7 +85,7 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 			<div class="container">
 				<div class="video">
 					<iframe
-						src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+						src={embedURL}
 						title={`Video del sermón «${title}»`}
 						loading="lazy"
 						allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
