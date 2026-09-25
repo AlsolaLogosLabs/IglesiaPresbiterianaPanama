@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+	title="Página no encontrada"
+	description="La página que buscas no está disponible."
+	noindex
+>
+	<main id="main-content" class="container not-found">
+		<p class="not-found__code" aria-hidden="true">
+			404
+		</p>
+		<h1>Página no encontrada</h1>
+		<p class="not-found__text">
+			La página que buscas no existe o pudo haber cambiado de dirección.
+		</p>
+		<a class="button" href={site.routes.home}>
+			Volver al inicio
+		</a>
+	</main>
+</BaseLayout>
+
+<style>
+	.not-found {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: var(--space-4);
+		padding-block: var(--space-16);
+	}
+
+	.not-found__code {
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-bold);
+		line-height: 1;
+		color: var(--color-text-muted);
+	}
+
+	h1 {
+		font-size: var(--font-size-2xl);
+	}
+
+	.not-found__text {
+		max-width: var(--content-max);
+		color: var(--color-text-muted);
+	}
+
+	.not-found .button {
+		margin-top: var(--space-4);
+	}
+
+	@media (min-width: 48rem) {
+		.not-found {
+			padding-block: var(--space-20);
+		}
+	}
+</style>
