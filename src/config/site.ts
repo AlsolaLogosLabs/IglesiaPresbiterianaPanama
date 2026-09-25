@@ -31,7 +31,8 @@ const routes = {
 
 export const site = {
 	name: 'Iglesia Presbiteriana de Panamá',
-	description: 'Sitio oficial de la Iglesia Presbiteriana de Panamá.',
+	description:
+		'Sitio oficial de la Iglesia Presbiteriana de Panamá, una iglesia cristiana, bíblica y reformada en Ciudad de Panamá.',
 	location: {
 		venue: 'Liberty Plaza',
 		street: 'Avenida 12 de Octubre',
