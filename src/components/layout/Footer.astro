@@ -35,9 +35,16 @@ const { venue, street, city, country } = site.location;
 			</nav>
 		</div>
 
-		<p class="site-footer__copy">
-			&copy; {year} {site.name}
-		</p>
+		<div class="site-footer__bottom">
+			<p class="site-footer__copy">
+				&copy; {year} {site.name}
+			</p>
+			<nav aria-label="Legal">
+				<a class="site-footer__legal" href={site.routes.privacy}>
+					Privacidad
+				</a>
+			</nav>
+		</div>
 	</div>
 </footer>
 
@@ -94,12 +101,26 @@ const { venue, street, city, country } = site.location;
 		text-decoration: underline;
 	}
 
-	.site-footer__copy {
+	.site-footer__bottom {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-2) var(--space-6);
 		margin-top: var(--space-8);
 		padding-top: var(--space-6);
 		border-top: 1px solid var(--color-text-muted);
 		font-size: var(--font-size-sm);
+	}
+
+	.site-footer__copy {
 		color: var(--color-inverse-muted);
+	}
+
+	.site-footer__legal {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--tap-target);
 	}
 
 	@media (min-width: 48rem) {

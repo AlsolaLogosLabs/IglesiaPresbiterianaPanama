@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+
+const description = `Información sobre privacidad y servicios externos utilizados por el sitio web de la ${site.name}.`;
+const socialNames = site.social.map((link) => link.name).join(', ');
+---
+
+<BaseLayout title="Privacidad" description={description}>
+	<main id="main-content">
+		<header class="page-header">
+			<div class="container">
+				<h1>Privacidad</h1>
+				<p>
+					Información sobre el funcionamiento de este sitio y los servicios externos que utiliza.
+				</p>
+			</div>
+		</header>
+
+		<div class="container">
+			<section class="section" aria-labelledby="sobre-este-sitio">
+				<h2 id="sobre-este-sitio">Sobre este sitio</h2>
+				<p>{`Este es el sitio web oficial de la ${site.name}.`}</p>
+				<p>
+					Es un sitio informativo formado por páginas estáticas y está alojado mediante GitHub
+					Pages.
+				</p>
+			</section>
+
+			<section class="section" aria-labelledby="datos-del-visitante">
+				<h2 id="datos-del-visitante">Datos enviados por el visitante</h2>
+				<p>
+					Actualmente este sitio no incluye formularios de contacto, cuentas de usuario, pagos,
+					boletines ni herramientas propias de analítica.
+				</p>
+				<p>
+					Como en cualquier sitio web, el servicio de alojamiento y los servicios externos
+					mencionados a continuación pueden procesar información técnica necesaria para entregar su
+					contenido.
+				</p>
+			</section>
+
+			<section class="section" aria-labelledby="servicios-externos">
+				<h2 id="servicios-externos">Servicios externos</h2>
+				<h3>Enlaces externos</h3>
+				<p>
+					{`El sitio incluye enlaces a nuestras cuentas oficiales en ${socialNames}.`} Al abrir uno
+					de estos enlaces sales de este sitio y pasas al servicio correspondiente.
+				</p>
+				<h3>Contenido embebido</h3>
+				<p>
+					Las páginas de sermones pueden incorporar videos de YouTube mediante su dominio
+					youtube-nocookie.com, y el listado de sermones puede mostrar miniaturas servidas por
+					YouTube. En esos casos el contenido se carga desde el proveedor dentro de este sitio. Al
+					interactuar con contenido externo, el proveedor correspondiente puede aplicar sus propias
+					políticas y tecnologías.
+				</p>
+				<p>Estos servicios externos operan bajo sus propios términos y políticas de privacidad.</p>
+			</section>
+
+			<section class="section" aria-labelledby="cambios-futuros">
+				<h2 id="cambios-futuros">Cambios futuros</h2>
+				<p>
+					Esta información se actualizará si el sitio incorpora formularios, herramientas de
+					analítica, cuentas de usuario u otros servicios externos.
+				</p>
+				<p>
+					Consulta los canales oficiales disponibles en nuestra
+					<a href={site.routes.contact}>página de Contacto</a>.
+				</p>
+			</section>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.page-header {
+		padding-block: var(--space-12);
+		background-color: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.02em;
+	}
+
+	.page-header p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+	}
+
+	.section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		max-width: var(--content-max);
+		padding-block: var(--space-8);
+	}
+
+	.section:first-child {
+		padding-top: var(--space-12);
+	}
+
+	.section:last-child {
+		padding-bottom: var(--space-12);
+	}
+
+	.section + .section {
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: var(--font-size-2xl);
+		letter-spacing: -0.01em;
+	}
+
+	h3 {
+		margin-top: var(--space-2);
+		font-size: var(--font-size-lg);
+	}
+
+	@media (min-width: 48rem) {
+		.page-header {
+			padding-block: var(--space-16);
+		}
+
+		.section:first-child {
+			padding-top: var(--space-16);
+		}
+
+		.section:last-child {
+			padding-bottom: var(--space-16);
+		}
+	}
+</style>

@@ -26,6 +26,7 @@ const routes = {
 	sermons: `${baseURL}sermones/`,
 	visit: `${baseURL}visitanos/`,
 	contact: `${baseURL}contacto/`,
+	privacy: `${baseURL}privacidad/`,
 } as const;
 
 export const site = {
