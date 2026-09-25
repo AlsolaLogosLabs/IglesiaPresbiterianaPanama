@@ -1,9 +1,174 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+
+const description = `Conoce la ${site.name} y accede a información sobre nuestras reuniones, creencias y sermones.`;
 ---
 
-<BaseLayout title="Nosotros">
-	<main id="main-content" class="container">
-		<h1>Nosotros</h1>
+<BaseLayout title="Nosotros" description={description}>
+	<main id="main-content">
+		<header class="page-header">
+			<div class="container">
+				<h1>Nosotros</h1>
+				<p>{`Conoce más sobre la ${site.name} y la información disponible en nuestro sitio.`}</p>
+			</div>
+		</header>
+
+		<section class="section" aria-labelledby="quienes-somos">
+			<div class="container split">
+				<h2 id="quienes-somos">Quiénes somos</h2>
+				<div class="prose">
+					<p class="prose__lead">{`Somos la ${site.name}.`}</p>
+					<p>
+						En este sitio puedes consultar información sobre nuestras reuniones, lo que creemos y
+						los sermones publicados.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="conoce-mas">
+			<div class="container">
+				<h2 id="conoce-mas">Conoce más</h2>
+				<ul class="card-list">
+					<li class="card">
+						<h3>Lo que creemos</h3>
+						<p>Consulta la sección dedicada a lo que creemos.</p>
+						<a class="button button--secondary" href={site.routes.beliefs}>
+							Conocer lo que creemos
+						</a>
+					</li>
+					<li class="card">
+						<h3>Sermones</h3>
+						<p>Consulta los sermones publicados y el acceso a nuestro canal oficial en YouTube.</p>
+						<a class="button button--secondary" href={site.routes.sermons}>
+							Ver sermones
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="visitanos">
+			<div class="container split">
+				<h2 id="visitanos">Visítanos</h2>
+				<div class="prose">
+					<p>Consulta nuestra ubicación y los horarios de las reuniones semanales.</p>
+					<a class="button" href={site.routes.visit}>
+						Información para visitarnos
+					</a>
+				</div>
+			</div>
+		</section>
 	</main>
 </BaseLayout>
+
+<style>
+	.page-header {
+		padding-block: var(--space-12);
+		background-color: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.02em;
+	}
+
+	.page-header p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+	}
+
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--bordered {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.section--surface {
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: var(--font-size-2xl);
+		letter-spacing: -0.01em;
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	.prose {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
+		max-width: var(--content-max);
+	}
+
+	.prose__lead {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--line-height-tight);
+	}
+
+	.prose .button {
+		margin-top: var(--space-2);
+	}
+
+	.card-list {
+		display: grid;
+		gap: var(--space-4);
+		margin-top: var(--space-8);
+		list-style: none;
+		padding: 0;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-3);
+		padding: var(--space-6);
+		border: 1px solid var(--color-border);
+		border-top: 4px solid var(--color-text);
+		border-radius: var(--radius-md);
+	}
+
+	h3 {
+		font-size: var(--font-size-xl);
+	}
+
+	.card p {
+		color: var(--color-text-muted);
+	}
+
+	.card .button {
+		margin-top: auto;
+	}
+
+	@media (min-width: 48rem) {
+		.page-header,
+		.section {
+			padding-block: var(--space-16);
+		}
+
+		.card-list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.split {
+			grid-template-columns: 1fr 2fr;
+			gap: var(--space-12);
+		}
+	}
+</style>
