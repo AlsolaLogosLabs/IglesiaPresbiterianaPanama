@@ -6,9 +6,34 @@ import { site } from '../config/site';
 
 const { venue, street, city, country } = site.location;
 const youtube = site.social.find((link) => link.name === 'YouTube');
+
+const homeURL = new URL(site.routes.home, Astro.site).href;
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': `${homeURL}#organization`,
+			name: site.name,
+			url: homeURL,
+			description: site.description,
+			sameAs: site.social.map((link) => link.url),
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${homeURL}#website`,
+			url: homeURL,
+			name: site.name,
+			description: site.description,
+			inLanguage: 'es-PA',
+			publisher: { '@id': `${homeURL}#organization` },
+		},
+	],
+};
 ---
 
 <BaseLayout>
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	<main id="main-content">
 		<Hero />
 
