@@ -2,53 +2,55 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../config/site';
 
-const description = `Sección de la ${site.name} dedicada a presentar sus creencias y enseñanza.`;
+const description = `Conoce la identidad bíblica y reformada de la ${site.name} y su suscripción a la Confesión de Fe y los Catecismos de Westminster.`;
 ---
 
-<!-- Temporalmente noindex hasta publicar el contenido doctrinal oficial -->
-<BaseLayout title="Lo que creemos" description={description} noindex>
+<BaseLayout title="Lo que creemos" description={description}>
 	<main id="main-content">
 		<header class="page-header">
 			<div class="container">
 				<h1>Lo que creemos</h1>
-				<p>Esta sección estará dedicada a presentar de forma clara lo que creemos como iglesia.</p>
+				<p>{`La ${site.name} es una iglesia cristiana, bíblica y reformada.`}</p>
+				<p>En esta sección presentamos de forma breve nuestra identidad confesional.</p>
 			</div>
 		</header>
 
-		<section class="section" aria-labelledby="en-preparacion">
+		<section class="section" aria-labelledby="identidad">
 			<div class="container split">
-				<h2 id="en-preparacion">Contenido en preparación</h2>
+				<h2 id="identidad">Una fe cristiana, bíblica y reformada</h2>
 				<div class="prose">
-					<p>
-						Estamos preparando el contenido de esta sección para publicarlo de forma clara y fiel a
-						la enseñanza de la iglesia.
+					<p>{`La ${site.name} se identifica como una iglesia cristiana, bíblica y reformada.`}</p>
+					<p>Esta identidad orienta la enseñanza de la iglesia.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="confesion">
+			<div class="container split">
+				<h2 id="confesion">Nuestra confesión</h2>
+				<div class="prose">
+					<p class="prose__lead">
+						{`La ${site.name} se suscribe a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor de Westminster.`}
 					</p>
 					<p>
-						Cuando esté disponible, aquí podrás consultar nuestras creencias de manera organizada.
+						Estos documentos expresan de manera organizada la identidad confesional que profesamos
+						como iglesia.
 					</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="section section--bordered" aria-labelledby="mientras-tanto">
-			<div class="container">
-				<h2 id="mientras-tanto">Mientras tanto</h2>
-				<ul class="card-list">
-					<li class="card">
-						<h3>Sermones</h3>
-						<p>Puedes consultar la sección de sermones y nuestro canal oficial en YouTube.</p>
-						<a class="button button--secondary" href={site.routes.sermons}>
-							Ver sermones
-						</a>
-					</li>
-					<li class="card">
-						<h3>Nosotros</h3>
-						<p>Consulta la información general disponible sobre la iglesia.</p>
-						<a class="button button--secondary" href={site.routes.nosotros}>
-							Conocer la iglesia
-						</a>
-					</li>
-				</ul>
+		<section class="section section--surface" aria-labelledby="ensenanza">
+			<div class="container split">
+				<h2 id="ensenanza">Enseñanza y sermones</h2>
+				<div class="prose">
+					<p>
+						Puedes consultar nuestros sermones para conocer la enseñanza compartida en la iglesia.
+					</p>
+					<a class="button" href={site.routes.sermons}>
+						Ver sermones
+					</a>
+				</div>
 			</div>
 		</section>
 	</main>
@@ -81,6 +83,11 @@ const description = `Sección de la ${site.name} dedicada a presentar sus creenc
 		border-top: 1px solid var(--color-border);
 	}
 
+	.section--surface {
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
 	h2 {
 		font-size: var(--font-size-2xl);
 		letter-spacing: -0.01em;
@@ -94,49 +101,25 @@ const description = `Sección de la ${site.name} dedicada a presentar sus creenc
 	.prose {
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		gap: var(--space-4);
 		max-width: var(--content-max);
 	}
 
-	.card-list {
-		display: grid;
-		gap: var(--space-4);
-		margin-top: var(--space-8);
-		list-style: none;
-		padding: 0;
-	}
-
-	.card {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: var(--space-3);
-		padding: var(--space-6);
-		border: 1px solid var(--color-border);
-		border-top: 4px solid var(--color-text);
-		border-radius: var(--radius-md);
-	}
-
-	h3 {
+	.prose__lead {
 		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--line-height-tight);
 	}
 
-	.card p {
-		color: var(--color-text-muted);
-	}
-
-	.card .button {
-		margin-top: auto;
+	.prose .button {
+		margin-top: var(--space-2);
 	}
 
 	@media (min-width: 48rem) {
 		.page-header,
 		.section {
 			padding-block: var(--space-16);
-		}
-
-		.card-list {
-			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 

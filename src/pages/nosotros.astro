@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../config/site';
 
-const description = `Conoce la ${site.name} y accede a información sobre nuestras reuniones, creencias y sermones.`;
+const { city } = site.location;
+const description = `Conoce la historia y el enfoque de la ${site.name}, una iglesia cristiana, bíblica y reformada en ${city}.`;
 ---
 
 <BaseLayout title="Nosotros" description={description}>
@@ -10,7 +11,7 @@ const description = `Conoce la ${site.name} y accede a información sobre nuestr
 		<header class="page-header">
 			<div class="container">
 				<h1>Nosotros</h1>
-				<p>{`Conoce más sobre la ${site.name} y la información disponible en nuestro sitio.`}</p>
+				<p>{`Conoce nuestra identidad, nuestra historia y el enfoque de la ${site.name}.`}</p>
 			</div>
 		</header>
 
@@ -18,10 +19,46 @@ const description = `Conoce la ${site.name} y accede a información sobre nuestr
 			<div class="container split">
 				<h2 id="quienes-somos">Quiénes somos</h2>
 				<div class="prose">
-					<p class="prose__lead">{`Somos la ${site.name}.`}</p>
+					<p class="prose__lead">
+						{`Somos la ${site.name}, una iglesia cristiana, bíblica y reformada en ${city}.`}
+					</p>
 					<p>
-						En este sitio puedes consultar información sobre nuestras reuniones, lo que creemos y
-						los sermones publicados.
+						En esta página compartimos cómo comenzó nuestro trabajo y hacia dónde lo orientamos.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="historia">
+			<div class="container split">
+				<h2 id="historia">Nuestra historia</h2>
+				<div class="prose">
+					<p>
+						{`El trabajo que dio origen a la ${site.name} comenzó en 2011 por medio de la Agencia Presbiteriana de Misiones Transculturales (APMT) de la Iglesia Presbiteriana de Brasil, con el trabajo misionero pionero de Gilberto Botelho.`}
+					</p>
+					<p>
+						Con el paso de los años, la congregación avanzó en su organización y consolidación como
+						iglesia local.
+					</p>
+					<p>
+						Durante 2025 se avanzó en el establecimiento de liderazgo presbiteriano local,
+						incluyendo la elección e instalación de tres presbíteros nacionales.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="enfoque">
+			<div class="container split">
+				<h2 id="enfoque">Nuestro enfoque</h2>
+				<div class="prose">
+					<p>
+						Buscamos crecer como iglesia por medio de la enseñanza de la Palabra, el discipulado, el
+						cuidado pastoral y la formación de nuevos líderes.
+					</p>
+					<p>
+						También deseamos contribuir a la formación de nuevos obreros y a la plantación de más
+						iglesias reformadas en Panamá.
 					</p>
 				</div>
 			</div>
@@ -33,7 +70,9 @@ const description = `Conoce la ${site.name} y accede a información sobre nuestr
 				<ul class="card-list">
 					<li class="card">
 						<h3>Lo que creemos</h3>
-						<p>Consulta la sección dedicada a lo que creemos.</p>
+						<p>
+							Conoce nuestra identidad reformada y los documentos confesionales que suscribimos.
+						</p>
 						<a class="button button--secondary" href={site.routes.beliefs}>
 							Conocer lo que creemos
 						</a>
@@ -45,19 +84,14 @@ const description = `Conoce la ${site.name} y accede a información sobre nuestr
 							Ver sermones
 						</a>
 					</li>
+					<li class="card">
+						<h3>Visítanos</h3>
+						<p>Consulta nuestra ubicación y los horarios de las reuniones semanales.</p>
+						<a class="button button--secondary" href={site.routes.visit}>
+							Información para visitarnos
+						</a>
+					</li>
 				</ul>
-			</div>
-		</section>
-
-		<section class="section section--surface" aria-labelledby="visitanos">
-			<div class="container split">
-				<h2 id="visitanos">Visítanos</h2>
-				<div class="prose">
-					<p>Consulta nuestra ubicación y los horarios de las reuniones semanales.</p>
-					<a class="button" href={site.routes.visit}>
-						Información para visitarnos
-					</a>
-				</div>
 			</div>
 		</section>
 	</main>
@@ -119,10 +153,6 @@ const description = `Conoce la ${site.name} y accede a información sobre nuestr
 		line-height: var(--line-height-tight);
 	}
 
-	.prose .button {
-		margin-top: var(--space-2);
-	}
-
 	.card-list {
 		display: grid;
 		gap: var(--space-4);
@@ -159,16 +189,16 @@ const description = `Conoce la ${site.name} y accede a información sobre nuestr
 		.section {
 			padding-block: var(--space-16);
 		}
-
-		.card-list {
-			grid-template-columns: repeat(2, 1fr);
-		}
 	}
 
 	@media (min-width: 64rem) {
 		.split {
 			grid-template-columns: 1fr 2fr;
 			gap: var(--space-12);
+		}
+
+		.card-list {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 </style>
