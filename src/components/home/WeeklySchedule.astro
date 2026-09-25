@@ -1,0 +1,49 @@
+---
+import { site } from '../../config/site';
+---
+
+<ul class="schedule">
+	{site.schedule.map((item) => (
+		<li class="schedule__item">
+			<span class="schedule__day">{item.day}</span>
+			<span class="schedule__name">{item.name}</span>
+			<span class="schedule__time">{item.time}</span>
+		</li>
+	))}
+</ul>
+
+<style>
+	.schedule {
+		display: grid;
+		gap: var(--space-3);
+		list-style: none;
+		padding: 0;
+	}
+
+	.schedule__item {
+		display: grid;
+		gap: var(--space-1);
+		padding: var(--space-4);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background-color: var(--color-bg);
+	}
+
+	.schedule__day {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-text-muted);
+	}
+
+	.schedule__name {
+		font-weight: 600;
+	}
+
+	@media (min-width: 48rem) {
+		.schedule {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

@@ -1,10 +1,135 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import WeeklySchedule from '../components/home/WeeklySchedule.astro';
 import { site } from '../config/site';
+
+const { venue, street, city, country } = site.location;
+const youtube = site.social.find((link) => link.name === 'YouTube');
 ---
 
 <BaseLayout>
-	<main class="container">
-		<h1>{site.name}</h1>
+	<main>
+		<Hero />
+
+		<section class="section" aria-labelledby="horarios">
+			<div class="container">
+				<h2 id="horarios">Horarios</h2>
+				<WeeklySchedule />
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="bienvenida">
+			<div class="container">
+				<h2 id="bienvenida">Bienvenida</h2>
+				<p>
+					Si nos visitas por primera vez, queremos darte la bienvenida. Acompáñanos en
+					cualquiera de nuestras reuniones semanales.
+				</p>
+				<a class="button button--secondary" href="/nosotros/">Conócenos</a>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="creencias">
+			<div class="container">
+				<h2 id="creencias">Lo que creemos</h2>
+				<p>En esta sección puedes conocer lo que creemos como iglesia.</p>
+				<a class="button button--secondary" href="/lo-que-creemos/">Conoce lo que creemos</a>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="sermones">
+			<div class="container">
+				<h2 id="sermones">Sermones</h2>
+				<p>Puedes consultar los sermones en la sección correspondiente del sitio.</p>
+				<div class="section__actions">
+					<a class="button" href="/sermones/">Ver sermones</a>
+					{youtube && (
+						<a class="button button--secondary" href={youtube.url} rel="noopener">
+							Ver canal oficial en YouTube
+						</a>
+					)}
+				</div>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="primera-visita">
+			<div class="container">
+				<h2 id="primera-visita">Primera visita</h2>
+				<div class="visit">
+					<div>
+						<h3>Dónde nos reunimos</h3>
+						<address>
+							{venue}<br />
+							{street}<br />
+							{city}, {country}
+						</address>
+					</div>
+					<div>
+						<h3>Cuándo nos reunimos</h3>
+						<WeeklySchedule />
+					</div>
+				</div>
+				<a class="button" href="/visitanos/">Cómo visitarnos</a>
+			</div>
+		</section>
 	</main>
 </BaseLayout>
+
+<style>
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--alt {
+		background-color: var(--color-surface);
+	}
+
+	.section .container > * + * {
+		margin-top: var(--space-6);
+	}
+
+	h2 {
+		font-size: var(--font-size-xl);
+	}
+
+	p {
+		max-width: 40rem;
+	}
+
+	h3 {
+		font-size: var(--font-size-lg);
+		margin-bottom: var(--space-3);
+	}
+
+	address {
+		font-style: normal;
+	}
+
+	.section__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+	}
+
+	.visit {
+		display: grid;
+		gap: var(--space-8);
+	}
+
+	@media (min-width: 48rem) {
+		.section {
+			padding-block: var(--space-16);
+		}
+
+		h2 {
+			font-size: var(--font-size-2xl);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.visit {
+			grid-template-columns: 1fr 3fr;
+		}
+	}
+</style>
