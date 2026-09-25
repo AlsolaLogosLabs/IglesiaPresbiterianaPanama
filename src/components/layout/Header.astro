@@ -12,7 +12,7 @@ const isCurrent = (href: string) => withSlash(href) === currentPath;
 
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href="/">
+		<a class="site-header__brand" href={site.routes.home}>
 			{site.name}
 		</a>
 

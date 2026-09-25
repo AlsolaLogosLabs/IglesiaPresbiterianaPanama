@@ -29,7 +29,7 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 					Si nos visitas por primera vez, queremos darte la bienvenida. Acompáñanos en cualquiera de
 					nuestras reuniones semanales.
 				</p>
-				<a class="button button--secondary" href="/nosotros/">
+				<a class="button button--secondary" href={site.routes.nosotros}>
 					Conócenos
 				</a>
 			</section>
@@ -37,7 +37,7 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 			<section class="intro" aria-labelledby="creencias">
 				<h2 id="creencias">Lo que creemos</h2>
 				<p>En esta sección puedes conocer lo que creemos como iglesia.</p>
-				<a class="button button--secondary" href="/lo-que-creemos/">
+				<a class="button button--secondary" href={site.routes.beliefs}>
 					Conoce lo que creemos
 				</a>
 			</section>
@@ -50,7 +50,7 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 					<p>Puedes consultar los sermones en la sección correspondiente del sitio.</p>
 				</div>
 				<div class="actions">
-					<a class="button" href="/sermones/">
+					<a class="button" href={site.routes.sermons}>
 						Ver sermones
 					</a>
 					{youtube && (
@@ -74,7 +74,7 @@ const youtube = site.social.find((link) => link.name === 'YouTube');
 						<br />
 						{city}, {country}
 					</address>
-					<a class="button" href="/visitanos/">
+					<a class="button" href={site.routes.visit}>
 						Cómo visitarnos
 					</a>
 				</div>

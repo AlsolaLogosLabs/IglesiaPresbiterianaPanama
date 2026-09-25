@@ -11,6 +11,7 @@ interface Props {
 
 const { title, description = site.description } = Astro.props;
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
+const baseURL = site.routes.home;
 ---
 
 <html lang="es">
@@ -20,8 +21,8 @@ const pageTitle = title ? `${title} | ${site.name}` : site.name;
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={`${baseURL}favicon.svg`} />
+		<link rel="icon" href={`${baseURL}favicon.ico`} />
 	</head>
 	<body>
 		<Header />

@@ -10,10 +10,10 @@ const lead = `Te invitamos a acompañarnos en nuestras reuniones semanales en ${
 		<h1>{site.name}</h1>
 		<p class="hero__lead">{lead}</p>
 		<div class="hero__actions">
-			<a class="button" href="/visitanos/">
+			<a class="button" href={site.routes.visit}>
 				Visítanos
 			</a>
-			<a class="button button--secondary" href="/sermones/">
+			<a class="button button--secondary" href={site.routes.sermons}>
 				Ver sermones
 			</a>
 		</div>
