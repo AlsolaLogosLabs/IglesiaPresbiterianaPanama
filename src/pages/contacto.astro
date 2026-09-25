@@ -1,9 +1,178 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+
+const { venue, street, city, country } = site.location;
+const description = `Redes sociales oficiales e información para visitar la ${site.name} en ${city}.`;
+
+// Texto breve por plataforma; las URLs siguen viniendo de site.social.
+const socialText: Record<string, string> = {
+	Facebook: 'Visita nuestra página oficial en Facebook.',
+	Instagram: 'Visita nuestro perfil oficial en Instagram.',
+	YouTube: 'Visita nuestro canal oficial en YouTube.',
+};
 ---
 
-<BaseLayout title="Contacto">
-	<main id="main-content" class="container">
-		<h1>Contacto</h1>
+<BaseLayout title="Contacto" description={description}>
+	<main id="main-content">
+		<header class="page-header">
+			<div class="container">
+				<h1>Contacto</h1>
+				<p>
+					Puedes encontrarnos en nuestros canales oficiales y consultar la información para
+					visitarnos.
+				</p>
+			</div>
+		</header>
+
+		<section class="section" aria-labelledby="redes">
+			<div class="container">
+				<h2 id="redes">Redes sociales oficiales</h2>
+				<ul class="social-list">
+					{site.social.map((link) => (
+						<li class="social-card">
+							<h3>{link.name}</h3>
+							<p>{socialText[link.name] ?? `Visita nuestra cuenta oficial en ${link.name}.`}</p>
+							<a class="button button--secondary" href={link.url} rel="noopener">
+								{`Ir a ${link.name}`}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="visitanos">
+			<div class="container split">
+				<div class="split__intro">
+					<h2 id="visitanos">Visítanos</h2>
+					<p>También puedes acompañarnos en nuestras reuniones en {city}.</p>
+				</div>
+				<div class="visit">
+					<address>
+						<span class="address__venue">{venue}</span>
+						<span>{street}</span>
+						<span>{`${city}, ${country}`}</span>
+					</address>
+					<a class="button" href={site.routes.visit}>
+						Ver información para visitarnos
+					</a>
+				</div>
+			</div>
+		</section>
 	</main>
 </BaseLayout>
+
+<style>
+	.page-header {
+		padding-block: var(--space-12);
+		background-color: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.02em;
+	}
+
+	.page-header p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+	}
+
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--surface {
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: var(--font-size-2xl);
+		letter-spacing: -0.01em;
+	}
+
+	.social-list {
+		display: grid;
+		gap: var(--space-4);
+		margin-top: var(--space-8);
+		list-style: none;
+		padding: 0;
+	}
+
+	.social-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-3);
+		padding: var(--space-6);
+		border: 1px solid var(--color-border);
+		border-top: 4px solid var(--color-text);
+		border-radius: var(--radius-md);
+	}
+
+	h3 {
+		font-size: var(--font-size-xl);
+	}
+
+	.social-card p {
+		color: var(--color-text-muted);
+	}
+
+	.social-card .button {
+		margin-top: auto;
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-8);
+	}
+
+	.split__intro p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+	}
+
+	.visit {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-6);
+	}
+
+	address {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		font-style: normal;
+		font-size: var(--font-size-lg);
+	}
+
+	.address__venue {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+	}
+
+	@media (min-width: 48rem) {
+		.page-header,
+		.section {
+			padding-block: var(--space-16);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.social-list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.split {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-12);
+		}
+	}
+</style>
