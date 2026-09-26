@@ -189,15 +189,15 @@ const structuredData = {
 	}
 
 	h2 {
-		font-size: var(--font-size-2xl);
-		letter-spacing: -0.01em;
+		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
+		letter-spacing: -0.02em;
 	}
 
 	h3 {
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
 		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.08em;
 		color: var(--color-text-muted);
 	}
 
@@ -210,7 +210,8 @@ const structuredData = {
 	}
 
 	.section__header p {
-		margin-top: var(--space-2);
+		margin-top: var(--space-3);
+		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
 	}
 
@@ -229,8 +230,12 @@ const structuredData = {
 		border-top: 1px solid var(--color-border);
 	}
 
+	.intro p {
+		font-size: var(--font-size-lg);
+	}
+
 	.intro .button {
-		margin-top: var(--space-2);
+		margin-top: auto;
 	}
 
 	/* Sermones */
@@ -260,6 +265,15 @@ const structuredData = {
 		border-color: var(--color-inverse-text);
 	}
 
+	.section--inverse .button:active {
+		background-color: var(--color-inverse-text);
+		border-color: var(--color-inverse-text);
+	}
+
+	.section--inverse .button--secondary:active {
+		background-color: rgb(255 255 255 / 0.12);
+	}
+
 	.split {
 		display: grid;
 		gap: var(--space-8);
@@ -286,12 +300,13 @@ const structuredData = {
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
 		border-radius: var(--radius-md);
+		background-color: var(--color-text-muted);
 	}
 
 	.latest__content {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-3);
+		gap: var(--space-4);
 		min-width: 0;
 	}
 
@@ -303,22 +318,30 @@ const structuredData = {
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
 		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.08em;
 	}
 
 	.latest__title {
-		font-size: var(--font-size-xl);
+		font-size: clamp(var(--font-size-xl), 1.1rem + 1.5vw, 2.25rem);
 		text-transform: none;
-		letter-spacing: normal;
+		letter-spacing: -0.02em;
 		line-height: var(--line-height-tight);
 		color: var(--color-inverse-text);
 		overflow-wrap: break-word;
 	}
 
+	.latest__title a {
+		text-decoration-color: var(--color-inverse-muted);
+	}
+
+	.latest__title a:hover {
+		text-decoration-color: currentColor;
+	}
+
 	.latest__meta {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-1) var(--space-3);
+		gap: var(--space-1) var(--space-4);
 	}
 
 	.section--inverse .latest__scripture {
@@ -327,19 +350,16 @@ const structuredData = {
 	}
 
 	.latest .actions {
-		margin-top: var(--space-3);
+		margin-top: var(--space-4);
 	}
 
-	/* Primera visita */
+	/* Primera visita: el título ocupa todo el ancho y «Dónde» / «Cuándo» quedan alineados */
 	.visit {
 		display: grid;
-		gap: var(--space-12);
 	}
 
 	.visit__info {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+		display: contents;
 	}
 
 	.visit__info h2 {
@@ -356,7 +376,12 @@ const structuredData = {
 	}
 
 	.visit__info .button {
-		margin-top: var(--space-8);
+		justify-self: start;
+		margin-top: var(--space-6);
+	}
+
+	.visit > div:last-child {
+		margin-top: var(--space-12);
 	}
 
 	@media (min-width: 48rem) {
@@ -366,8 +391,17 @@ const structuredData = {
 
 		.intro-pair {
 			grid-template-columns: 1fr 1fr;
-			column-gap: var(--space-12);
-			padding-block: var(--space-4) var(--space-20);
+			padding-block: 0 var(--space-20);
+		}
+
+		.intro {
+			padding: var(--space-12) var(--space-12) 0 0;
+		}
+
+		/* Divisor vertical entre ambos bloques */
+		.intro + .intro {
+			padding-inline: var(--space-12) 0;
+			border-left: 1px solid var(--color-border);
 		}
 
 		.actions .button {
@@ -376,7 +410,28 @@ const structuredData = {
 
 		.visit {
 			grid-template-columns: 1fr 1fr;
-			gap: var(--space-16);
+			grid-template-rows: auto auto auto 1fr;
+			column-gap: var(--space-16);
+		}
+
+		.visit__info .button {
+			align-self: start;
+		}
+
+		.visit__info h2 {
+			grid-column: 1 / -1;
+			margin-bottom: var(--space-12);
+		}
+
+		.visit > div:last-child {
+			grid-column: 2;
+			grid-row: 2 / span 3;
+			margin-top: 0;
+		}
+
+		address {
+			font-size: var(--font-size-xl);
+			line-height: 1.4;
 		}
 	}
 
@@ -387,9 +442,10 @@ const structuredData = {
 		}
 
 		.latest {
-			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 			align-items: center;
 			gap: var(--space-12);
+			margin-top: var(--space-12);
 		}
 	}
 </style>

@@ -51,21 +51,23 @@ const { venue, street, city, country } = site.location;
 <style>
 	.site-footer {
 		--focus-color: var(--color-inverse-text);
-		padding-block: var(--space-12) var(--space-8);
+		padding-block: var(--space-16) var(--space-8);
 		background-color: var(--color-inverse-bg);
 		color: var(--color-inverse-text);
 	}
 
 	.site-footer__main {
 		display: grid;
-		gap: var(--space-8);
+		gap: var(--space-8) var(--space-12);
 	}
 
 	.site-footer__name {
-		margin-bottom: var(--space-3);
-		font-size: var(--font-size-lg);
+		max-width: 18ch;
+		margin-bottom: var(--space-4);
+		font-size: var(--font-size-xl);
 		font-weight: var(--font-weight-bold);
 		line-height: var(--line-height-tight);
+		letter-spacing: -0.02em;
 	}
 
 	address {
@@ -74,11 +76,11 @@ const { venue, street, city, country } = site.location;
 	}
 
 	.site-footer__label {
-		margin-bottom: var(--space-2);
+		margin-bottom: var(--space-1);
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
 		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.08em;
 		color: var(--color-inverse-muted);
 	}
 
@@ -94,11 +96,13 @@ const { venue, street, city, country } = site.location;
 		display: inline-flex;
 		align-items: center;
 		min-height: var(--tap-target);
-		text-decoration: none;
+		font-weight: var(--font-weight-semibold);
+		text-decoration: underline;
+		text-decoration-color: var(--color-text-muted);
 	}
 
 	.site-footer__social a:hover {
-		text-decoration: underline;
+		text-decoration-color: currentColor;
 	}
 
 	.site-footer__bottom {
@@ -107,8 +111,8 @@ const { venue, street, city, country } = site.location;
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-2) var(--space-6);
-		margin-top: var(--space-8);
-		padding-top: var(--space-6);
+		margin-top: var(--space-12);
+		padding-top: var(--space-4);
 		border-top: 1px solid var(--color-text-muted);
 		font-size: var(--font-size-sm);
 	}
@@ -121,6 +125,11 @@ const { venue, street, city, country } = site.location;
 		display: inline-flex;
 		align-items: center;
 		min-height: var(--tap-target);
+		text-decoration-color: var(--color-text-muted);
+	}
+
+	.site-footer__legal:hover {
+		text-decoration-color: currentColor;
 	}
 
 	@media (min-width: 48rem) {

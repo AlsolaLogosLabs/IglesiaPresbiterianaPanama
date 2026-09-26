@@ -33,6 +33,11 @@ h4,
 h5,
 h6 {
 	line-height: var(--line-height-tight);
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
 }
 
 img,
@@ -46,7 +51,12 @@ video {
 
 a {
 	color: inherit;
-	text-underline-offset: 0.15em;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+
+a:hover {
+	text-decoration-thickness: 2px;
 }
 
 :focus-visible {
@@ -89,11 +99,20 @@ main.container {
 	line-height: var(--line-height-tight);
 	text-align: center;
 	text-decoration: none;
+	transition:
+		background-color var(--duration-fast) ease,
+		border-color var(--duration-fast) ease,
+		color var(--duration-fast) ease;
 }
 
 .button:hover {
 	background-color: var(--color-text-muted);
 	border-color: var(--color-text-muted);
+}
+
+.button:active {
+	background-color: var(--color-text);
+	border-color: var(--color-text);
 }
 
 .button--secondary {
@@ -107,7 +126,19 @@ main.container {
 	text-decoration: underline;
 }
 
+.button--secondary:active {
+	background-color: var(--color-surface);
+}
+
 .button:focus-visible {
 	outline: 3px solid var(--focus-color, var(--color-text));
 	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+	}
 }
