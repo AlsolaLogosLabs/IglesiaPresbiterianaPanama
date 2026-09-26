@@ -102,7 +102,7 @@ const structuredData = {
 
 <style>
 	.page-header {
-		padding-block: var(--space-12);
+		padding-block: var(--space-8) var(--space-12);
 		background-color: var(--color-surface);
 		border-bottom: 1px solid var(--color-border);
 	}
@@ -112,43 +112,56 @@ const structuredData = {
 		align-items: center;
 		min-height: var(--tap-target);
 		margin-bottom: var(--space-4);
+		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-muted);
+		transition: color var(--duration-fast) ease;
+	}
+
+	.back-link:hover {
+		color: var(--color-text);
 	}
 
 	h1 {
-		max-width: 24ch;
+		max-width: 22ch;
 		font-size: var(--font-size-3xl);
-		letter-spacing: -0.02em;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
 		overflow-wrap: break-word;
 	}
 
 	.meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-4) var(--space-8);
-		margin-top: var(--space-6);
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+		gap: var(--space-4) var(--space-6);
+		margin-top: var(--space-8);
+		padding-top: var(--space-6);
+		border-top: 1px solid var(--color-border);
 	}
 
 	dt {
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
 		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.08em;
 		color: var(--color-text-muted);
 	}
 
 	dd {
-		margin: 0;
+		margin: var(--space-1) 0 0;
 		font-weight: var(--font-weight-semibold);
+		font-variant-numeric: tabular-nums;
+		overflow-wrap: break-word;
 	}
 
 	.section {
-		padding-block: var(--space-12);
+		padding-block: var(--space-8) var(--space-12);
 	}
 
 	.video {
 		max-width: 56rem;
 		aspect-ratio: 16 / 9;
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
 		overflow: hidden;
 		background-color: var(--color-surface);
@@ -163,13 +176,32 @@ const structuredData = {
 
 	.description {
 		max-width: var(--content-max);
-		margin-top: var(--space-6);
+		margin-top: var(--space-8);
+		font-size: var(--font-size-lg);
 	}
 
 	@media (min-width: 48rem) {
-		.page-header,
+		.page-header {
+			padding-block: var(--space-12) var(--space-16);
+		}
+
+		.meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--space-4) 0;
+		}
+
+		.meta > div {
+			padding-right: var(--space-8);
+		}
+
+		.meta > div + div {
+			padding-left: var(--space-8);
+			border-left: 1px solid var(--color-border);
+		}
+
 		.section {
-			padding-block: var(--space-16);
+			padding-block: var(--space-12) var(--space-20);
 		}
 	}
 </style>

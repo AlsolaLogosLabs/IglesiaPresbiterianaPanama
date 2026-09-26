@@ -61,12 +61,14 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 
 	h1 {
 		font-size: var(--font-size-3xl);
-		letter-spacing: -0.02em;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+		overflow-wrap: break-word;
 	}
 
 	.page-header p {
 		max-width: var(--content-max);
-		margin-top: var(--space-4);
+		margin-top: var(--space-6);
 		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
 	}
@@ -85,8 +87,8 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 	}
 
 	h2 {
-		font-size: var(--font-size-2xl);
-		letter-spacing: -0.01em;
+		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
+		letter-spacing: -0.02em;
 	}
 
 	.split {
@@ -103,9 +105,12 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 	}
 
 	.address__venue {
-		font-size: var(--font-size-xl);
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 1vw, var(--font-size-2xl));
 		font-weight: var(--font-weight-bold);
 		line-height: var(--line-height-tight);
+		letter-spacing: -0.02em;
+		overflow-wrap: break-word;
 	}
 
 	.section__header {
@@ -113,7 +118,8 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 	}
 
 	.section__header p {
-		margin-top: var(--space-2);
+		margin-top: var(--space-3);
+		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
 	}
 
@@ -128,12 +134,29 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 			padding-block: var(--space-16);
 		}
 
+		.page-header p {
+			font-size: var(--font-size-xl);
+			line-height: 1.5;
+		}
+
 		.section {
 			padding-block: var(--space-16);
+		}
+
+		.prose p {
+			font-size: var(--font-size-lg);
 		}
 	}
 
 	@media (min-width: 64rem) {
+		.page-header {
+			padding-block: var(--space-20) var(--space-16);
+		}
+
+		.section {
+			padding-block: var(--space-20);
+		}
+
 		.split {
 			grid-template-columns: 1fr 2fr;
 			gap: var(--space-12);

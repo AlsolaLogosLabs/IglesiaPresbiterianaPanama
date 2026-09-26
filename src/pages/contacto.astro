@@ -72,12 +72,14 @@ const socialText: Record<string, string> = {
 
 	h1 {
 		font-size: var(--font-size-3xl);
-		letter-spacing: -0.02em;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+		overflow-wrap: break-word;
 	}
 
 	.page-header p {
 		max-width: var(--content-max);
-		margin-top: var(--space-4);
+		margin-top: var(--space-6);
 		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
 	}
@@ -92,8 +94,8 @@ const socialText: Record<string, string> = {
 	}
 
 	h2 {
-		font-size: var(--font-size-2xl);
-		letter-spacing: -0.01em;
+		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
+		letter-spacing: -0.02em;
 	}
 
 	.social-list {
@@ -111,12 +113,19 @@ const socialText: Record<string, string> = {
 		gap: var(--space-3);
 		padding: var(--space-6);
 		border: 1px solid var(--color-border);
-		border-top: 4px solid var(--color-text);
 		border-radius: var(--radius-md);
+		background-color: var(--color-bg);
+		transition: border-color var(--duration-fast) ease;
+	}
+
+	.social-card:hover,
+	.social-card:focus-within {
+		border-color: var(--color-text-muted);
 	}
 
 	h3 {
 		font-size: var(--font-size-xl);
+		letter-spacing: -0.01em;
 	}
 
 	.social-card p {
@@ -135,13 +144,14 @@ const socialText: Record<string, string> = {
 	.split__intro p {
 		max-width: var(--content-max);
 		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
 	}
 
 	.visit {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: var(--space-6);
+		gap: var(--space-8);
 	}
 
 	address {
@@ -153,19 +163,47 @@ const socialText: Record<string, string> = {
 	}
 
 	.address__venue {
-		font-size: var(--font-size-xl);
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 1vw, var(--font-size-2xl));
 		font-weight: var(--font-weight-bold);
 		line-height: var(--line-height-tight);
+		letter-spacing: -0.02em;
+		overflow-wrap: break-word;
 	}
 
 	@media (min-width: 48rem) {
-		.page-header,
+		.page-header {
+			padding-block: var(--space-16);
+		}
+
+		.page-header p {
+			font-size: var(--font-size-xl);
+			line-height: 1.5;
+		}
+
 		.section {
 			padding-block: var(--space-16);
+		}
+
+		.social-list {
+			gap: var(--space-6);
+			margin-top: var(--space-12);
+		}
+
+		.social-card {
+			padding: var(--space-8) var(--space-6) var(--space-6);
 		}
 	}
 
 	@media (min-width: 64rem) {
+		.page-header {
+			padding-block: var(--space-20) var(--space-16);
+		}
+
+		.section {
+			padding-block: var(--space-20);
+		}
+
 		.social-list {
 			grid-template-columns: repeat(3, 1fr);
 		}

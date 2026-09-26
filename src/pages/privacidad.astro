@@ -65,7 +65,7 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 					analítica, cuentas de usuario u otros servicios externos.
 				</p>
 				<p>
-					Consulta los canales oficiales disponibles en nuestra
+					Consulta los canales oficiales disponibles en nuestra{' '}
 					<a href={site.routes.contact}>página de Contacto</a>.
 				</p>
 			</section>
@@ -82,12 +82,14 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 
 	h1 {
 		font-size: var(--font-size-3xl);
-		letter-spacing: -0.02em;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+		overflow-wrap: break-word;
 	}
 
 	.page-header p {
 		max-width: var(--content-max);
-		margin-top: var(--space-4);
+		margin-top: var(--space-6);
 		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
 	}
@@ -113,13 +115,19 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 	}
 
 	h2 {
-		font-size: var(--font-size-2xl);
-		letter-spacing: -0.01em;
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 1vw, var(--font-size-2xl));
+		letter-spacing: -0.02em;
 	}
 
 	h3 {
-		margin-top: var(--space-2);
+		margin-top: var(--space-4);
 		font-size: var(--font-size-lg);
+		letter-spacing: -0.01em;
+	}
+
+	.section a {
+		font-weight: var(--font-weight-semibold);
 	}
 
 	@media (min-width: 48rem) {
@@ -127,12 +135,31 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 			padding-block: var(--space-16);
 		}
 
+		.page-header p {
+			font-size: var(--font-size-xl);
+			line-height: 1.5;
+		}
+
+		.section {
+			padding-block: var(--space-12);
+		}
+
+		.section p {
+			font-size: var(--font-size-lg);
+		}
+
 		.section:first-child {
 			padding-top: var(--space-16);
 		}
 
 		.section:last-child {
-			padding-bottom: var(--space-16);
+			padding-bottom: var(--space-20);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.page-header {
+			padding-block: var(--space-20) var(--space-16);
 		}
 	}
 </style>
