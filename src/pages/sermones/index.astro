@@ -96,7 +96,7 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 <style>
 	.page-header {
 		padding-block: var(--space-12);
-		background-color: var(--color-surface);
+		background-color: var(--color-brand-surface);
 		border-bottom: 1px solid var(--color-border);
 	}
 
@@ -110,6 +110,10 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 		margin-top: var(--space-4);
 		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
+	}
+
+	.page-header .button--secondary:hover {
+		background-color: var(--color-bg);
 	}
 
 	.page-header .button {
@@ -201,7 +205,7 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 	}
 
 	.sermon-card:hover {
-		border-color: var(--color-text);
+		border-color: var(--color-brand);
 	}
 
 	.sermon-card:hover h3 a {
@@ -209,7 +213,7 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 	}
 
 	.sermon-card:focus-within {
-		outline: 3px solid var(--color-text);
+		outline: 3px solid var(--color-brand);
 		outline-offset: 2px;
 	}
 

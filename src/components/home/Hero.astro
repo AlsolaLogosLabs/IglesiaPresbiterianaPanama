@@ -23,7 +23,7 @@ const lead = `Somos una iglesia cristiana, bíblica y reformada en ${city}. Te i
 <style>
 	.hero {
 		padding-block: var(--space-12) var(--space-16);
-		background-color: var(--color-surface);
+		background-color: var(--color-brand-surface);
 		border-bottom: 1px solid var(--color-border);
 	}
 
@@ -52,6 +52,11 @@ const lead = `Somos una iglesia cristiana, bíblica y reformada en ${city}. Te i
 
 	.hero__actions .button {
 		flex: 1 1 10rem;
+	}
+
+	/* El fondo del hero ya es brand-surface: el hover secundario vuelve a blanco */
+	.hero .button--secondary:hover {
+		background-color: var(--color-bg);
 	}
 
 	@media (min-width: 48rem) {

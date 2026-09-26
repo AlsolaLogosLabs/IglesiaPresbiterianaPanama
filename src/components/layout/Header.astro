@@ -136,13 +136,13 @@ const isCurrent = (href: string) =>
 	}
 
 	.site-nav a:hover {
-		color: var(--color-text);
+		color: var(--color-brand);
 		text-decoration: underline;
 		text-decoration-thickness: 1px;
 	}
 
 	.site-nav a[aria-current='page'] {
-		color: var(--color-text);
+		color: var(--color-brand);
 		text-decoration: underline;
 		text-decoration-thickness: 2px;
 		text-underline-offset: 0.4em;
@@ -170,11 +170,11 @@ const isCurrent = (href: string) =>
 	}
 
 	.site-nav--mobile summary:hover {
-		border-color: var(--color-text);
+		border-color: var(--color-brand);
 	}
 
 	.site-nav--mobile summary:active {
-		background-color: var(--color-surface);
+		background-color: var(--color-brand-surface);
 	}
 
 	.site-nav--mobile summary::-webkit-details-marker {
@@ -192,8 +192,8 @@ const isCurrent = (href: string) =>
 	}
 
 	.site-nav--mobile[open] summary {
-		background-color: var(--color-surface);
-		border-color: var(--color-text);
+		background-color: var(--color-brand-surface);
+		border-color: var(--color-brand);
 	}
 
 	.site-nav--mobile[open] summary::after {
@@ -254,7 +254,7 @@ const isCurrent = (href: string) =>
 		}
 
 		.site-nav--desktop a:hover {
-			background-color: var(--color-surface);
+			background-color: var(--color-brand-surface);
 		}
 	}
 </style>
