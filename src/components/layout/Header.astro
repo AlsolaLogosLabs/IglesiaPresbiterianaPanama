@@ -17,7 +17,8 @@ const isCurrent = (href: string) =>
 <header class="site-header">
 	<div class="container site-header__inner">
 		<a class="site-header__brand" href={site.routes.home}>
-			{site.name}
+			<img src={`${site.routes.home}brand/mark-black.png`} alt="" width="107" height="87" />
+			<span>{site.name}</span>
 		</a>
 
 		<!-- Mobile/tablet: menú desplegable sin JavaScript -->
@@ -88,13 +89,27 @@ const isCurrent = (href: string) =>
 	}
 
 	.site-header__brand {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
 		min-width: 0;
-		max-width: 18ch;
+		min-height: var(--tap-target);
 		font-size: var(--font-size-lg);
 		font-weight: var(--font-weight-bold);
 		line-height: var(--line-height-tight);
 		letter-spacing: -0.02em;
 		text-decoration: none;
+	}
+
+	.site-header__brand img {
+		flex-shrink: 0;
+		width: 2.25rem;
+		height: auto;
+	}
+
+	.site-header__brand span {
+		min-width: 0;
+		max-width: 18ch;
 		text-wrap: balance;
 		overflow-wrap: anywhere;
 	}
@@ -215,7 +230,7 @@ const isCurrent = (href: string) =>
 			min-height: 5rem;
 		}
 
-		.site-header__brand {
+		.site-header__brand span {
 			max-width: none;
 		}
 

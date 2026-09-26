@@ -9,7 +9,10 @@ const { venue, street, city, country } = site.location;
 	<div class="container">
 		<div class="site-footer__main">
 			<div>
-				<p class="site-footer__name">{site.name}</p>
+				<p class="site-footer__name">
+					<img src={`${site.routes.home}brand/mark-white.png`} alt="" width="107" height="87" />
+					<span>{site.name}</span>
+				</p>
 				<address>
 					{venue}
 					<br />
@@ -62,12 +65,24 @@ const { venue, street, city, country } = site.location;
 	}
 
 	.site-footer__name {
-		max-width: 18ch;
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
 		margin-bottom: var(--space-4);
 		font-size: var(--font-size-xl);
 		font-weight: var(--font-weight-bold);
 		line-height: var(--line-height-tight);
 		letter-spacing: -0.02em;
+	}
+
+	.site-footer__name img {
+		flex-shrink: 0;
+		width: 2.5rem;
+		height: auto;
+	}
+
+	.site-footer__name span {
+		max-width: 18ch;
 	}
 
 	address {
