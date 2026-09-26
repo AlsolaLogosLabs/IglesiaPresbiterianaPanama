@@ -28,6 +28,7 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 
 const sermonURL = new URL(Astro.url.pathname, Astro.site).href;
 const thumbnailURL = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+const thumbnailAlt = `Miniatura del sermón «${title}»`;
 const embedURL = `https://www.youtube-nocookie.com/embed/${youtubeId}`;
 // Solo la fecha verificada (YYYY-MM-DD); no se conoce la hora de publicación.
 const uploadDate = date.toISOString().slice(0, 10);
@@ -43,7 +44,7 @@ const structuredData = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={thumbnailURL} imageAlt={thumbnailAlt}>
 	<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	<main id="main-content">
 		<header class="page-header">

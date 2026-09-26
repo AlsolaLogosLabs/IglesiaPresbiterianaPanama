@@ -8,13 +8,16 @@ interface Props {
 	title?: string;
 	description?: string;
 	noindex?: boolean;
+	image?: string;
+	imageAlt?: string;
 }
 
-const { title, description = site.description, noindex = false } = Astro.props;
+const { title, description = site.description, noindex = false, image, imageAlt } = Astro.props;
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
 const baseURL = site.routes.home;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const robots = noindex ? 'noindex, follow' : 'index, follow';
+const socialImage = image ? new URL(image, Astro.site).href : undefined;
 ---
 
 <html lang="es">
@@ -34,10 +37,14 @@ const robots = noindex ? 'noindex, follow' : 'index, follow';
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
 		{!noindex && <meta property="og:url" content={canonicalURL} />}
+		{socialImage && <meta property="og:image" content={socialImage} />}
+		{socialImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description} />
+		{socialImage && <meta name="twitter:image" content={socialImage} />}
+		{socialImage && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
 
 		<link rel="icon" type="image/svg+xml" href={`${baseURL}favicon.svg`} />
 		<link rel="icon" href={`${baseURL}favicon.ico`} />
