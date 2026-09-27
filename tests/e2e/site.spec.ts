@@ -176,11 +176,24 @@ for (const { prefix, times } of [
 	{ prefix: 'pt-br/', times: ['18:30', '09:30', '11:00'] },
 ]) {
 	test(`horarios con formato local en «/${prefix}»`, async ({ page }) => {
+		// Home: los horarios solo aparecen en el panel del Hero
 		await page.goto(prefix);
 		await expect(page.locator('.hero__time')).toHaveText(times);
+		await expect(page.locator('.schedule')).toHaveCount(0);
+
+		// Visítanos: detalle completo en tarjetas
+		await page.goto(`${prefix}visitanos/`);
 		await expect(page.locator('.schedule--cards .schedule__time')).toHaveText(times);
 	});
 }
+
+test('Home: teasers de historia y creencias enlazan a sus páginas', async ({ page }) => {
+	await page.goto('');
+	await expect(page.locator('h2#historia')).toHaveCount(1);
+	await expect(page.locator('h2#creencias')).toHaveCount(1);
+	await expect(page.locator('.intro a[href$="/nosotros/"]')).toHaveCount(1);
+	await expect(page.locator('.intro a[href$="/lo-que-creemos/"]')).toHaveCount(1);
+});
 
 test('selector compacto: el nombre accesible incluye el código visible (Label in Name)', async ({
 	page,

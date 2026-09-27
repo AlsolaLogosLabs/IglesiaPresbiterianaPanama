@@ -19,17 +19,7 @@ const cards = [
 	<main id="main-content">
 		<PageHeader title={t.title} description={t.description} />
 
-		<section class="section" aria-labelledby="quienes-somos">
-			<div class="container split">
-				<h2 id="quienes-somos">{t.whoTitle}</h2>
-				<div class="prose">
-					<p class="prose__lead">{t.whoLead}</p>
-					<p>{t.whoText}</p>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section--bordered" aria-labelledby="historia">
+		<section class="section" aria-labelledby="historia">
 			<div class="container split">
 				<h2 id="historia">{t.historyTitle}</h2>
 				<div class="prose">
@@ -102,14 +92,6 @@ const cards = [
 		max-width: var(--content-max);
 	}
 
-	.prose__lead {
-		margin-bottom: var(--space-2);
-		font-size: clamp(var(--font-size-xl), 1.25rem + 0.75vw, 1.75rem);
-		font-weight: var(--font-weight-semibold);
-		line-height: var(--line-height-tight);
-		letter-spacing: -0.01em;
-	}
-
 	.card-list {
 		display: grid;
 		gap: var(--space-4);
@@ -153,7 +135,7 @@ const cards = [
 			padding-block: var(--space-16);
 		}
 
-		.prose p:not(.prose__lead) {
+		.prose p {
 			font-size: var(--font-size-lg);
 		}
 

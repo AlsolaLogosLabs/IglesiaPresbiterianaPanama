@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../home/Hero.astro';
-import WeeklySchedule from '../home/WeeklySchedule.astro';
 import { site } from '../../config/site';
 import { localeMeta, toLocale } from '../../i18n/locales';
 import { messages } from '../../i18n/messages';
@@ -11,7 +10,6 @@ import { localizedRoutes } from '../../i18n/routes';
 const locale = toLocale(Astro.currentLocale);
 const t = messages[locale].home;
 const routes = localizedRoutes(locale);
-const { venue, street, city, country } = site.location;
 const youtube = site.social.find((link) => link.name === 'YouTube');
 
 const sermons = (await getCollection('sermons')).sort(
@@ -57,22 +55,12 @@ const structuredData = {
 	<main id="main-content">
 		<Hero />
 
-		<section class="section section--schedule" aria-labelledby="horarios">
-			<div class="container">
-				<div class="section__header">
-					<h2 id="horarios">{t.scheduleTitle}</h2>
-					<p>{t.scheduleIntro}</p>
-				</div>
-				<WeeklySchedule />
-			</div>
-		</section>
-
 		<div class="container intro-pair">
-			<section class="intro" aria-labelledby="bienvenida">
-				<h2 id="bienvenida">{t.welcomeTitle}</h2>
-				<p>{t.welcomeText}</p>
+			<section class="intro" aria-labelledby="historia">
+				<h2 id="historia">{t.historyTitle}</h2>
+				<p>{t.historyText}</p>
 				<a class="button button--secondary" href={routes.nosotros}>
-					{t.welcomeCta}
+					{t.historyCta}
 				</a>
 			</section>
 
@@ -148,40 +136,12 @@ const structuredData = {
 				</div>
 			)}
 		</section>
-
-		<section class="section section--surface" aria-labelledby="primera-visita">
-			<div class="container visit">
-				<div class="visit__info">
-					<h2 id="primera-visita">{t.firstVisitTitle}</h2>
-					<h3>{t.whereTitle}</h3>
-					<address>
-						<strong class="visit__venue">{venue}</strong>
-						<br />
-						{street}
-						<br />
-						{city}, {country}
-					</address>
-					<a class="button" href={routes.visit}>
-						{t.howToVisit}
-					</a>
-				</div>
-				<div>
-					<h3>{t.whenTitle}</h3>
-					<WeeklySchedule variant="compact" />
-				</div>
-			</div>
-		</section>
 	</main>
 </BaseLayout>
 
 <style>
 	.section {
 		padding-block: var(--space-16);
-	}
-
-	.section--surface {
-		background-color: var(--color-brand-surface);
-		border-top: 1px solid var(--color-border);
 	}
 
 	.section--inverse {
@@ -207,22 +167,7 @@ const structuredData = {
 		max-width: var(--content-max);
 	}
 
-	/* Horarios y Bienvenida/Creencias forman un mismo bloque: menos aire entre ambos */
-	.section--schedule {
-		padding-bottom: var(--space-12);
-	}
-
-	.section__header {
-		margin-bottom: var(--space-8);
-	}
-
-	.section__header p {
-		margin-top: var(--space-3);
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
-	}
-
-	/* Bienvenida + Lo que creemos */
+	/* Nuestra historia + Lo que creemos */
 	.intro-pair {
 		display: grid;
 		padding-bottom: var(--space-16);
@@ -360,49 +305,9 @@ const structuredData = {
 		margin-top: var(--space-6);
 	}
 
-	/* Primera visita: el título ocupa todo el ancho y «Dónde» / «Cuándo» quedan alineados */
-	.visit {
-		display: grid;
-	}
-
-	.visit__info {
-		display: contents;
-	}
-
-	.visit__info h2 {
-		margin-bottom: var(--space-8);
-	}
-
-	.visit h3 {
-		margin-bottom: var(--space-3);
-	}
-
-	address {
-		font-style: normal;
-		font-size: var(--font-size-lg);
-	}
-
-	.visit__venue {
-		font-size: var(--font-size-xl);
-		letter-spacing: -0.02em;
-	}
-
-	.visit__info .button {
-		justify-self: start;
-		margin-top: var(--space-6);
-	}
-
-	.visit > div:last-child {
-		margin-top: var(--space-12);
-	}
-
 	@media (min-width: 48rem) {
 		.section {
 			padding-block: var(--space-20);
-		}
-
-		.section--schedule {
-			padding-bottom: var(--space-16);
 		}
 
 		.intro-pair {
@@ -423,36 +328,6 @@ const structuredData = {
 		.actions .button {
 			flex: 0 0 auto;
 		}
-
-		.visit {
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: auto auto auto 1fr;
-			column-gap: var(--space-16);
-		}
-
-		.visit__info .button {
-			align-self: start;
-		}
-
-		.visit__info h2 {
-			grid-column: 1 / -1;
-			margin-bottom: var(--space-12);
-		}
-
-		.visit > div:last-child {
-			grid-column: 2;
-			grid-row: 2 / span 3;
-			margin-top: 0;
-		}
-
-		address {
-			font-size: var(--font-size-xl);
-			line-height: 1.4;
-		}
-
-		.visit__venue {
-			font-size: var(--font-size-2xl);
-		}
 	}
 
 	@media (min-width: 64rem) {
@@ -470,12 +345,6 @@ const structuredData = {
 
 		.latest__thumb {
 			border-radius: var(--radius-lg);
-		}
-
-		/* Divisor entre «Dónde» y «Cuándo» solo cuando hay ancho suficiente */
-		.visit > div:last-child {
-			padding-left: var(--space-12);
-			border-left: 1px solid var(--color-border);
 		}
 
 		.latest__title {

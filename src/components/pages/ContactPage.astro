@@ -9,7 +9,6 @@ import { localizedRoutes } from '../../i18n/routes';
 const locale = toLocale(Astro.currentLocale);
 const t = messages[locale].contact;
 const routes = localizedRoutes(locale);
-const { venue, street, city, country } = site.location;
 ---
 
 <BaseLayout title={t.title} description={t.metaDescription}>
@@ -40,11 +39,6 @@ const { venue, street, city, country } = site.location;
 					<p>{t.visitText}</p>
 				</div>
 				<div class="visit">
-					<address>
-						<span class="address__venue">{venue}</span>
-						<span>{street}</span>
-						<span>{`${city}, ${country}`}</span>
-					</address>
 					<a class="button" href={routes.visit}>
 						{t.visitCta}
 					</a>
@@ -123,23 +117,6 @@ const { venue, street, city, country } = site.location;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: var(--space-8);
-	}
-
-	address {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-1);
-		font-style: normal;
-		font-size: var(--font-size-lg);
-	}
-
-	.address__venue {
-		margin-bottom: var(--space-2);
-		font-size: clamp(var(--font-size-xl), 1.25rem + 1vw, var(--font-size-2xl));
-		font-weight: var(--font-weight-bold);
-		line-height: var(--line-height-tight);
-		letter-spacing: -0.02em;
-		overflow-wrap: break-word;
 	}
 
 	@media (min-width: 48rem) {

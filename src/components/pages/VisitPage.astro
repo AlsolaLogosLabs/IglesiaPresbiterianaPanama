@@ -56,17 +56,6 @@ const { venue, street, city, country } = site.location;
 				</a>
 			</div>
 		</section>
-
-		<section class="section section--surface" aria-labelledby="primera-visita">
-			<div class="container split">
-				<h2 id="primera-visita">{t.firstVisitTitle}</h2>
-				<div class="prose">
-					{t.firstVisit.map((paragraph) => (
-						<p>{paragraph}</p>
-					))}
-				</div>
-			</div>
-		</section>
 	</main>
 </BaseLayout>
 
@@ -76,11 +65,6 @@ const { venue, street, city, country } = site.location;
 	}
 
 	.section--bordered {
-		border-top: 1px solid var(--color-border);
-	}
-
-	.section--surface {
-		background-color: var(--color-brand-surface);
 		border-top: 1px solid var(--color-border);
 	}
 
@@ -138,19 +122,9 @@ const { venue, street, city, country } = site.location;
 		margin-top: var(--space-8);
 	}
 
-	.prose {
-		display: grid;
-		gap: var(--space-4);
-		max-width: var(--content-max);
-	}
-
 	@media (min-width: 48rem) {
 		.section {
 			padding-block: var(--space-16);
-		}
-
-		.prose p {
-			font-size: var(--font-size-lg);
 		}
 	}
 

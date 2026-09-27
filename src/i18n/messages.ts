@@ -46,12 +46,10 @@ const es = {
 		visitCta: 'Visítanos',
 		sermonsCta: 'Ver sermones',
 		visitPanel: 'Visítanos',
-		scheduleTitle: 'Horarios',
-		scheduleIntro: 'Nuestras reuniones semanales.',
-		welcomeTitle: 'Bienvenida',
-		welcomeText:
-			'Si nos visitas por primera vez, eres bienvenido a acompañarnos en cualquiera de nuestras reuniones semanales.',
-		welcomeCta: 'Conócenos',
+		historyTitle: 'Nuestra historia',
+		historyText:
+			'El trabajo que dio origen a nuestra iglesia comenzó en 2011 por medio de la Agencia Presbiteriana de Misiones Transculturales (APMT) de la Iglesia Presbiteriana de Brasil.',
+		historyCta: 'Conoce nuestra historia',
 		beliefsTitle: 'Lo que creemos',
 		beliefsText:
 			'Somos una iglesia bíblica y reformada que se suscribe a la Confesión de Fe y los Catecismos de Westminster.',
@@ -64,18 +62,11 @@ const es = {
 		sermonsFallback: 'Consulta nuestra sección de sermones y nuestro canal oficial en YouTube.',
 		viewSermons: 'Ver sermones',
 		viewYoutube: 'Ver canal oficial en YouTube',
-		firstVisitTitle: 'Primera visita',
-		whereTitle: 'Dónde nos reunimos',
-		howToVisit: 'Cómo visitarnos',
-		whenTitle: 'Cuándo nos reunimos',
 	},
 	about: {
 		title: 'Nosotros',
 		metaDescription: `Conoce la historia y el enfoque de la ${name}, una iglesia cristiana, bíblica y reformada en ${city}.`,
-		description: `Conoce nuestra identidad, nuestra historia y el enfoque de la ${name}.`,
-		whoTitle: 'Quiénes somos',
-		whoLead: `Somos la ${name}, una iglesia cristiana, bíblica y reformada en ${city}.`,
-		whoText: 'En esta página compartimos cómo comenzó nuestro trabajo y hacia dónde lo orientamos.',
+		description: `Somos la ${name}, una iglesia cristiana, bíblica y reformada en ${city}.`,
 		historyTitle: 'Nuestra historia',
 		history: [
 			`El trabajo que dio origen a la ${name} comenzó en 2011 por medio de la Agencia Presbiteriana de Misiones Transculturales (APMT) de la Iglesia Presbiteriana de Brasil, con el trabajo misionero pionero de Gilberto Botelho.`,
@@ -108,13 +99,6 @@ const es = {
 		title: 'Lo que creemos',
 		metaDescription: `Conoce la identidad bíblica y reformada de la ${name} y su suscripción a la Confesión de Fe y los Catecismos de Westminster.`,
 		description: `La ${name} es una iglesia cristiana, bíblica y reformada.`,
-		secondaryDescription:
-			'En esta sección presentamos de forma breve nuestra identidad confesional.',
-		identityTitle: 'Una fe cristiana, bíblica y reformada',
-		identity: [
-			`La ${name} se identifica como una iglesia cristiana, bíblica y reformada.`,
-			'Esta identidad orienta la enseñanza de la iglesia.',
-		],
 		confessionTitle: 'Nuestra confesión',
 		confessionLead: `La ${name} se suscribe a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor de Westminster.`,
 		confessionText:
@@ -155,17 +139,11 @@ const es = {
 		scheduleTitle: 'Horarios',
 		scheduleIntro: 'Estas son nuestras reuniones semanales.',
 		calendarCta: 'Agregar horarios al calendario',
-		firstVisitTitle: 'Primera visita',
-		firstVisit: [
-			'Si es tu primera vez con nosotros, puedes acompañarnos en cualquiera de nuestras reuniones semanales.',
-			'Consulta arriba la ubicación y el horario que mejor se adapte a tu visita.',
-		],
 	},
 	contact: {
 		title: 'Contacto',
 		metaDescription: `Redes sociales oficiales e información para visitar la ${name} en ${city}.`,
-		description:
-			'Puedes encontrarnos en nuestros canales oficiales y consultar la información para visitarnos.',
+		description: 'Puedes encontrarnos en nuestros canales oficiales.',
 		socialTitle: 'Redes sociales oficiales',
 		socialText: {
 			Facebook: 'Visita nuestra página oficial en Facebook.',
@@ -175,7 +153,7 @@ const es = {
 		socialFallback: (network: string) => `Visita nuestra cuenta oficial en ${network}.`,
 		socialCta: (network: string) => `Ir a ${network}`,
 		visitTitle: 'Visítanos',
-		visitText: `También puedes acompañarnos en nuestras reuniones en ${city}.`,
+		visitText: 'Consulta la ubicación y los horarios de nuestras reuniones.',
 		visitCta: 'Ver información para visitarnos',
 	},
 	privacy: {
@@ -247,12 +225,10 @@ const en: Messages = {
 		visitCta: 'Visit us',
 		sermonsCta: 'View sermons',
 		visitPanel: 'Visit us',
-		scheduleTitle: 'Schedule',
-		scheduleIntro: 'Our weekly gatherings.',
-		welcomeTitle: 'Welcome',
-		welcomeText:
-			'If you are visiting for the first time, you are welcome to join us at any of our weekly gatherings.',
-		welcomeCta: 'Get to know us',
+		historyTitle: 'Our history',
+		historyText:
+			'The work that gave rise to our church began in 2011 through the Presbyterian Agency for Transcultural Missions (APMT) of the Presbyterian Church of Brazil.',
+		historyCta: 'Learn about our history',
 		beliefsTitle: 'What we believe',
 		beliefsText:
 			'We are a biblical and Reformed church that subscribes to the Westminster Confession of Faith and Catechisms.',
@@ -265,18 +241,11 @@ const en: Messages = {
 		sermonsFallback: 'Browse our sermons section and our official YouTube channel.',
 		viewSermons: 'View sermons',
 		viewYoutube: 'View official YouTube channel',
-		firstVisitTitle: 'First visit',
-		whereTitle: 'Where we meet',
-		howToVisit: 'How to visit us',
-		whenTitle: 'When we meet',
 	},
 	about: {
 		title: 'About us',
 		metaDescription: `Learn about the history and focus of the ${name}, a Christian, biblical and Reformed church in Panama City.`,
-		description: `Learn about our identity, our history and the focus of the ${name}.`,
-		whoTitle: 'Who we are',
-		whoLead: `We are the ${name}, a Christian, biblical and Reformed church in Panama City.`,
-		whoText: 'On this page we share how our work began and where we are directing it.',
+		description: `We are the ${name}, a Christian, biblical and Reformed church in Panama City.`,
 		historyTitle: 'Our history',
 		history: [
 			`The work that gave rise to the ${name} began in 2011 through the Presbyterian Agency for Transcultural Missions (APMT) of the Presbyterian Church of Brazil, with the pioneering missionary work of Gilberto Botelho.`,
@@ -309,12 +278,6 @@ const en: Messages = {
 		title: 'What we believe',
 		metaDescription: `Learn about the biblical and Reformed identity of the ${name} and its subscription to the Westminster Confession of Faith and Catechisms.`,
 		description: `The ${name} is a Christian, biblical and Reformed church.`,
-		secondaryDescription: 'In this section we briefly present our confessional identity.',
-		identityTitle: 'A Christian, biblical and Reformed faith',
-		identity: [
-			`The ${name} identifies itself as a Christian, biblical and Reformed church.`,
-			"This identity guides the church's teaching.",
-		],
 		confessionTitle: 'Our confession',
 		confessionLead: `The ${name} subscribes to the Westminster Confession of Faith and the Westminster Larger and Shorter Catechisms.`,
 		confessionText:
@@ -354,17 +317,11 @@ const en: Messages = {
 		scheduleTitle: 'Schedule',
 		scheduleIntro: 'These are our weekly gatherings.',
 		calendarCta: 'Add schedule to calendar',
-		firstVisitTitle: 'First visit',
-		firstVisit: [
-			'If it is your first time with us, you can join us at any of our weekly gatherings.',
-			'See the location above and the time that best suits your visit.',
-		],
 	},
 	contact: {
 		title: 'Contact',
 		metaDescription: `Official social media and information for visiting the ${name} in Panama City.`,
-		description:
-			'You can find us on our official channels and see the information for visiting us.',
+		description: 'You can find us through our official channels.',
 		socialTitle: 'Official social media',
 		socialText: {
 			Facebook: 'Visit our official Facebook page.',
@@ -374,7 +331,7 @@ const en: Messages = {
 		socialFallback: (network) => `Visit our official ${network} account.`,
 		socialCta: (network) => `Go to ${network}`,
 		visitTitle: 'Visit us',
-		visitText: 'You can also join us at our gatherings in Panama City.',
+		visitText: 'See the location and schedule of our weekly gatherings.',
 		visitCta: 'See information for visiting us',
 	},
 	privacy: {
@@ -442,12 +399,10 @@ const ptBr: Messages = {
 		visitCta: 'Visite-nos',
 		sermonsCta: 'Ver sermões',
 		visitPanel: 'Visite-nos',
-		scheduleTitle: 'Horários',
-		scheduleIntro: 'Nossas reuniões semanais.',
-		welcomeTitle: 'Boas-vindas',
-		welcomeText:
-			'Se você nos visita pela primeira vez, é bem-vindo para nos acompanhar em qualquer uma de nossas reuniões semanais.',
-		welcomeCta: 'Conheça-nos',
+		historyTitle: 'Nossa história',
+		historyText:
+			'O trabalho que deu origem à nossa igreja começou em 2011 por meio da Agência Presbiteriana de Missões Transculturais (APMT) da Igreja Presbiteriana do Brasil.',
+		historyCta: 'Conheça nossa história',
 		beliefsTitle: 'O que cremos',
 		beliefsText:
 			'Somos uma igreja bíblica e reformada que subscreve a Confissão de Fé e os Catecismos de Westminster.',
@@ -460,18 +415,11 @@ const ptBr: Messages = {
 		sermonsFallback: 'Consulte nossa seção de sermões e nosso canal oficial no YouTube.',
 		viewSermons: 'Ver sermões',
 		viewYoutube: 'Ver canal oficial no YouTube',
-		firstVisitTitle: 'Primeira visita',
-		whereTitle: 'Onde nos reunimos',
-		howToVisit: 'Como nos visitar',
-		whenTitle: 'Quando nos reunimos',
 	},
 	about: {
 		title: 'Sobre nós',
 		metaDescription: `Conheça a história e o foco da ${name}, uma igreja cristã, bíblica e reformada na Cidade do Panamá.`,
-		description: `Conheça nossa identidade, nossa história e o foco da ${name}.`,
-		whoTitle: 'Quem somos',
-		whoLead: `Somos a ${name}, uma igreja cristã, bíblica e reformada na Cidade do Panamá.`,
-		whoText: 'Nesta página compartilhamos como nosso trabalho começou e para onde o direcionamos.',
+		description: `Somos a ${name}, uma igreja cristã, bíblica e reformada na Cidade do Panamá.`,
 		historyTitle: 'Nossa história',
 		history: [
 			`O trabalho que deu origem à ${name} começou em 2011 por meio da Agência Presbiteriana de Missões Transculturais (APMT) da Igreja Presbiteriana do Brasil, com o trabalho missionário pioneiro de Gilberto Botelho.`,
@@ -504,12 +452,6 @@ const ptBr: Messages = {
 		title: 'O que cremos',
 		metaDescription: `Conheça a identidade bíblica e reformada da ${name} e sua subscrição à Confissão de Fé e aos Catecismos de Westminster.`,
 		description: `A ${name} é uma igreja cristã, bíblica e reformada.`,
-		secondaryDescription: 'Nesta seção apresentamos brevemente nossa identidade confessional.',
-		identityTitle: 'Uma fé cristã, bíblica e reformada',
-		identity: [
-			`A ${name} se identifica como uma igreja cristã, bíblica e reformada.`,
-			'Essa identidade orienta o ensino da igreja.',
-		],
 		confessionTitle: 'Nossa confissão',
 		confessionLead: `A ${name} subscreve a Confissão de Fé de Westminster e os Catecismos Maior e Breve de Westminster.`,
 		confessionText:
@@ -551,17 +493,11 @@ const ptBr: Messages = {
 		scheduleTitle: 'Horários',
 		scheduleIntro: 'Estas são nossas reuniões semanais.',
 		calendarCta: 'Adicionar horários ao calendário',
-		firstVisitTitle: 'Primeira visita',
-		firstVisit: [
-			'Se é sua primeira vez conosco, você pode nos acompanhar em qualquer uma de nossas reuniões semanais.',
-			'Consulte acima a localização e o horário que melhor se adapte à sua visita.',
-		],
 	},
 	contact: {
 		title: 'Contato',
 		metaDescription: `Redes sociais oficiais e informações para visitar a ${name} na Cidade do Panamá.`,
-		description:
-			'Você pode nos encontrar em nossos canais oficiais e consultar as informações para nos visitar.',
+		description: 'Você pode nos encontrar em nossos canais oficiais.',
 		socialTitle: 'Redes sociais oficiais',
 		socialText: {
 			Facebook: 'Visite nossa página oficial no Facebook.',
@@ -571,7 +507,7 @@ const ptBr: Messages = {
 		socialFallback: (network) => `Visite nossa conta oficial no ${network}.`,
 		socialCta: (network) => `Ir para ${network}`,
 		visitTitle: 'Visite-nos',
-		visitText: 'Você também pode nos acompanhar em nossas reuniões na Cidade do Panamá.',
+		visitText: 'Consulte a localização e os horários de nossas reuniões.',
 		visitCta: 'Ver informações para nos visitar',
 	},
 	privacy: {
