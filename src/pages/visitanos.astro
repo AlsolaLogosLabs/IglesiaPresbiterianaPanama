@@ -34,6 +34,13 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 					<p>Estas son nuestras reuniones semanales.</p>
 				</div>
 				<WeeklySchedule />
+				<a
+					class="button button--secondary calendar-link"
+					href={`${site.routes.home}horarios.ics`}
+					download="horarios-iglesia.ics"
+				>
+					Agregar horarios al calendario
+				</a>
 			</div>
 		</section>
 
@@ -121,6 +128,10 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 		margin-top: var(--space-3);
 		font-size: var(--font-size-lg);
 		color: var(--color-text-muted);
+	}
+
+	.calendar-link {
+		margin-top: var(--space-8);
 	}
 
 	.prose {
