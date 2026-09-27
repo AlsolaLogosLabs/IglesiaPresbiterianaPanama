@@ -1,7 +1,9 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WeeklySchedule from '../components/home/WeeklySchedule.astro';
 import { site } from '../config/site';
+import interiorPhoto from '../assets/photos/interior-reunion.jpg';
 
 const { venue, street, city, country } = site.location;
 const description = `Conoce la ubicación y los horarios semanales de la ${site.name} en ${venue}, ${street}, ${city}.`;
@@ -19,11 +21,23 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 		<section class="section" aria-labelledby="ubicacion">
 			<div class="container split">
 				<h2 id="ubicacion">Dónde nos reunimos</h2>
-				<address>
-					<span class="address__venue">{venue}</span>
-					<span>{street}</span>
-					<span>{`${city}, ${country}`}</span>
-				</address>
+				<div class="location">
+					<address>
+						<span class="address__venue">{venue}</span>
+						<span>{street}</span>
+						<span>{`${city}, ${country}`}</span>
+					</address>
+					<div class="location__photo">
+						<Picture
+							src={interiorPhoto}
+							formats={['avif', 'webp']}
+							widths={[480, 720, 960, interiorPhoto.width]}
+							sizes="(min-width: 72rem) 694px, (min-width: 64rem) calc((100vw - 7rem) * 2 / 3), (min-width: 48rem) calc(100vw - 4rem), calc(100vw - 2rem)"
+							alt={`Interior del lugar de reunión de la ${site.name} durante un culto.`}
+							loading="lazy"
+						/>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -118,6 +132,19 @@ const description = `Conoce la ubicación y los horarios semanales de la ${site.
 		line-height: var(--line-height-tight);
 		letter-spacing: -0.02em;
 		overflow-wrap: break-word;
+	}
+
+	.location {
+		display: grid;
+		gap: var(--space-8);
+	}
+
+	/* Frame del culto: recortado 16:9 en origen; radius como el último sermón en Home */
+	.location__photo :global(img) {
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius-lg);
+		background-color: var(--color-surface);
 	}
 
 	.section__header {
