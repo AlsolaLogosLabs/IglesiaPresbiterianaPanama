@@ -49,7 +49,7 @@ const structuredData = {
 	<main id="main-content">
 		<Hero />
 
-		<section class="section" aria-labelledby="horarios">
+		<section class="section section--schedule" aria-labelledby="horarios">
 			<div class="container">
 				<div class="section__header">
 					<h2 id="horarios">Horarios</h2>
@@ -153,7 +153,7 @@ const structuredData = {
 					<h2 id="primera-visita">Primera visita</h2>
 					<h3>Dónde nos reunimos</h3>
 					<address>
-						{venue}
+						<strong class="visit__venue">{venue}</strong>
 						<br />
 						{street}
 						<br />
@@ -203,6 +203,11 @@ const structuredData = {
 
 	p {
 		max-width: var(--content-max);
+	}
+
+	/* Horarios y Bienvenida/Creencias forman un mismo bloque: menos aire entre ambos */
+	.section--schedule {
+		padding-bottom: var(--space-12);
 	}
 
 	.section__header {
@@ -350,7 +355,7 @@ const structuredData = {
 	}
 
 	.latest .actions {
-		margin-top: var(--space-4);
+		margin-top: var(--space-6);
 	}
 
 	/* Primera visita: el título ocupa todo el ancho y «Dónde» / «Cuándo» quedan alineados */
@@ -375,6 +380,11 @@ const structuredData = {
 		font-size: var(--font-size-lg);
 	}
 
+	.visit__venue {
+		font-size: var(--font-size-xl);
+		letter-spacing: -0.02em;
+	}
+
 	.visit__info .button {
 		justify-self: start;
 		margin-top: var(--space-6);
@@ -387,6 +397,10 @@ const structuredData = {
 	@media (min-width: 48rem) {
 		.section {
 			padding-block: var(--space-20);
+		}
+
+		.section--schedule {
+			padding-bottom: var(--space-16);
 		}
 
 		.intro-pair {
@@ -433,6 +447,10 @@ const structuredData = {
 			font-size: var(--font-size-xl);
 			line-height: 1.4;
 		}
+
+		.visit__venue {
+			font-size: var(--font-size-2xl);
+		}
 	}
 
 	@media (min-width: 64rem) {
@@ -442,10 +460,24 @@ const structuredData = {
 		}
 
 		.latest {
-			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
 			align-items: center;
 			gap: var(--space-12);
 			margin-top: var(--space-12);
+		}
+
+		.latest__thumb {
+			border-radius: var(--radius-lg);
+		}
+
+		/* Divisor entre «Dónde» y «Cuándo» solo cuando hay ancho suficiente */
+		.visit > div:last-child {
+			padding-left: var(--space-12);
+			border-left: 1px solid var(--color-border);
+		}
+
+		.latest__title {
+			font-size: clamp(var(--font-size-2xl), 1rem + 1.75vw, 2.5rem);
 		}
 	}
 </style>

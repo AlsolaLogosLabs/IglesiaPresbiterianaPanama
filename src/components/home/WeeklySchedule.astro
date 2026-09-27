@@ -57,6 +57,10 @@ const { variant = 'cards' } = Astro.props;
 		background-color: var(--color-bg);
 	}
 
+	.schedule--cards .schedule__day {
+		color: var(--color-brand);
+	}
+
 	.schedule--cards .schedule__name {
 		font-size: var(--font-size-lg);
 		line-height: var(--line-height-tight);
@@ -81,7 +85,7 @@ const { variant = 'cards' } = Astro.props;
 		}
 
 		.schedule--cards .schedule__item {
-			padding: var(--space-8) var(--space-6) var(--space-6);
+			padding: var(--space-6) var(--space-6) var(--space-8);
 		}
 	}
 
