@@ -24,16 +24,11 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 			<div class="container">
 				<h1>Sermones</h1>
 				<p>Consulta los sermones publicados por la {site.name}.</p>
-				<div class="page-header__actions">
-					{youtube && (
-						<a class="button button--secondary" href={youtube.url} rel="noopener">
-							Ver canal oficial en YouTube
-						</a>
-					)}
-					<a class="button button--secondary" href={`${site.routes.sermons}rss.xml`}>
-						Suscribirse por RSS
+				{youtube && (
+					<a class="button button--secondary" href={youtube.url} rel="noopener">
+						Ver canal oficial en YouTube
 					</a>
-				</div>
+				)}
 			</div>
 		</header>
 
@@ -121,10 +116,7 @@ const dateFormat = new Intl.DateTimeFormat('es-PA', {
 		background-color: var(--color-bg);
 	}
 
-	.page-header__actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-3);
+	.page-header .button {
 		margin-top: var(--space-8);
 	}
 
