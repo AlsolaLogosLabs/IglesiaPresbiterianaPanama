@@ -168,3 +168,32 @@ test('404 para rutas inexistentes', async ({ page }) => {
 	await expect(page.locator('h1')).toHaveCount(1);
 	await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
 });
+
+// Misma hora real (site.schedule) presentada según el idioma
+for (const { prefix, times } of [
+	{ prefix: '', times: ['6:30 p. m.', '9:30 a. m.', '11:00 a. m.'] },
+	{ prefix: 'en/', times: ['6:30 PM', '9:30 AM', '11:00 AM'] },
+	{ prefix: 'pt-br/', times: ['18:30', '09:30', '11:00'] },
+]) {
+	test(`horarios con formato local en «/${prefix}»`, async ({ page }) => {
+		await page.goto(prefix);
+		await expect(page.locator('.hero__time')).toHaveText(times);
+		await expect(page.locator('.schedule--cards .schedule__time')).toHaveText(times);
+	});
+}
+
+test('selector compacto: el nombre accesible incluye el código visible (Label in Name)', async ({
+	page,
+}) => {
+	// La variante compacta solo se muestra con la navegación de escritorio
+	await page.setViewportSize({ width: 1280, height: 900 });
+	await page.goto('');
+	const links = page.locator('.site-header__desktop nav.lang a');
+	await expect(links).toHaveCount(3);
+	for (const link of await links.all()) {
+		const code = (await link.innerText()).trim();
+		expect(code).toMatch(/^(ES|EN|PT)$/);
+		// «ES — Español»: el nombre accesible empieza por el código visible
+		await expect(link).toHaveAccessibleName(new RegExp(`^${code} `));
+	}
+});

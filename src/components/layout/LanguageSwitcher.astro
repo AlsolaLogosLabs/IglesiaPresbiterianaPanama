@@ -4,7 +4,10 @@ import { messages } from '../../i18n/messages';
 import { localeUrl, pagePath } from '../../i18n/routes';
 
 interface Props {
-	/** compact: códigos ES / EN / PT (desktop); list: nombres completos (menú móvil) */
+	/**
+	 * compact: códigos ES / EN / PT (desktop); el nombre accesible incluye el código visible
+	 * («ES — Español») para cumplir Label in Name. list: nombres completos (menú móvil).
+	 */
 	variant?: 'compact' | 'list';
 }
 
@@ -26,7 +29,7 @@ const target = path.startsWith('404') ? '' : path;
 						hreflang={lang}
 						lang={lang}
 						aria-current={locale === current ? 'page' : undefined}
-						aria-label={variant === 'compact' ? name : undefined}
+						aria-label={variant === 'compact' ? `${code} — ${name}` : undefined}
 					>
 						{variant === 'compact' ? code : name}
 					</a>

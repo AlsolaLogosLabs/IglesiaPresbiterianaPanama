@@ -8,7 +8,13 @@ const { venue, street, city } = site.location;
 
 type ServiceLabels = Record<ServiceId, { day: string; name: string }>;
 
+const pad = (value: number) => String(value).padStart(2, '0');
+const to12h = (hours: number) => hours % 12 || 12;
+
 const es = {
+	/** Presentación de una hora de site.schedule (24 h) */
+	formatTime: (hours: number, minutes: number) =>
+		`${to12h(hours)}:${pad(minutes)} ${hours < 12 ? 'a. m.' : 'p. m.'}`,
 	meta: {
 		description: site.description as string,
 		socialImageAlt: `Identidad visual de ${name}`,
@@ -207,6 +213,7 @@ const es = {
 type Messages = typeof es;
 
 const en: Messages = {
+	formatTime: (hours, minutes) => `${to12h(hours)}:${pad(minutes)} ${hours < 12 ? 'AM' : 'PM'}`,
 	meta: {
 		description: `Official website of the ${name}, a Christian, biblical and Reformed church in Panama City.`,
 		socialImageAlt: `Visual identity of the ${name}`,
@@ -401,6 +408,7 @@ const en: Messages = {
 };
 
 const ptBr: Messages = {
+	formatTime: (hours, minutes) => `${pad(hours)}:${pad(minutes)}`,
 	meta: {
 		description: `Site oficial da ${name}, uma igreja cristã, bíblica e reformada na Cidade do Panamá.`,
 		socialImageAlt: `Identidade visual da ${name}`,
@@ -600,6 +608,21 @@ const ptBr: Messages = {
 
 export const messages: Record<Locale, Messages> = { es, en, 'pt-br': ptBr };
 
-/** site.schedule con día y nombre presentados en el idioma indicado (horas sin cambios) */
+// Solo el formato de site.schedule («6:30 p. m.»); mismo criterio que horarios.ics.ts
+function parseTime(time: string) {
+	const match = /^(\d{1,2}):(\d{2}) ([ap])\. m\.$/.exec(time);
+	if (!match) throw new Error(`Hora no reconocida en site.schedule: «${time}»`);
+	const hours12 = Number(match[1]) % 12;
+	return { hours: match[3] === 'p' ? hours12 + 12 : hours12, minutes: Number(match[2]) };
+}
+
+/** site.schedule con día, nombre y hora presentados en el idioma indicado (mismas horas reales) */
 export const localizedSchedule = (locale: Locale) =>
-	site.schedule.map((item) => ({ ...item, ...messages[locale].services[item.id] }));
+	site.schedule.map((item) => {
+		const { hours, minutes } = parseTime(item.time);
+		return {
+			...item,
+			...messages[locale].services[item.id],
+			time: messages[locale].formatTime(hours, minutes),
+		};
+	});
