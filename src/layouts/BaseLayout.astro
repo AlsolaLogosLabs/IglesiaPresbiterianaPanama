@@ -37,6 +37,14 @@ const socialImageAlt = image ? imageAlt : `Identidad visual de ${site.name}`;
 		<meta name="robots" content={robots} />
 		{!noindex && <link rel="canonical" href={canonicalURL} />}
 		<link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
+		{!noindex && (
+			<link
+				rel="alternate"
+				type="application/rss+xml"
+				title={`Sermones — ${site.name}`}
+				href={`${site.routes.sermons}rss.xml`}
+			/>
+		)}
 
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_PA" />
