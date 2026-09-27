@@ -1,0 +1,98 @@
+---
+import { localeMeta, locales, toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localeUrl, pagePath } from '../../i18n/routes';
+
+interface Props {
+	/** compact: códigos ES / EN / PT (desktop); list: nombres completos (menú móvil) */
+	variant?: 'compact' | 'list';
+}
+
+const { variant = 'compact' } = Astro.props;
+const current = toLocale(Astro.currentLocale);
+// Mismos slugs en todos los idiomas; la 404 solo existe en español, así que ofrece el inicio.
+const path = pagePath(Astro.url.pathname);
+const target = path.startsWith('404') ? '' : path;
+---
+
+<nav class:list={['lang', `lang--${variant}`]} aria-label={messages[current].header.languageNav}>
+	<ul class="lang__list">
+		{locales.map((locale) => {
+			const { lang, name, code } = localeMeta[locale];
+			return (
+				<li>
+					<a
+						href={localeUrl(locale, target)}
+						hreflang={lang}
+						lang={lang}
+						aria-current={locale === current ? 'page' : undefined}
+						aria-label={variant === 'compact' ? name : undefined}
+					>
+						{variant === 'compact' ? code : name}
+					</a>
+				</li>
+			);
+		})}
+	</ul>
+</nav>
+
+<style>
+	.lang__list {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		padding: 0;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: var(--tap-target);
+		min-height: var(--tap-target);
+		color: var(--color-text-muted);
+		font-weight: var(--font-weight-semibold);
+		text-decoration: none;
+		transition: color var(--duration-fast) ease;
+	}
+
+	a:hover {
+		color: var(--color-brand);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+	}
+
+	a[aria-current='page'] {
+		color: var(--color-brand);
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.4em;
+	}
+
+	/* Desktop: separado de la navegación principal por un divisor */
+	.lang--compact {
+		padding-left: var(--space-2);
+		border-left: 1px solid var(--color-border);
+	}
+
+	.lang--compact a {
+		padding-inline: var(--space-2);
+		font-size: var(--font-size-sm);
+		letter-spacing: 0.04em;
+	}
+
+	/* Menú móvil: fila de idiomas bajo la navegación */
+	.lang--list {
+		margin-top: var(--space-2);
+		padding-top: var(--space-2);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.lang--list .lang__list {
+		gap: var(--space-2) var(--space-6);
+	}
+
+	.lang--list a {
+		justify-content: flex-start;
+	}
+</style>

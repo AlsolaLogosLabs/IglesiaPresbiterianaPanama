@@ -1,13 +1,19 @@
 ---
 import { site } from '../../config/site';
+import { toLocale } from '../../i18n/locales';
+import { localizedSchedule, messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
 
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].home;
+const routes = localizedRoutes(locale);
 const { venue, street, city } = site.location;
-const lead = `Somos una iglesia cristiana, bíblica y reformada en ${city}. Te invitamos a acompañarnos en nuestras reuniones semanales.`;
 
 // Resumen de reuniones agrupado por día, derivado de site.schedule
-const days = [...new Set(site.schedule.map((item) => item.day))].map((day) => ({
+const schedule = localizedSchedule(locale);
+const days = [...new Set(schedule.map((item) => item.day))].map((day) => ({
 	day,
-	items: site.schedule.filter((item) => item.day === day),
+	items: schedule.filter((item) => item.day === day),
 }));
 ---
 
@@ -15,19 +21,19 @@ const days = [...new Set(site.schedule.map((item) => item.day))].map((day) => ({
 	<div class="container hero__inner">
 		<div class="hero__main">
 			<h1>{site.name}</h1>
-			<p class="hero__lead">{lead}</p>
+			<p class="hero__lead">{t.lead}</p>
 			<div class="hero__actions">
-				<a class="button" href={site.routes.visit}>
-					Visítanos
+				<a class="button" href={routes.visit}>
+					{t.visitCta}
 				</a>
-				<a class="button button--secondary" href={site.routes.sermons}>
-					Ver sermones
+				<a class="button button--secondary" href={routes.sermons}>
+					{t.sermonsCta}
 				</a>
 			</div>
 		</div>
 
 		<div class="hero__visit">
-			<p class="hero__visit-label">Visítanos</p>
+			<p class="hero__visit-label">{t.visitPanel}</p>
 			<address>
 				<strong>{venue}</strong>
 				<br />

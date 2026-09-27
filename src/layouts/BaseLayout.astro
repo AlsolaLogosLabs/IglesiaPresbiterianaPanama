@@ -3,6 +3,9 @@ import { site } from '../config/site';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import '../styles/global.css';
+import { localeMeta, locales, toLocale } from '../i18n/locales';
+import { messages } from '../i18n/messages';
+import { absoluteLocaleUrl, pagePath } from '../i18n/routes';
 
 interface Props {
 	title?: string;
@@ -12,7 +15,9 @@ interface Props {
 	imageAlt?: string;
 }
 
-const { title, description = site.description, noindex = false, image, imageAlt } = Astro.props;
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale];
+const { title, description = t.meta.description, noindex = false, image, imageAlt } = Astro.props;
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
 const baseURL = site.routes.home;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -24,10 +29,17 @@ const socialImage = image
 	: !noindex
 		? defaultSocialImage
 		: undefined;
-const socialImageAlt = image ? imageAlt : `Identidad visual de ${site.name}`;
+const socialImageAlt = image ? imageAlt : t.meta.socialImageAlt;
+
+// Mismos slugs en todos los idiomas: la versión alternativa es la misma ruta con otro prefijo.
+const path = pagePath(Astro.url.pathname);
+const alternates = locales.map((alternate) => ({
+	hreflang: localeMeta[alternate].lang,
+	href: absoluteLocaleUrl(alternate, path),
+}));
 ---
 
-<html lang="es">
+<html lang={localeMeta[locale].lang}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,7 +49,13 @@ const socialImageAlt = image ? imageAlt : `Identidad visual de ${site.name}`;
 		<meta name="robots" content={robots} />
 		{!noindex && <link rel="canonical" href={canonicalURL} />}
 		<link rel="sitemap" href={`${baseURL}sitemap-index.xml`} />
-		{!noindex && (
+		{!noindex &&
+			alternates.map(({ hreflang, href }) => (
+				<link rel="alternate" hreflang={hreflang} href={href} />
+			))}
+		{!noindex && <link rel="alternate" hreflang="x-default" href={absoluteLocaleUrl('es', path)} />}
+		{/* El feed de sermones solo existe en español */}
+		{!noindex && locale === 'es' && (
 			<link
 				rel="alternate"
 				type="application/rss+xml"
@@ -47,7 +65,7 @@ const socialImageAlt = image ? imageAlt : `Identidad visual de ${site.name}`;
 		)}
 
 		<meta property="og:type" content="website" />
-		<meta property="og:locale" content="es_PA" />
+		<meta property="og:locale" content={localeMeta[locale].ogLocale} />
 		<meta property="og:site_name" content={site.name} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />

@@ -1,5 +1,12 @@
 ---
 import { site } from '../../config/site';
+import { toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].footer;
+const routes = localizedRoutes(locale);
 
 const year = new Date().getFullYear();
 const { venue, street, city, country } = site.location;
@@ -24,7 +31,7 @@ const { venue, street, city, country } = site.location;
 
 			<nav aria-labelledby="footer-social">
 				<p class="site-footer__label" id="footer-social">
-					Redes sociales
+					{t.social}
 				</p>
 				<ul class="site-footer__social">
 					{site.social.map((link) => (
@@ -42,9 +49,9 @@ const { venue, street, city, country } = site.location;
 			<p class="site-footer__copy">
 				&copy; {year} {site.name}
 			</p>
-			<nav aria-label="Legal">
-				<a class="site-footer__legal" href={site.routes.privacy}>
-					Privacidad
+			<nav aria-label={t.legal}>
+				<a class="site-footer__legal" href={routes.privacy}>
+					{t.privacy}
 				</a>
 			</nav>
 		</div>

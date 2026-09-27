@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import SermonPage from '../../components/pages/SermonPage.astro';
+import SermonPage from '../../../components/pages/SermonPage.astro';
 
 export const getStaticPaths = (async () =>
 	(await getCollection('sermons')).map((sermon) => ({

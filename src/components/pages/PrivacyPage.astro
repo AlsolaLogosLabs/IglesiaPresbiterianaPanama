@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../layout/PageHeader.astro';
+import { site } from '../../config/site';
+import { toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].privacy;
+const routes = localizedRoutes(locale);
+const socialNames = site.social.map((link) => link.name).join(', ');
+---
+
+<BaseLayout title={t.title} description={t.metaDescription}>
+	<main id="main-content">
+		<PageHeader title={t.title} description={t.description} />
+
+		<div class="container">
+			<section class="section" aria-labelledby="sobre-este-sitio">
+				<h2 id="sobre-este-sitio">{t.aboutTitle}</h2>
+				{t.about.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</section>
+
+			<section class="section" aria-labelledby="datos-del-visitante">
+				<h2 id="datos-del-visitante">{t.dataTitle}</h2>
+				{t.data.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</section>
+
+			<section class="section" aria-labelledby="servicios-externos">
+				<h2 id="servicios-externos">{t.externalTitle}</h2>
+				<h3>{t.linksTitle}</h3>
+				<p>{t.linksText(socialNames)}</p>
+				<h3>{t.embedsTitle}</h3>
+				<p>{t.embedsText}</p>
+				<p>{t.externalPolicies}</p>
+			</section>
+
+			<section class="section" aria-labelledby="cambios-futuros">
+				<h2 id="cambios-futuros">{t.changesTitle}</h2>
+				<p>{t.changesText}</p>
+				<p>
+					{t.contactBefore} <a href={routes.contact}>{t.contactLink}</a>.
+				</p>
+			</section>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	.section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		max-width: var(--content-max);
+		padding-block: var(--space-8);
+	}
+
+	.section:first-child {
+		padding-top: var(--space-12);
+	}
+
+	.section:last-child {
+		padding-bottom: var(--space-12);
+	}
+
+	.section + .section {
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 1vw, var(--font-size-2xl));
+		letter-spacing: -0.02em;
+	}
+
+	h3 {
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+		letter-spacing: -0.01em;
+	}
+
+	.section a {
+		font-weight: var(--font-weight-semibold);
+	}
+
+	@media (min-width: 48rem) {
+		.section {
+			padding-block: var(--space-12);
+		}
+
+		.section p {
+			font-size: var(--font-size-lg);
+		}
+
+		.section:first-child {
+			padding-top: var(--space-16);
+		}
+
+		.section:last-child {
+			padding-bottom: var(--space-20);
+		}
+	}
+</style>

@@ -1,32 +1,64 @@
 ---
 import { site } from '../../config/site';
+import { toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale];
+const routes = localizedRoutes(locale);
+const nav = [
+	{ label: t.nav.home, href: routes.home },
+	{ label: t.nav.nosotros, href: routes.nosotros },
+	{ label: t.nav.beliefs, href: routes.beliefs },
+	{ label: t.nav.sermons, href: routes.sermons },
+	{ label: t.nav.visit, href: routes.visit },
+	{ label: t.nav.contact, href: routes.contact },
+];
 
 const withSlash = (path: string) => (path.endsWith('/') ? path : `${path}/`);
 const currentPath = withSlash(Astro.url.pathname);
 // Inicio solo coincide exacto; las demás secciones incluyen sus subpáginas.
 const isCurrent = (href: string) =>
-	href === site.routes.home
-		? withSlash(href) === currentPath
-		: currentPath.startsWith(withSlash(href));
+	href === routes.home ? withSlash(href) === currentPath : currentPath.startsWith(withSlash(href));
 ---
 
 <a class="skip-link" href="#main-content">
-	Saltar al contenido
+	{t.header.skipLink}
 </a>
 
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href={site.routes.home}>
+		<a class="site-header__brand" href={routes.home}>
 			<img src={`${site.routes.home}brand/mark-black.png`} alt="" width="107" height="87" />
 			<span>{site.name}</span>
 		</a>
 
 		<!-- Mobile/tablet: menú desplegable sin JavaScript -->
 		<details class="site-nav site-nav--mobile">
-			<summary>Menú</summary>
-			<nav aria-label="Principal">
+			<summary>{t.header.menu}</summary>
+			<div class="site-nav__panel">
+				<nav aria-label={t.header.mainNav}>
+					<ul class="site-nav__list">
+						{nav.map((item) => (
+							<li>
+								<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+									{item.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+				<LanguageSwitcher variant="list" />
+			</div>
+		</details>
+
+		<!-- Desktop: navegación horizontal y selector compacto de idioma -->
+		<div class="site-header__desktop">
+			<nav class="site-nav site-nav--desktop" aria-label={t.header.mainNav}>
 				<ul class="site-nav__list">
-					{site.nav.map((item) => (
+					{nav.map((item) => (
 						<li>
 							<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
 								{item.label}
@@ -35,20 +67,8 @@ const isCurrent = (href: string) =>
 					))}
 				</ul>
 			</nav>
-		</details>
-
-		<!-- Desktop: navegación horizontal -->
-		<nav class="site-nav site-nav--desktop" aria-label="Principal">
-			<ul class="site-nav__list">
-				{site.nav.map((item) => (
-					<li>
-						<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-							{item.label}
-						</a>
-					</li>
-				))}
-			</ul>
-		</nav>
+			<LanguageSwitcher />
+		</div>
 	</div>
 </header>
 
@@ -200,7 +220,7 @@ const isCurrent = (href: string) =>
 		transform: translateY(25%) rotate(-135deg);
 	}
 
-	.site-nav--mobile nav {
+	.site-nav__panel {
 		position: absolute;
 		inset-inline: 0;
 		top: 100%;
@@ -220,12 +240,12 @@ const isCurrent = (href: string) =>
 		font-size: var(--font-size-lg);
 	}
 
-	.site-nav--desktop {
+	.site-header__desktop {
 		display: none;
 	}
 
-	/* Desktop */
-	@media (min-width: 64rem) {
+	/* Desktop: 72rem para que navegación + selector de idioma quepan en una línea en los tres idiomas */
+	@media (min-width: 72rem) {
 		.site-header__inner {
 			min-height: 5rem;
 		}
@@ -238,8 +258,10 @@ const isCurrent = (href: string) =>
 			display: none;
 		}
 
-		.site-nav--desktop {
-			display: block;
+		.site-header__desktop {
+			display: flex;
+			align-items: center;
+			gap: var(--space-2);
 		}
 
 		.site-nav--desktop .site-nav__list {

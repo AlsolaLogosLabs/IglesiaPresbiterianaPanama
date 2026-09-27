@@ -34,5 +34,9 @@ jobs:
       - name: Astro check
         run: npm run check
 
-      - name: Build
-        run: npm run build
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      # test:e2e ejecuta el build de producción antes de los tests (sin build duplicado)
+      - name: Build and E2E tests
+        run: npm run test:e2e

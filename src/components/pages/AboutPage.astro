@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../layout/PageHeader.astro';
+import { toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].about;
+const routes = localizedRoutes(locale);
+const cards = [
+	{ ...t.beliefsCard, href: routes.beliefs },
+	{ ...t.sermonsCard, href: routes.sermons },
+	{ ...t.visitCard, href: routes.visit },
+];
+---
+
+<BaseLayout title={t.title} description={t.metaDescription}>
+	<main id="main-content">
+		<PageHeader title={t.title} description={t.description} />
+
+		<section class="section" aria-labelledby="quienes-somos">
+			<div class="container split">
+				<h2 id="quienes-somos">{t.whoTitle}</h2>
+				<div class="prose">
+					<p class="prose__lead">{t.whoLead}</p>
+					<p>{t.whoText}</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="historia">
+			<div class="container split">
+				<h2 id="historia">{t.historyTitle}</h2>
+				<div class="prose">
+					{t.history.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="enfoque">
+			<div class="container split">
+				<h2 id="enfoque">{t.focusTitle}</h2>
+				<div class="prose">
+					{t.focus.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="conoce-mas">
+			<div class="container">
+				<h2 id="conoce-mas">{t.moreTitle}</h2>
+				<ul class="card-list">
+					{cards.map((card) => (
+						<li class="card">
+							<h3>{card.title}</h3>
+							<p>{card.text}</p>
+							<a class="button button--secondary" href={card.href}>
+								{card.cta}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--bordered {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.section--surface {
+		background-color: var(--color-brand-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
+		letter-spacing: -0.02em;
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	.prose {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
+		max-width: var(--content-max);
+	}
+
+	.prose__lead {
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 0.75vw, 1.75rem);
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--line-height-tight);
+		letter-spacing: -0.01em;
+	}
+
+	.card-list {
+		display: grid;
+		gap: var(--space-4);
+		margin-top: var(--space-8);
+		list-style: none;
+		padding: 0;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-3);
+		padding: var(--space-6);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background-color: var(--color-bg);
+		transition: border-color var(--duration-fast) ease;
+	}
+
+	.card:hover,
+	.card:focus-within {
+		border-color: var(--color-brand);
+	}
+
+	h3 {
+		font-size: var(--font-size-xl);
+		letter-spacing: -0.01em;
+	}
+
+	.card p {
+		color: var(--color-text-muted);
+	}
+
+	.card .button {
+		margin-top: auto;
+	}
+
+	@media (min-width: 48rem) {
+		.section {
+			padding-block: var(--space-16);
+		}
+
+		.prose p:not(.prose__lead) {
+			font-size: var(--font-size-lg);
+		}
+
+		.card-list {
+			gap: var(--space-6);
+			margin-top: var(--space-12);
+		}
+
+		.card {
+			padding: var(--space-8) var(--space-6) var(--space-6);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.section {
+			padding-block: var(--space-20);
+		}
+
+		.split {
+			grid-template-columns: 1fr 2fr;
+			gap: var(--space-12);
+		}
+
+		.card-list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

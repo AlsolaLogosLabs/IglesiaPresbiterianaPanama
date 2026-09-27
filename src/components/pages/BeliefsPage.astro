@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../layout/PageHeader.astro';
+import { toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].beliefs;
+const routes = localizedRoutes(locale);
+---
+
+<BaseLayout title={t.title} description={t.metaDescription}>
+	<main id="main-content">
+		<PageHeader
+			title={t.title}
+			description={t.description}
+			secondaryDescription={t.secondaryDescription}
+		/>
+
+		<section class="section" aria-labelledby="identidad">
+			<div class="container split">
+				<h2 id="identidad">{t.identityTitle}</h2>
+				<div class="prose">
+					{t.identity.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" aria-labelledby="confesion">
+			<div class="container split">
+				<h2 id="confesion">{t.confessionTitle}</h2>
+				<div class="prose">
+					<p class="prose__lead">{t.confessionLead}</p>
+					<p>{t.confessionText}</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="ensenanza">
+			<div class="container split">
+				<h2 id="ensenanza">{t.teachingTitle}</h2>
+				<div class="prose">
+					<p>{t.teachingText}</p>
+					<a class="button" href={routes.sermons}>
+						{t.teachingCta}
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--bordered {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.section--surface {
+		background-color: var(--color-brand-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
+		letter-spacing: -0.02em;
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	.prose {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
+		max-width: var(--content-max);
+	}
+
+	.prose__lead {
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 0.75vw, 1.75rem);
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--line-height-tight);
+		letter-spacing: -0.01em;
+	}
+
+	.prose .button {
+		margin-top: var(--space-4);
+	}
+
+	@media (min-width: 48rem) {
+		.section {
+			padding-block: var(--space-16);
+		}
+
+		.prose p:not(.prose__lead) {
+			font-size: var(--font-size-lg);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.section {
+			padding-block: var(--space-20);
+		}
+
+		.split {
+			grid-template-columns: 1fr 2fr;
+			gap: var(--space-12);
+		}
+	}
+</style>

@@ -1,15 +1,17 @@
 ---
-import { site } from '../../config/site';
+import { toLocale } from '../../i18n/locales';
+import { localizedSchedule } from '../../i18n/messages';
 
 interface Props {
 	variant?: 'cards' | 'compact';
 }
 
 const { variant = 'cards' } = Astro.props;
+const schedule = localizedSchedule(toLocale(Astro.currentLocale));
 ---
 
 <ul class:list={['schedule', `schedule--${variant}`]}>
-	{site.schedule.map((item) => (
+	{schedule.map((item) => (
 		<li class="schedule__item">
 			<span class="schedule__day">{item.day}</span>
 			<span class="schedule__name">{item.name}</span>

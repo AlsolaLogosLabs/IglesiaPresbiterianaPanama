@@ -1,0 +1,203 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localeMeta, toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+
+interface Props {
+	sermon: CollectionEntry<'sermons'>;
+}
+
+const { sermon } = Astro.props;
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].sermon;
+const routes = localizedRoutes(locale);
+const { title, date, youtubeId, preacher, scripture, series } = sermon.data;
+const description = sermon.data.description ?? t.fallbackDescription(title);
+const dateFormat = new Intl.DateTimeFormat(localeMeta[locale].intl, {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+	timeZone: 'UTC',
+});
+
+const sermonURL = new URL(Astro.url.pathname, Astro.site).href;
+const thumbnailURL = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+const thumbnailAlt = messages[locale].sermons.thumbnailAlt(title);
+const embedURL = `https://www.youtube-nocookie.com/embed/${youtubeId}`;
+// Solo la fecha verificada (YYYY-MM-DD); no se conoce la hora de publicación.
+const uploadDate = date.toISOString().slice(0, 10);
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'VideoObject',
+	'@id': `${sermonURL}#video`,
+	name: title,
+	thumbnailUrl: thumbnailURL,
+	uploadDate,
+	embedUrl: embedURL,
+	...(sermon.data.description ? { description: sermon.data.description } : {}),
+};
+---
+
+<BaseLayout title={title} description={description} image={thumbnailURL} imageAlt={thumbnailAlt}>
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+	<main id="main-content">
+		<header class="page-header">
+			<div class="container">
+				<a class="back-link" href={routes.sermons}>
+					{t.back}
+				</a>
+				<h1>{title}</h1>
+				<dl class="meta">
+					<div>
+						<dt>{t.date}</dt>
+						<dd>
+							<time datetime={date.toISOString().slice(0, 10)}>{dateFormat.format(date)}</time>
+						</dd>
+					</div>
+					{preacher && (
+						<div>
+							<dt>{t.preacher}</dt>
+							<dd>{preacher}</dd>
+						</div>
+					)}
+					{scripture && (
+						<div>
+							<dt>{t.scripture}</dt>
+							<dd>{scripture}</dd>
+						</div>
+					)}
+					{series && (
+						<div>
+							<dt>{t.series}</dt>
+							<dd>{series}</dd>
+						</div>
+					)}
+				</dl>
+			</div>
+		</header>
+
+		<section class="section" aria-label={t.videoSection}>
+			<div class="container">
+				<div class="video">
+					<iframe
+						src={embedURL}
+						title={t.videoTitle(title)}
+						loading="lazy"
+						allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen
+					></iframe>
+				</div>
+				{sermon.data.description && <p class="description">{sermon.data.description}</p>}
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.page-header {
+		padding-block: var(--space-8) var(--space-12);
+		background-color: var(--color-brand-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--tap-target);
+		margin-bottom: var(--space-4);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-muted);
+		transition: color var(--duration-fast) ease;
+	}
+
+	.back-link:hover {
+		color: var(--color-brand);
+	}
+
+	h1 {
+		max-width: 22ch;
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+		overflow-wrap: break-word;
+	}
+
+	.meta {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+		gap: var(--space-4) var(--space-6);
+		margin-top: var(--space-8);
+		padding-top: var(--space-6);
+		border-top: 1px solid var(--color-border);
+	}
+
+	dt {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	dd {
+		margin: var(--space-1) 0 0;
+		font-weight: var(--font-weight-semibold);
+		font-variant-numeric: tabular-nums;
+		overflow-wrap: break-word;
+	}
+
+	.section {
+		padding-block: var(--space-8) var(--space-12);
+	}
+
+	.video {
+		max-width: 56rem;
+		aspect-ratio: 16 / 9;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background-color: var(--color-surface);
+	}
+
+	.video iframe {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	.description {
+		max-width: var(--content-max);
+		margin-top: var(--space-8);
+		font-size: var(--font-size-lg);
+	}
+
+	@media (min-width: 48rem) {
+		.page-header {
+			padding-block: var(--space-12) var(--space-16);
+		}
+
+		.meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--space-4) 0;
+		}
+
+		.meta > div {
+			padding-right: var(--space-8);
+		}
+
+		.meta > div + div {
+			padding-left: var(--space-8);
+			border-left: 1px solid var(--color-border);
+		}
+
+		.section {
+			padding-block: var(--space-12) var(--space-20);
+		}
+	}
+</style>

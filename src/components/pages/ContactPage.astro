@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../layout/PageHeader.astro';
+import { site } from '../../config/site';
+import { toLocale } from '../../i18n/locales';
+import { messages } from '../../i18n/messages';
+import { localizedRoutes } from '../../i18n/routes';
+
+const locale = toLocale(Astro.currentLocale);
+const t = messages[locale].contact;
+const routes = localizedRoutes(locale);
+const { venue, street, city, country } = site.location;
+---
+
+<BaseLayout title={t.title} description={t.metaDescription}>
+	<main id="main-content">
+		<PageHeader title={t.title} description={t.description} />
+
+		<section class="section" aria-labelledby="redes">
+			<div class="container">
+				<h2 id="redes">{t.socialTitle}</h2>
+				<ul class="social-list">
+					{site.social.map((link) => (
+						<li class="social-card">
+							<h3>{link.name}</h3>
+							<p>{t.socialText[link.name] ?? t.socialFallback(link.name)}</p>
+							<a class="button button--secondary" href={link.url} rel="noopener">
+								{t.socialCta(link.name)}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--surface" aria-labelledby="visitanos">
+			<div class="container split">
+				<div class="split__intro">
+					<h2 id="visitanos">{t.visitTitle}</h2>
+					<p>{t.visitText}</p>
+				</div>
+				<div class="visit">
+					<address>
+						<span class="address__venue">{venue}</span>
+						<span>{street}</span>
+						<span>{`${city}, ${country}`}</span>
+					</address>
+					<a class="button" href={routes.visit}>
+						{t.visitCta}
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.section {
+		padding-block: var(--space-12);
+	}
+
+	.section--surface {
+		background-color: var(--color-brand-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	h2 {
+		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
+		letter-spacing: -0.02em;
+	}
+
+	.social-list {
+		display: grid;
+		gap: var(--space-4);
+		margin-top: var(--space-8);
+		list-style: none;
+		padding: 0;
+	}
+
+	.social-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-3);
+		padding: var(--space-6);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background-color: var(--color-bg);
+		transition: border-color var(--duration-fast) ease;
+	}
+
+	.social-card:hover,
+	.social-card:focus-within {
+		border-color: var(--color-brand);
+	}
+
+	h3 {
+		font-size: var(--font-size-xl);
+		letter-spacing: -0.01em;
+	}
+
+	.social-card p {
+		color: var(--color-text-muted);
+	}
+
+	.social-card .button {
+		margin-top: auto;
+	}
+
+	.split {
+		display: grid;
+		gap: var(--space-8);
+	}
+
+	.split__intro p {
+		max-width: var(--content-max);
+		margin-top: var(--space-4);
+		font-size: var(--font-size-lg);
+	}
+
+	.visit {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-8);
+	}
+
+	address {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		font-style: normal;
+		font-size: var(--font-size-lg);
+	}
+
+	.address__venue {
+		margin-bottom: var(--space-2);
+		font-size: clamp(var(--font-size-xl), 1.25rem + 1vw, var(--font-size-2xl));
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+		letter-spacing: -0.02em;
+		overflow-wrap: break-word;
+	}
+
+	@media (min-width: 48rem) {
+		.section {
+			padding-block: var(--space-16);
+		}
+
+		.social-list {
+			gap: var(--space-6);
+			margin-top: var(--space-12);
+		}
+
+		.social-card {
+			padding: var(--space-8) var(--space-6) var(--space-6);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.section {
+			padding-block: var(--space-20);
+		}
+
+		.social-list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.split {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-12);
+		}
+	}
+</style>
