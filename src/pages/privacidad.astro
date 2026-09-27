@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import { site } from '../config/site';
 
 const description = `Información sobre privacidad y servicios externos utilizados por el sitio web de la ${site.name}.`;
@@ -8,14 +9,10 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 
 <BaseLayout title="Privacidad" description={description}>
 	<main id="main-content">
-		<header class="page-header">
-			<div class="container">
-				<h1>Privacidad</h1>
-				<p>
-					Información sobre el funcionamiento de este sitio y los servicios externos que utiliza.
-				</p>
-			</div>
-		</header>
+		<PageHeader
+			title="Privacidad"
+			description="Información sobre el funcionamiento de este sitio y los servicios externos que utiliza."
+		/>
 
 		<div class="container">
 			<section class="section" aria-labelledby="sobre-este-sitio">
@@ -74,26 +71,6 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 </BaseLayout>
 
 <style>
-	.page-header {
-		padding-block: var(--space-12);
-		background-color: var(--color-brand-surface);
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		letter-spacing: -0.03em;
-		text-wrap: balance;
-		overflow-wrap: break-word;
-	}
-
-	.page-header p {
-		max-width: var(--content-max);
-		margin-top: var(--space-6);
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
-	}
-
 	.section {
 		display: flex;
 		flex-direction: column;
@@ -131,15 +108,6 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 	}
 
 	@media (min-width: 48rem) {
-		.page-header {
-			padding-block: var(--space-16);
-		}
-
-		.page-header p {
-			font-size: var(--font-size-xl);
-			line-height: 1.5;
-		}
-
 		.section {
 			padding-block: var(--space-12);
 		}
@@ -158,8 +126,5 @@ const socialNames = site.social.map((link) => link.name).join(', ');
 	}
 
 	@media (min-width: 64rem) {
-		.page-header {
-			padding-block: var(--space-20) var(--space-16);
-		}
 	}
 </style>

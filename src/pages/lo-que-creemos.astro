@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import { site } from '../config/site';
 
 const description = `Conoce la identidad bíblica y reformada de la ${site.name} y su suscripción a la Confesión de Fe y los Catecismos de Westminster.`;
@@ -7,13 +8,11 @@ const description = `Conoce la identidad bíblica y reformada de la ${site.name}
 
 <BaseLayout title="Lo que creemos" description={description}>
 	<main id="main-content">
-		<header class="page-header">
-			<div class="container">
-				<h1>Lo que creemos</h1>
-				<p>{`La ${site.name} es una iglesia cristiana, bíblica y reformada.`}</p>
-				<p>En esta sección presentamos de forma breve nuestra identidad confesional.</p>
-			</div>
-		</header>
+		<PageHeader
+			title="Lo que creemos"
+			description={`La ${site.name} es una iglesia cristiana, bíblica y reformada.`}
+			secondaryDescription="En esta sección presentamos de forma breve nuestra identidad confesional."
+		/>
 
 		<section class="section" aria-labelledby="identidad">
 			<div class="container split">
@@ -57,30 +56,6 @@ const description = `Conoce la identidad bíblica y reformada de la ${site.name}
 </BaseLayout>
 
 <style>
-	.page-header {
-		padding-block: var(--space-12);
-		background-color: var(--color-brand-surface);
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		letter-spacing: -0.03em;
-		text-wrap: balance;
-		overflow-wrap: break-word;
-	}
-
-	.page-header p {
-		max-width: var(--content-max);
-		margin-top: var(--space-6);
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
-	}
-
-	.page-header p + p {
-		margin-top: var(--space-3);
-	}
-
 	.section {
 		padding-block: var(--space-12);
 	}
@@ -125,15 +100,6 @@ const description = `Conoce la identidad bíblica y reformada de la ${site.name}
 	}
 
 	@media (min-width: 48rem) {
-		.page-header {
-			padding-block: var(--space-16);
-		}
-
-		.page-header p {
-			font-size: var(--font-size-xl);
-			line-height: 1.5;
-		}
-
 		.section {
 			padding-block: var(--space-16);
 		}
@@ -144,10 +110,6 @@ const description = `Conoce la identidad bíblica y reformada de la ${site.name}
 	}
 
 	@media (min-width: 64rem) {
-		.page-header {
-			padding-block: var(--space-20) var(--space-16);
-		}
-
 		.section {
 			padding-block: var(--space-20);
 		}

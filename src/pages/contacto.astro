@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import { site } from '../config/site';
 
 const { venue, street, city, country } = site.location;
@@ -15,15 +16,10 @@ const socialText: Record<string, string> = {
 
 <BaseLayout title="Contacto" description={description}>
 	<main id="main-content">
-		<header class="page-header">
-			<div class="container">
-				<h1>Contacto</h1>
-				<p>
-					Puedes encontrarnos en nuestros canales oficiales y consultar la información para
-					visitarnos.
-				</p>
-			</div>
-		</header>
+		<PageHeader
+			title="Contacto"
+			description="Puedes encontrarnos en nuestros canales oficiales y consultar la información para visitarnos."
+		/>
 
 		<section class="section" aria-labelledby="redes">
 			<div class="container">
@@ -64,26 +60,6 @@ const socialText: Record<string, string> = {
 </BaseLayout>
 
 <style>
-	.page-header {
-		padding-block: var(--space-12);
-		background-color: var(--color-brand-surface);
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		letter-spacing: -0.03em;
-		text-wrap: balance;
-		overflow-wrap: break-word;
-	}
-
-	.page-header p {
-		max-width: var(--content-max);
-		margin-top: var(--space-6);
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
-	}
-
 	.section {
 		padding-block: var(--space-12);
 	}
@@ -172,15 +148,6 @@ const socialText: Record<string, string> = {
 	}
 
 	@media (min-width: 48rem) {
-		.page-header {
-			padding-block: var(--space-16);
-		}
-
-		.page-header p {
-			font-size: var(--font-size-xl);
-			line-height: 1.5;
-		}
-
 		.section {
 			padding-block: var(--space-16);
 		}
@@ -196,10 +163,6 @@ const socialText: Record<string, string> = {
 	}
 
 	@media (min-width: 64rem) {
-		.page-header {
-			padding-block: var(--space-20) var(--space-16);
-		}
-
 		.section {
 			padding-block: var(--space-20);
 		}

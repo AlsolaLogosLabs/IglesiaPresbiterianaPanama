@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import { site } from '../config/site';
 
 const { city } = site.location;
@@ -8,12 +9,10 @@ const description = `Conoce la historia y el enfoque de la ${site.name}, una igl
 
 <BaseLayout title="Nosotros" description={description}>
 	<main id="main-content">
-		<header class="page-header">
-			<div class="container">
-				<h1>Nosotros</h1>
-				<p>{`Conoce nuestra identidad, nuestra historia y el enfoque de la ${site.name}.`}</p>
-			</div>
-		</header>
+		<PageHeader
+			title="Nosotros"
+			description={`Conoce nuestra identidad, nuestra historia y el enfoque de la ${site.name}.`}
+		/>
 
 		<section class="section" aria-labelledby="quienes-somos">
 			<div class="container split">
@@ -98,26 +97,6 @@ const description = `Conoce la historia y el enfoque de la ${site.name}, una igl
 </BaseLayout>
 
 <style>
-	.page-header {
-		padding-block: var(--space-12);
-		background-color: var(--color-brand-surface);
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	h1 {
-		font-size: var(--font-size-3xl);
-		letter-spacing: -0.03em;
-		text-wrap: balance;
-		overflow-wrap: break-word;
-	}
-
-	.page-header p {
-		max-width: var(--content-max);
-		margin-top: var(--space-6);
-		font-size: var(--font-size-lg);
-		color: var(--color-text-muted);
-	}
-
 	.section {
 		padding-block: var(--space-12);
 	}
@@ -196,15 +175,6 @@ const description = `Conoce la historia y el enfoque de la ${site.name}, una igl
 	}
 
 	@media (min-width: 48rem) {
-		.page-header {
-			padding-block: var(--space-16);
-		}
-
-		.page-header p {
-			font-size: var(--font-size-xl);
-			line-height: 1.5;
-		}
-
 		.section {
 			padding-block: var(--space-16);
 		}
@@ -224,10 +194,6 @@ const description = `Conoce la historia y el enfoque de la ${site.name}, una igl
 	}
 
 	@media (min-width: 64rem) {
-		.page-header {
-			padding-block: var(--space-20) var(--space-16);
-		}
-
 		.section {
 			padding-block: var(--space-20);
 		}

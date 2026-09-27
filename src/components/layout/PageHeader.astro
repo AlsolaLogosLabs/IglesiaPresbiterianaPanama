@@ -1,0 +1,74 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	secondaryDescription?: string;
+}
+
+const { title, description, secondaryDescription } = Astro.props;
+---
+
+<header class="page-header">
+	<div class="container">
+		<h1>{title}</h1>
+		<p>{description}</p>
+		{secondaryDescription && <p>{secondaryDescription}</p>}
+		{Astro.slots.has('actions') && (
+			<div class="page-header__actions">
+				<slot name="actions" />
+			</div>
+		)}
+	</div>
+</header>
+
+<style>
+	.page-header {
+		padding-block: var(--space-12);
+		background-color: var(--color-brand-surface);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+		overflow-wrap: break-word;
+	}
+
+	p {
+		max-width: var(--content-max);
+		margin-top: var(--space-6);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+	}
+
+	p + p {
+		margin-top: var(--space-3);
+	}
+
+	.page-header__actions {
+		margin-top: var(--space-8);
+	}
+
+	/* El fondo ya es brand-surface: el hover secundario vuelve a blanco */
+	.page-header__actions :global(.button--secondary:hover) {
+		background-color: var(--color-bg);
+	}
+
+	@media (min-width: 48rem) {
+		.page-header {
+			padding-block: var(--space-16);
+		}
+
+		p {
+			font-size: var(--font-size-xl);
+			line-height: 1.5;
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.page-header {
+			padding-block: var(--space-20) var(--space-16);
+		}
+	}
+</style>
