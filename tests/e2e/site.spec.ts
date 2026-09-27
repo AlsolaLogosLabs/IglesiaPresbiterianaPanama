@@ -195,6 +195,31 @@ test('Home: teasers de historia y creencias enlazan a sus páginas', async ({ pa
 	await expect(page.locator('.intro a[href$="/lo-que-creemos/"]')).toHaveCount(1);
 });
 
+for (const { prefix } of LOCALES) {
+	test(`Lo que creemos en «/${prefix}»: Escritura, credos, Westminster y salida a Sermones`, async ({
+		page,
+	}) => {
+		await page.goto(`${prefix}lo-que-creemos/`);
+		await expect(page.locator('h2#escritura')).toHaveCount(1);
+		await expect(page.locator('section[aria-labelledby="fe-historica"] .documents h3')).toHaveCount(
+			4,
+		);
+		const standards = page.locator('section[aria-labelledby="confesion"] .documents h3');
+		await expect(standards).toHaveCount(3);
+		for (const title of await standards.allInnerTexts()) expect(title).toContain('Westminster');
+		await expect(page.locator('h2#identidad')).toHaveCount(1);
+		await expect(page.locator('h2#tradicion-reformada')).toHaveCount(1);
+		await expect(
+			page.locator(`section[aria-labelledby="ensenanza"] a[href$="/${prefix}sermones/"]`),
+		).toHaveCount(1);
+	});
+}
+
+test('Lo que creemos: la Escritura encabeza el contenido doctrinal', async ({ page }) => {
+	await page.goto('lo-que-creemos/');
+	await expect(page.locator('main h2').first()).toHaveText('La Escritura, nuestra autoridad');
+});
+
 test('selector compacto: el nombre accesible incluye el código visible (Label in Name)', async ({
 	page,
 }) => {

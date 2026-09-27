@@ -97,12 +97,57 @@ const es = {
 	},
 	beliefs: {
 		title: 'Lo que creemos',
-		metaDescription: `Conoce la identidad bíblica y reformada de la ${name} y su suscripción a la Confesión de Fe y los Catecismos de Westminster.`,
+		metaDescription: `Conoce la fe cristiana, reformada y presbiteriana de la ${name}, los credos históricos y los Estándares de Westminster que orientan nuestra confesión.`,
 		description: `La ${name} es una iglesia cristiana, bíblica y reformada.`,
-		confessionTitle: 'Nuestra confesión',
-		confessionLead: `La ${name} se suscribe a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor de Westminster.`,
-		confessionText:
-			'Estos documentos expresan de manera organizada la identidad confesional que profesamos como iglesia.',
+		scriptureTitle: 'La Escritura, nuestra autoridad',
+		scriptureText:
+			'Creemos que las Sagradas Escrituras del Antiguo y Nuevo Testamentos son la Palabra de Dios y la regla suprema de nuestra fe y vida. Los credos, confesiones y catecismos no sustituyen ni están por encima de la Biblia; sirven como expresiones históricas y subordinadas de lo que la Iglesia entiende que la Escritura enseña.',
+		historicTitle: 'La fe cristiana histórica',
+		historicIntro:
+			'A lo largo de los siglos, la Iglesia ha expresado las doctrinas centrales de la fe cristiana mediante credos y definiciones doctrinales que ayudaron a preservar una confesión clara acerca de la Trinidad y de la persona de Jesucristo.',
+		creeds: [
+			{
+				title: 'Credo de los Apóstoles',
+				text: 'El Credo de los Apóstoles ofrece una síntesis breve de la fe cristiana histórica. Confiesa al Dios trino —Padre, Hijo y Espíritu Santo— y resume las verdades centrales acerca de la creación, la persona y obra de Jesucristo, la Iglesia, el perdón de los pecados, la resurrección y la vida eterna.',
+			},
+			{
+				title: 'Credo Niceno',
+				text: 'El Credo Niceno expresa de manera especialmente clara la fe de la Iglesia en un solo Dios: Padre, Hijo y Espíritu Santo. Afirma la plena divinidad de Jesucristo, su encarnación para nuestra salvación, su resurrección y su regreso, y confiesa al Espíritu Santo como Señor y dador de vida. Su formulación está asociada a los concilios de Nicea (325) y Constantinopla (381).',
+			},
+			{
+				title: 'Definición de Calcedonia',
+				text: 'La Definición de Calcedonia confiesa que Jesucristo es una sola persona, verdadero Dios y verdadero hombre. En él permanecen unidas plenamente la naturaleza divina y la naturaleza humana, sin confundirse ni dividirse. Esta formulación protege la enseñanza cristiana histórica acerca de quién es Cristo y de la realidad de su encarnación.',
+			},
+			{
+				title: 'Credo Atanasiano',
+				text: 'El Credo Atanasiano desarrolla con particular precisión la doctrina de la Trinidad y la persona de Jesucristo. Confiesa un solo Dios en tres personas —Padre, Hijo y Espíritu Santo— y afirma que Jesucristo es plenamente Dios y plenamente hombre.',
+			},
+		],
+		confessionTitle: 'Nuestra confesión reformada y presbiteriana',
+		confessionIntro:
+			'Como iglesia presbiteriana y reformada, nos suscribimos a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor de Westminster. Estos documentos, subordinados a las Sagradas Escrituras, presentan de manera ordenada el sistema de doctrina que confesamos.',
+		standards: [
+			{
+				title: 'Confesión de Fe de Westminster',
+				text: 'La Confesión de Fe de Westminster presenta de manera sistemática la doctrina cristiana reformada. Trata, entre otros temas, la autoridad de las Escrituras, Dios y la Trinidad, la creación y la providencia, la caída y el pecado, el pacto, la persona y obra de Cristo, la justificación, la adopción y la santificación, la ley de Dios, la libertad cristiana, el culto, la Iglesia, los sacramentos y las últimas cosas.',
+			},
+			{
+				title: 'Catecismo Mayor de Westminster',
+				text: 'El Catecismo Mayor desarrolla con mayor profundidad la doctrina y la vida cristiana mediante preguntas y respuestas. Trata ampliamente la Escritura, Dios, Cristo, la obra de salvación, los mandamientos, la oración, la Iglesia y los sacramentos, y sirve como instrumento de formación doctrinal más detallada.',
+			},
+			{
+				title: 'Catecismo Menor de Westminster',
+				text: 'El Catecismo Menor resume de forma concisa las doctrinas fundamentales de la fe y los deberes de la vida cristiana. Su formato de preguntas y respuestas lo convierte en una herramienta especialmente útil para la enseñanza, el discipulado y la formación de la congregación.',
+			},
+		],
+		identityTitle: 'Nuestra identidad presbiteriana y reformada',
+		identityText:
+			'Como iglesia presbiteriana y reformada, procuramos que la Escritura gobierne nuestra doctrina, nuestra adoración y nuestra vida. Confesamos la salvación por la gracia de Dios mediante Jesucristo, valoramos la enseñanza y el discipulado doctrinal, administramos el Bautismo y la Cena del Señor como los sacramentos instituidos por Cristo y reconocemos el gobierno pastoral de la Iglesia mediante presbíteros.',
+		traditionTitle: 'Otros documentos de la tradición reformada',
+		traditionText: [
+			'A lo largo de la Reforma, otras iglesias hermanas expresaron la fe reformada mediante confesiones y catecismos que han tenido una influencia importante en la historia de la Iglesia. Entre ellos se encuentran la Confesión Belga, el Catecismo de Heidelberg y los Cánones de Dort.',
+			'Estos documentos son referencias importantes de la tradición reformada, aunque los estándares confesionales que nuestra iglesia declara suscribir son los Estándares de Westminster.',
+		],
 		teachingTitle: 'Enseñanza y sermones',
 		teachingText:
 			'Puedes consultar nuestros sermones para conocer la enseñanza compartida en la iglesia.',
@@ -276,12 +321,57 @@ const en: Messages = {
 	},
 	beliefs: {
 		title: 'What we believe',
-		metaDescription: `Learn about the biblical and Reformed identity of the ${name} and its subscription to the Westminster Confession of Faith and Catechisms.`,
+		metaDescription: `Learn about the Christian, Reformed and Presbyterian faith of the ${name}, the historic creeds and the Westminster Standards that guide our confession.`,
 		description: `The ${name} is a Christian, biblical and Reformed church.`,
-		confessionTitle: 'Our confession',
-		confessionLead: `The ${name} subscribes to the Westminster Confession of Faith and the Westminster Larger and Shorter Catechisms.`,
-		confessionText:
-			'These documents express in an orderly way the confessional identity we profess as a church.',
+		scriptureTitle: 'Scripture, our authority',
+		scriptureText:
+			'We believe that the Holy Scriptures of the Old and New Testaments are the Word of God and the supreme rule for our faith and life. Creeds, confessions and catechisms do not replace Scripture or stand above it; they serve as historical and subordinate expressions of what the Church understands Scripture to teach.',
+		historicTitle: 'The historic Christian faith',
+		historicIntro:
+			'Throughout the centuries, the Church has expressed the central doctrines of the Christian faith through creeds and doctrinal definitions that helped preserve a clear confession concerning the Trinity and the person of Jesus Christ.',
+		creeds: [
+			{
+				title: 'Apostles’ Creed',
+				text: 'The Apostles’ Creed provides a concise summary of the historic Christian faith. It confesses the triune God—Father, Son and Holy Spirit—and summarizes central truths concerning creation, the person and work of Jesus Christ, the Church, the forgiveness of sins, the resurrection and eternal life.',
+			},
+			{
+				title: 'Nicene Creed',
+				text: 'The Nicene Creed expresses with particular clarity the Church’s faith in one God: Father, Son and Holy Spirit. It affirms the full divinity of Jesus Christ, his incarnation for our salvation, his resurrection and return, and confesses the Holy Spirit as Lord and giver of life. Its formulation is associated with the councils of Nicaea (325) and Constantinople (381).',
+			},
+			{
+				title: 'Definition of Chalcedon',
+				text: 'The Definition of Chalcedon confesses that Jesus Christ is one person, truly God and truly man. In him the divine and human natures remain fully united without confusion or division. This formulation preserves the historic Christian teaching concerning who Christ is and the reality of his incarnation.',
+			},
+			{
+				title: 'Athanasian Creed',
+				text: 'The Athanasian Creed develops with particular precision the doctrine of the Trinity and the person of Jesus Christ. It confesses one God in three persons—Father, Son and Holy Spirit—and affirms that Jesus Christ is fully God and fully man.',
+			},
+		],
+		confessionTitle: 'Our Reformed and Presbyterian confession',
+		confessionIntro:
+			'As a Presbyterian and Reformed church, we subscribe to the Westminster Confession of Faith and the Westminster Larger and Shorter Catechisms. These documents, subordinate to Holy Scripture, present in an orderly way the system of doctrine we confess.',
+		standards: [
+			{
+				title: 'Westminster Confession of Faith',
+				text: 'The Westminster Confession of Faith presents Reformed Christian doctrine in a systematic way. Among other subjects, it addresses the authority of Scripture, God and the Trinity, creation and providence, the fall and sin, covenant, the person and work of Christ, justification, adoption and sanctification, the law of God, Christian liberty, worship, the Church, the sacraments and the last things.',
+			},
+			{
+				title: 'Westminster Larger Catechism',
+				text: 'The Larger Catechism develops Christian doctrine and life in greater depth through questions and answers. It deals extensively with Scripture, God, Christ, the work of salvation, the commandments, prayer, the Church and the sacraments, and serves as an instrument for more detailed doctrinal formation.',
+			},
+			{
+				title: 'Westminster Shorter Catechism',
+				text: 'The Shorter Catechism concisely summarizes the fundamental doctrines of the faith and the duties of the Christian life. Its question-and-answer format makes it an especially useful tool for teaching, discipleship and the formation of the congregation.',
+			},
+		],
+		identityTitle: 'Our Presbyterian and Reformed identity',
+		identityText:
+			'As a Presbyterian and Reformed church, we seek to have Scripture govern our doctrine, our worship and our life. We confess salvation by the grace of God through Jesus Christ, we value teaching and doctrinal discipleship, we administer Baptism and the Lord’s Supper as the sacraments instituted by Christ, and we recognize the pastoral government of the Church through elders.',
+		traditionTitle: 'Other documents in the Reformed tradition',
+		traditionText: [
+			'Throughout the Reformation, other sister churches expressed the Reformed faith through confessions and catechisms that have had an important influence on the history of the Church. Among them are the Belgic Confession, the Heidelberg Catechism and the Canons of Dort.',
+			'These documents are important references in the Reformed tradition, although the confessional standards our church declares it subscribes to are the Westminster Standards.',
+		],
 		teachingTitle: 'Teaching and sermons',
 		teachingText: 'You can browse our sermons to learn about the teaching shared in the church.',
 		teachingCta: 'View sermons',
@@ -450,12 +540,57 @@ const ptBr: Messages = {
 	},
 	beliefs: {
 		title: 'O que cremos',
-		metaDescription: `Conheça a identidade bíblica e reformada da ${name} e sua subscrição à Confissão de Fé e aos Catecismos de Westminster.`,
+		metaDescription: `Conheça a fé cristã, reformada e presbiteriana da ${name}, os credos históricos e os Padrões de Westminster que orientam nossa confissão.`,
 		description: `A ${name} é uma igreja cristã, bíblica e reformada.`,
-		confessionTitle: 'Nossa confissão',
-		confessionLead: `A ${name} subscreve a Confissão de Fé de Westminster e os Catecismos Maior e Breve de Westminster.`,
-		confessionText:
-			'Esses documentos expressam de forma organizada a identidade confessional que professamos como igreja.',
+		scriptureTitle: 'A Escritura, nossa autoridade',
+		scriptureText:
+			'Cremos que as Sagradas Escrituras do Antigo e do Novo Testamentos são a Palavra de Deus e a regra suprema de nossa fé e vida. Credos, confissões e catecismos não substituem nem estão acima da Bíblia; servem como expressões históricas e subordinadas daquilo que a Igreja entende que a Escritura ensina.',
+		historicTitle: 'A fé cristã histórica',
+		historicIntro:
+			'Ao longo dos séculos, a Igreja expressou as doutrinas centrais da fé cristã por meio de credos e definições doutrinárias que ajudaram a preservar uma confissão clara acerca da Trindade e da pessoa de Jesus Cristo.',
+		creeds: [
+			{
+				title: 'Credo Apostólico',
+				text: 'O Credo Apostólico oferece uma síntese breve da fé cristã histórica. Confessa o Deus trino —Pai, Filho e Espírito Santo— e resume verdades centrais acerca da criação, da pessoa e obra de Jesus Cristo, da Igreja, do perdão dos pecados, da ressurreição e da vida eterna.',
+			},
+			{
+				title: 'Credo Niceno',
+				text: 'O Credo Niceno expressa de maneira especialmente clara a fé da Igreja em um só Deus: Pai, Filho e Espírito Santo. Afirma a plena divindade de Jesus Cristo, sua encarnação para nossa salvação, sua ressurreição e seu retorno, e confessa o Espírito Santo como Senhor e doador da vida. Sua formulação está associada aos concílios de Niceia (325) e Constantinopla (381).',
+			},
+			{
+				title: 'Definição de Calcedônia',
+				text: 'A Definição de Calcedônia confessa que Jesus Cristo é uma só pessoa, verdadeiro Deus e verdadeiro homem. Nele permanecem plenamente unidas a natureza divina e a natureza humana, sem confusão nem divisão. Essa formulação preserva o ensino cristão histórico acerca de quem Cristo é e da realidade de sua encarnação.',
+			},
+			{
+				title: 'Credo Atanasiano',
+				text: 'O Credo Atanasiano desenvolve com particular precisão a doutrina da Trindade e da pessoa de Jesus Cristo. Confessa um só Deus em três pessoas —Pai, Filho e Espírito Santo— e afirma que Jesus Cristo é plenamente Deus e plenamente homem.',
+			},
+		],
+		confessionTitle: 'Nossa confissão reformada e presbiteriana',
+		confessionIntro:
+			'Como igreja presbiteriana e reformada, subscrevemos a Confissão de Fé de Westminster e os Catecismos Maior e Breve de Westminster. Esses documentos, subordinados às Sagradas Escrituras, apresentam de maneira ordenada o sistema de doutrina que confessamos.',
+		standards: [
+			{
+				title: 'Confissão de Fé de Westminster',
+				text: 'A Confissão de Fé de Westminster apresenta de maneira sistemática a doutrina cristã reformada. Entre outros temas, trata da autoridade das Escrituras, de Deus e da Trindade, da criação e providência, da queda e do pecado, da aliança, da pessoa e obra de Cristo, da justificação, adoção e santificação, da lei de Deus, da liberdade cristã, do culto, da Igreja, dos sacramentos e das últimas coisas.',
+			},
+			{
+				title: 'Catecismo Maior de Westminster',
+				text: 'O Catecismo Maior desenvolve com maior profundidade a doutrina e a vida cristã por meio de perguntas e respostas. Trata amplamente da Escritura, de Deus, de Cristo, da obra da salvação, dos mandamentos, da oração, da Igreja e dos sacramentos, e serve como instrumento de formação doutrinária mais detalhada.',
+			},
+			{
+				title: 'Breve Catecismo de Westminster',
+				text: 'O Breve Catecismo resume de forma concisa as doutrinas fundamentais da fé e os deveres da vida cristã. Seu formato de perguntas e respostas o torna uma ferramenta especialmente útil para o ensino, o discipulado e a formação da congregação.',
+			},
+		],
+		identityTitle: 'Nossa identidade presbiteriana e reformada',
+		identityText:
+			'Como igreja presbiteriana e reformada, buscamos que a Escritura governe nossa doutrina, nossa adoração e nossa vida. Confessamos a salvação pela graça de Deus mediante Jesus Cristo, valorizamos o ensino e o discipulado doutrinário, administramos o Batismo e a Ceia do Senhor como os sacramentos instituídos por Cristo e reconhecemos o governo pastoral da Igreja por meio de presbíteros.',
+		traditionTitle: 'Outros documentos da tradição reformada',
+		traditionText: [
+			'Ao longo da Reforma, outras igrejas irmãs expressaram a fé reformada por meio de confissões e catecismos que tiveram uma influência importante na história da Igreja. Entre eles estão a Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort.',
+			'Esses documentos são referências importantes da tradição reformada, embora os padrões confessionais que nossa igreja declara subscrever sejam os Padrões de Westminster.',
+		],
 		teachingTitle: 'Ensino e sermões',
 		teachingText:
 			'Você pode consultar nossos sermões para conhecer o ensino compartilhado na igreja.',
