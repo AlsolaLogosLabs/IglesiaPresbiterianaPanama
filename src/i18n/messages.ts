@@ -99,9 +99,18 @@ const es = {
 		title: 'Lo que creemos',
 		metaDescription: `Conoce la fe cristiana, reformada y presbiteriana de la ${name}, los credos históricos y los Estándares de Westminster que orientan nuestra confesión.`,
 		description: `La ${name} es una iglesia cristiana, bíblica y reformada.`,
+		tocLabel: 'En esta página',
+		toc: {
+			scripture: 'Escritura',
+			creeds: 'Credos históricos',
+			westminster: 'Westminster',
+			identity: 'Identidad presbiteriana',
+			tradition: 'Tradición reformada',
+		},
 		scriptureTitle: 'La Escritura, nuestra autoridad',
 		scriptureText:
 			'Creemos que las Sagradas Escrituras del Antiguo y Nuevo Testamentos son la Palabra de Dios y la regla suprema de nuestra fe y vida. Los credos, confesiones y catecismos no sustituyen ni están por encima de la Biblia; sirven como expresiones históricas y subordinadas de lo que la Iglesia entiende que la Escritura enseña.',
+		historicEyebrow: 'Credos históricos',
 		historicTitle: 'La fe cristiana histórica',
 		historicIntro:
 			'A lo largo de los siglos, la Iglesia ha expresado las doctrinas centrales de la fe cristiana mediante credos y definiciones doctrinales que ayudaron a preservar una confesión clara acerca de la Trinidad y de la persona de Jesucristo.',
@@ -123,6 +132,7 @@ const es = {
 				text: 'El Credo Atanasiano desarrolla con particular precisión la doctrina de la Trinidad y la persona de Jesucristo. Confiesa un solo Dios en tres personas —Padre, Hijo y Espíritu Santo— y afirma que Jesucristo es plenamente Dios y plenamente hombre.',
 			},
 		],
+		confessionEyebrow: 'Estándares confesionales',
 		confessionTitle: 'Nuestra confesión reformada y presbiteriana',
 		confessionIntro:
 			'Como iglesia presbiteriana y reformada, nos suscribimos a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor de Westminster. Estos documentos, subordinados a las Sagradas Escrituras, presentan de manera ordenada el sistema de doctrina que confesamos.',
@@ -143,14 +153,15 @@ const es = {
 		identityTitle: 'Nuestra identidad presbiteriana y reformada',
 		identityText:
 			'Como iglesia presbiteriana y reformada, procuramos que la Escritura gobierne nuestra doctrina, nuestra adoración y nuestra vida. Confesamos la salvación por la gracia de Dios mediante Jesucristo, valoramos la enseñanza y el discipulado doctrinal, administramos el Bautismo y la Cena del Señor como los sacramentos instituidos por Cristo y reconocemos el gobierno pastoral de la Iglesia mediante presbíteros.',
+		traditionEyebrow: 'Referencia histórica',
 		traditionTitle: 'Otros documentos de la tradición reformada',
 		traditionText: [
 			'A lo largo de la Reforma, otras iglesias hermanas expresaron la fe reformada mediante confesiones y catecismos que han tenido una influencia importante en la historia de la Iglesia. Entre ellos se encuentran la Confesión Belga, el Catecismo de Heidelberg y los Cánones de Dort.',
 			'Estos documentos son referencias importantes de la tradición reformada, aunque los estándares confesionales que nuestra iglesia declara suscribir son los Estándares de Westminster.',
 		],
-		teachingTitle: 'Enseñanza y sermones',
+		teachingTitle: 'La doctrina en la enseñanza de la iglesia',
 		teachingText:
-			'Puedes consultar nuestros sermones para conocer la enseñanza compartida en la iglesia.',
+			'Consulta nuestros sermones para conocer cómo estas verdades se enseñan y aplican en la vida de la congregación.',
 		teachingCta: 'Ver sermones',
 	},
 	sermons: {
@@ -323,9 +334,18 @@ const en: Messages = {
 		title: 'What we believe',
 		metaDescription: `Learn about the Christian, Reformed and Presbyterian faith of the ${name}, the historic creeds and the Westminster Standards that guide our confession.`,
 		description: `The ${name} is a Christian, biblical and Reformed church.`,
+		tocLabel: 'On this page',
+		toc: {
+			scripture: 'Scripture',
+			creeds: 'Historic creeds',
+			westminster: 'Westminster',
+			identity: 'Presbyterian identity',
+			tradition: 'Reformed tradition',
+		},
 		scriptureTitle: 'Scripture, our authority',
 		scriptureText:
 			'We believe that the Holy Scriptures of the Old and New Testaments are the Word of God and the supreme rule for our faith and life. Creeds, confessions and catechisms do not replace Scripture or stand above it; they serve as historical and subordinate expressions of what the Church understands Scripture to teach.',
+		historicEyebrow: 'Historic creeds',
 		historicTitle: 'The historic Christian faith',
 		historicIntro:
 			'Throughout the centuries, the Church has expressed the central doctrines of the Christian faith through creeds and doctrinal definitions that helped preserve a clear confession concerning the Trinity and the person of Jesus Christ.',
@@ -347,6 +367,7 @@ const en: Messages = {
 				text: 'The Athanasian Creed develops with particular precision the doctrine of the Trinity and the person of Jesus Christ. It confesses one God in three persons—Father, Son and Holy Spirit—and affirms that Jesus Christ is fully God and fully man.',
 			},
 		],
+		confessionEyebrow: 'Confessional standards',
 		confessionTitle: 'Our Reformed and Presbyterian confession',
 		confessionIntro:
 			'As a Presbyterian and Reformed church, we subscribe to the Westminster Confession of Faith and the Westminster Larger and Shorter Catechisms. These documents, subordinate to Holy Scripture, present in an orderly way the system of doctrine we confess.',
@@ -367,13 +388,15 @@ const en: Messages = {
 		identityTitle: 'Our Presbyterian and Reformed identity',
 		identityText:
 			'As a Presbyterian and Reformed church, we seek to have Scripture govern our doctrine, our worship and our life. We confess salvation by the grace of God through Jesus Christ, we value teaching and doctrinal discipleship, we administer Baptism and the Lord’s Supper as the sacraments instituted by Christ, and we recognize the pastoral government of the Church through elders.',
+		traditionEyebrow: 'Historical reference',
 		traditionTitle: 'Other documents in the Reformed tradition',
 		traditionText: [
 			'Throughout the Reformation, other sister churches expressed the Reformed faith through confessions and catechisms that have had an important influence on the history of the Church. Among them are the Belgic Confession, the Heidelberg Catechism and the Canons of Dort.',
 			'These documents are important references in the Reformed tradition, although the confessional standards our church declares it subscribes to are the Westminster Standards.',
 		],
-		teachingTitle: 'Teaching and sermons',
-		teachingText: 'You can browse our sermons to learn about the teaching shared in the church.',
+		teachingTitle: 'Doctrine in the teaching of the church',
+		teachingText:
+			'Browse our sermons to see how these truths are taught and applied in the life of the congregation.',
 		teachingCta: 'View sermons',
 	},
 	sermons: {
@@ -542,9 +565,18 @@ const ptBr: Messages = {
 		title: 'O que cremos',
 		metaDescription: `Conheça a fé cristã, reformada e presbiteriana da ${name}, os credos históricos e os Padrões de Westminster que orientam nossa confissão.`,
 		description: `A ${name} é uma igreja cristã, bíblica e reformada.`,
+		tocLabel: 'Nesta página',
+		toc: {
+			scripture: 'Escritura',
+			creeds: 'Credos históricos',
+			westminster: 'Westminster',
+			identity: 'Identidade presbiteriana',
+			tradition: 'Tradição reformada',
+		},
 		scriptureTitle: 'A Escritura, nossa autoridade',
 		scriptureText:
 			'Cremos que as Sagradas Escrituras do Antigo e do Novo Testamentos são a Palavra de Deus e a regra suprema de nossa fé e vida. Credos, confissões e catecismos não substituem nem estão acima da Bíblia; servem como expressões históricas e subordinadas daquilo que a Igreja entende que a Escritura ensina.',
+		historicEyebrow: 'Credos históricos',
 		historicTitle: 'A fé cristã histórica',
 		historicIntro:
 			'Ao longo dos séculos, a Igreja expressou as doutrinas centrais da fé cristã por meio de credos e definições doutrinárias que ajudaram a preservar uma confissão clara acerca da Trindade e da pessoa de Jesus Cristo.',
@@ -566,6 +598,7 @@ const ptBr: Messages = {
 				text: 'O Credo Atanasiano desenvolve com particular precisão a doutrina da Trindade e da pessoa de Jesus Cristo. Confessa um só Deus em três pessoas —Pai, Filho e Espírito Santo— e afirma que Jesus Cristo é plenamente Deus e plenamente homem.',
 			},
 		],
+		confessionEyebrow: 'Padrões confessionais',
 		confessionTitle: 'Nossa confissão reformada e presbiteriana',
 		confessionIntro:
 			'Como igreja presbiteriana e reformada, subscrevemos a Confissão de Fé de Westminster e os Catecismos Maior e Breve de Westminster. Esses documentos, subordinados às Sagradas Escrituras, apresentam de maneira ordenada o sistema de doutrina que confessamos.',
@@ -586,14 +619,15 @@ const ptBr: Messages = {
 		identityTitle: 'Nossa identidade presbiteriana e reformada',
 		identityText:
 			'Como igreja presbiteriana e reformada, buscamos que a Escritura governe nossa doutrina, nossa adoração e nossa vida. Confessamos a salvação pela graça de Deus mediante Jesus Cristo, valorizamos o ensino e o discipulado doutrinário, administramos o Batismo e a Ceia do Senhor como os sacramentos instituídos por Cristo e reconhecemos o governo pastoral da Igreja por meio de presbíteros.',
+		traditionEyebrow: 'Referência histórica',
 		traditionTitle: 'Outros documentos da tradição reformada',
 		traditionText: [
 			'Ao longo da Reforma, outras igrejas irmãs expressaram a fé reformada por meio de confissões e catecismos que tiveram uma influência importante na história da Igreja. Entre eles estão a Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort.',
 			'Esses documentos são referências importantes da tradição reformada, embora os padrões confessionais que nossa igreja declara subscrever sejam os Padrões de Westminster.',
 		],
-		teachingTitle: 'Ensino e sermões',
+		teachingTitle: 'A doutrina no ensino da igreja',
 		teachingText:
-			'Você pode consultar nossos sermões para conhecer o ensino compartilhado na igreja.',
+			'Consulte nossos sermões para conhecer como essas verdades são ensinadas e aplicadas na vida da congregação.',
 		teachingCta: 'Ver sermões',
 	},
 	sermons: {

@@ -8,24 +8,51 @@ import { localizedRoutes } from '../../i18n/routes';
 const locale = toLocale(Astro.currentLocale);
 const t = messages[locale].beliefs;
 const routes = localizedRoutes(locale);
+
+// Anclas a los h2 de cada sección doctrinal
+const toc = [
+	{ id: 'escritura', label: t.toc.scripture },
+	{ id: 'fe-historica', label: t.toc.creeds },
+	{ id: 'confesion', label: t.toc.westminster },
+	{ id: 'identidad', label: t.toc.identity },
+	{ id: 'tradicion-reformada', label: t.toc.tradition },
+];
 ---
 
 <BaseLayout title={t.title} description={t.metaDescription}>
 	<main id="main-content">
 		<PageHeader title={t.title} description={t.description} />
 
+		<nav class="toc" aria-label={t.tocLabel}>
+			<div class="container toc__inner">
+				<p class="toc__label" aria-hidden="true">
+					{t.tocLabel}
+				</p>
+				<ul class="toc__list">
+					{toc.map((item) => (
+						<li>
+							<a href={`#${item.id}`}>{item.label}</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</nav>
+
 		<section class="section" aria-labelledby="escritura">
 			<div class="container split">
 				<h2 id="escritura">{t.scriptureTitle}</h2>
 				<div class="prose">
-					<p class="prose__lead">{t.scriptureText}</p>
+					<p class="prose__intro">{t.scriptureText}</p>
 				</div>
 			</div>
 		</section>
 
 		<section class="section section--surface" aria-labelledby="fe-historica">
 			<div class="container split">
-				<h2 id="fe-historica">{t.historicTitle}</h2>
+				<hgroup>
+					<p class="eyebrow">{t.historicEyebrow}</p>
+					<h2 id="fe-historica">{t.historicTitle}</h2>
+				</hgroup>
 				<div class="prose">
 					<p>{t.historicIntro}</p>
 					<ul class="documents">
@@ -42,9 +69,12 @@ const routes = localizedRoutes(locale);
 
 		<section class="section" aria-labelledby="confesion">
 			<div class="container split">
-				<h2 id="confesion">{t.confessionTitle}</h2>
+				<hgroup>
+					<p class="eyebrow">{t.confessionEyebrow}</p>
+					<h2 id="confesion">{t.confessionTitle}</h2>
+				</hgroup>
 				<div class="prose">
-					<p>{t.confessionIntro}</p>
+					<p class="prose__intro">{t.confessionIntro}</p>
 					<ul class="documents">
 						{t.standards.map((standard) => (
 							<li>
@@ -66,9 +96,12 @@ const routes = localizedRoutes(locale);
 			</div>
 		</section>
 
-		<section class="section" aria-labelledby="tradicion-reformada">
+		<section class="section section--secondary" aria-labelledby="tradicion-reformada">
 			<div class="container split">
-				<h2 id="tradicion-reformada">{t.traditionTitle}</h2>
+				<hgroup>
+					<p class="eyebrow eyebrow--muted">{t.traditionEyebrow}</p>
+					<h2 id="tradicion-reformada">{t.traditionTitle}</h2>
+				</hgroup>
 				<div class="prose">
 					{t.traditionText.map((paragraph) => (
 						<p>{paragraph}</p>
@@ -92,6 +125,42 @@ const routes = localizedRoutes(locale);
 </BaseLayout>
 
 <style>
+	/* Navegación interna: discreta, sin JS ni sticky; envuelve en móvil */
+	.toc {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.toc__inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: var(--space-4);
+		padding-block: var(--space-3);
+	}
+
+	.toc__label {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-muted);
+	}
+
+	.toc__list {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: var(--space-4);
+		padding: 0;
+		list-style: none;
+	}
+
+	.toc__list a {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--tap-target);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-brand);
+	}
+
 	.section {
 		padding-block: var(--space-12);
 	}
@@ -102,8 +171,37 @@ const routes = localizedRoutes(locale);
 	}
 
 	h2 {
-		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
-		letter-spacing: -0.02em;
+		font-size: clamp(var(--font-size-2xl), 1.6rem + 1vw, 2.25rem);
+		letter-spacing: -0.01em;
+	}
+
+	/* Destino de las anclas: deja aire sobre el eyebrow y el título */
+	h2[id] {
+		scroll-margin-top: var(--space-12);
+	}
+
+	/* Referencia histórica: un escalón visual por debajo de los estándares */
+	.section--secondary h2 {
+		font-size: clamp(var(--font-size-xl), 1.3rem + 0.75vw, 1.875rem);
+	}
+
+	hgroup {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.eyebrow {
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+		letter-spacing: 0.08em;
+		line-height: var(--line-height-tight);
+		text-transform: uppercase;
+		color: var(--color-brand);
+	}
+
+	.eyebrow--muted {
+		color: var(--color-text-muted);
 	}
 
 	.split {
@@ -117,39 +215,43 @@ const routes = localizedRoutes(locale);
 		align-items: flex-start;
 		gap: var(--space-4);
 		max-width: var(--content-max);
+		line-height: 1.65;
 	}
 
-	.prose__lead {
-		margin-bottom: var(--space-2);
-		font-size: clamp(var(--font-size-xl), 1.25rem + 0.75vw, 1.75rem);
-		font-weight: var(--font-weight-semibold);
-		line-height: var(--line-height-tight);
-		letter-spacing: -0.01em;
+	/* Aprox. 60–70 caracteres por línea */
+	.prose p {
+		max-width: 65ch;
+	}
+
+	.prose__intro {
+		font-size: var(--font-size-lg);
 	}
 
 	.documents {
 		display: grid;
-		gap: var(--space-6);
+		gap: var(--space-8);
 		width: 100%;
-		margin: var(--space-4) 0 0;
+		margin-top: var(--space-4);
 		padding: 0;
 		list-style: none;
 	}
 
 	.documents li {
 		display: grid;
-		gap: var(--space-2);
+		gap: var(--space-3);
 		padding-top: var(--space-6);
 		border-top: 1px solid var(--color-border);
 	}
 
 	h3 {
-		font-size: var(--font-size-xl);
-		line-height: var(--line-height-tight);
+		font-family: var(--font-serif);
+		font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	.prose .button {
 		margin-top: var(--space-4);
+		font-size: var(--font-size-base);
 	}
 
 	@media (min-width: 48rem) {
@@ -157,18 +259,28 @@ const routes = localizedRoutes(locale);
 			padding-block: var(--space-16);
 		}
 
-		.prose p:not(.prose__lead) {
-			font-size: var(--font-size-lg);
+		.prose {
+			font-size: 1.0625rem;
+		}
+
+		.prose__intro {
+			font-size: 1.1875rem;
 		}
 	}
 
 	@media (min-width: 64rem) {
-		.section {
-			padding-block: var(--space-20);
+		.prose {
+			font-size: var(--font-size-lg);
 		}
 
+		.prose__intro {
+			font-size: 1.25rem;
+		}
+
+		/* Columna de títulos algo más ancha: saltos más naturales sin
+		   reducir el ancho de lectura (el texto ya está limitado a ~65ch) */
 		.split {
-			grid-template-columns: 1fr 2fr;
+			grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
 			gap: var(--space-12);
 		}
 	}

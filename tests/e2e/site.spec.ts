@@ -195,11 +195,27 @@ test('Home: teasers de historia y creencias enlazan a sus páginas', async ({ pa
 	await expect(page.locator('.intro a[href$="/lo-que-creemos/"]')).toHaveCount(1);
 });
 
-for (const { prefix } of LOCALES) {
+for (const { prefix, tocLabel } of [
+	{ prefix: '', tocLabel: 'En esta página' },
+	{ prefix: 'en/', tocLabel: 'On this page' },
+	{ prefix: 'pt-br/', tocLabel: 'Nesta página' },
+]) {
 	test(`Lo que creemos en «/${prefix}»: Escritura, credos, Westminster y salida a Sermones`, async ({
 		page,
 	}) => {
 		await page.goto(`${prefix}lo-que-creemos/`);
+
+		// Navegación interna traducida: 5 anclas, cada una a un h2 existente
+		const toc = page.getByRole('navigation', { name: tocLabel });
+		const anchors = toc.locator('a');
+		await expect(anchors).toHaveCount(5);
+		for (const href of await anchors.evaluateAll((links) =>
+			links.map((link) => link.getAttribute('href') ?? ''),
+		)) {
+			expect(href).toMatch(/^#[a-z-]+$/);
+			await expect(page.locator(`h2${href}`)).toHaveCount(1);
+		}
+
 		await expect(page.locator('h2#escritura')).toHaveCount(1);
 		await expect(page.locator('section[aria-labelledby="fe-historica"] .documents h3')).toHaveCount(
 			4,
