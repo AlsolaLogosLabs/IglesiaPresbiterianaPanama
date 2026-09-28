@@ -97,6 +97,7 @@ const structuredData = {
 </BaseLayout>
 
 <style>
+	/* Mismo ritmo que PageHeader; el back-link ya aporta aire arriba */
 	.page-header {
 		padding-block: var(--space-8) var(--space-12);
 		background-color: var(--color-brand-surface);
@@ -151,14 +152,15 @@ const structuredData = {
 	}
 
 	.section {
-		padding-block: var(--space-8) var(--space-12);
+		padding-block: var(--space-12);
 	}
 
+	/* Radio de medios como la fotografía de Visítanos */
 	.video {
 		max-width: 56rem;
 		aspect-ratio: 16 / 9;
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius-md);
+		border-radius: var(--radius-lg);
 		overflow: hidden;
 		background-color: var(--color-surface);
 	}
@@ -171,9 +173,10 @@ const structuredData = {
 	}
 
 	.description {
-		max-width: var(--content-max);
+		max-width: 65ch;
 		margin-top: var(--space-8);
 		font-size: var(--font-size-lg);
+		line-height: 1.65;
 	}
 
 	@media (min-width: 48rem) {
@@ -197,7 +200,13 @@ const structuredData = {
 		}
 
 		.section {
-			padding-block: var(--space-12) var(--space-20);
+			padding-block: var(--space-16);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.page-header {
+			padding-block: var(--space-16);
 		}
 	}
 </style>
