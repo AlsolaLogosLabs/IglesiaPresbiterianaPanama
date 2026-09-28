@@ -20,14 +20,16 @@ const { venue, street, city, country, mapsUrl } = site.location;
 			<div class="container split">
 				<h2 id="ubicacion">{t.whereTitle}</h2>
 				<div class="location">
-					<address>
-						<span class="address__venue">{venue}</span>
-						<span>{street}</span>
-						<span>{`${city}, ${country}`}</span>
-					</address>
-					<a class="button button--secondary maps-link" href={mapsUrl}>
-						{t.mapsCta}
-					</a>
+					<div class="location__details">
+						<address>
+							<span class="address__venue">{venue}</span>
+							<span>{street}</span>
+							<span>{`${city}, ${country}`}</span>
+						</address>
+						<a class="button button--secondary" href={mapsUrl}>
+							{t.mapsCta}
+						</a>
+					</div>
 					<div class="location__photo">
 						<Picture
 							src={interiorPhoto}
@@ -72,8 +74,8 @@ const { venue, street, city, country, mapsUrl } = site.location;
 	}
 
 	h2 {
-		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
-		letter-spacing: -0.02em;
+		font-size: clamp(var(--font-size-2xl), 1.6rem + 1vw, 2.25rem);
+		letter-spacing: -0.01em;
 	}
 
 	.split {
@@ -103,9 +105,12 @@ const { venue, street, city, country, mapsUrl } = site.location;
 		gap: var(--space-8);
 	}
 
-	/* En el grid, el botón conserva su ancho natural */
-	.maps-link {
-		justify-self: start;
+	/* Dirección y enlace a Maps agrupados; el botón conserva su ancho natural */
+	.location__details {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
 	}
 
 	/* Frame del culto: recortado 16:9 en origen; radius como el último sermón en Home */
@@ -137,12 +142,8 @@ const { venue, street, city, country, mapsUrl } = site.location;
 	}
 
 	@media (min-width: 64rem) {
-		.section {
-			padding-block: var(--space-20);
-		}
-
 		.split {
-			grid-template-columns: 1fr 2fr;
+			grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
 			gap: var(--space-12);
 		}
 	}

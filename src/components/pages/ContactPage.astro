@@ -34,11 +34,9 @@ const routes = localizedRoutes(locale);
 
 		<section class="section section--surface" aria-labelledby="visitanos">
 			<div class="container split">
-				<div class="split__intro">
-					<h2 id="visitanos">{t.visitTitle}</h2>
-					<p>{t.visitText}</p>
-				</div>
+				<h2 id="visitanos">{t.visitTitle}</h2>
 				<div class="visit">
+					<p>{t.visitText}</p>
 					<a class="button" href={routes.visit}>
 						{t.visitCta}
 					</a>
@@ -59,8 +57,8 @@ const routes = localizedRoutes(locale);
 	}
 
 	h2 {
-		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
-		letter-spacing: -0.02em;
+		font-size: clamp(var(--font-size-2xl), 1.6rem + 1vw, 2.25rem);
+		letter-spacing: -0.01em;
 	}
 
 	.social-list {
@@ -80,12 +78,15 @@ const routes = localizedRoutes(locale);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
 		background-color: var(--color-bg);
-		transition: border-color var(--duration-fast) ease;
+		transition:
+			border-color var(--duration-fast) ease,
+			background-color var(--duration-fast) ease;
 	}
 
 	.social-card:hover,
 	.social-card:focus-within {
 		border-color: var(--color-brand);
+		background-color: var(--color-brand-surface);
 	}
 
 	h3 {
@@ -103,20 +104,20 @@ const routes = localizedRoutes(locale);
 
 	.split {
 		display: grid;
-		gap: var(--space-8);
-	}
-
-	.split__intro p {
-		max-width: var(--content-max);
-		margin-top: var(--space-4);
-		font-size: var(--font-size-lg);
+		gap: var(--space-6);
 	}
 
 	.visit {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: var(--space-8);
+		gap: var(--space-6);
+		line-height: 1.65;
+	}
+
+	.visit p {
+		max-width: 65ch;
+		font-size: var(--font-size-lg);
 	}
 
 	@media (min-width: 48rem) {
@@ -126,7 +127,7 @@ const routes = localizedRoutes(locale);
 
 		.social-list {
 			gap: var(--space-6);
-			margin-top: var(--space-12);
+			margin-top: var(--space-8);
 		}
 
 		.social-card {
@@ -135,16 +136,12 @@ const routes = localizedRoutes(locale);
 	}
 
 	@media (min-width: 64rem) {
-		.section {
-			padding-block: var(--space-20);
-		}
-
 		.social-list {
 			grid-template-columns: repeat(3, 1fr);
 		}
 
 		.split {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
 			gap: var(--space-12);
 		}
 	}

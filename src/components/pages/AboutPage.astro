@@ -75,8 +75,8 @@ const cards = [
 	}
 
 	h2 {
-		font-size: clamp(var(--font-size-2xl), 1.5rem + 1.5vw, 2.5rem);
-		letter-spacing: -0.02em;
+		font-size: clamp(var(--font-size-2xl), 1.6rem + 1vw, 2.25rem);
+		letter-spacing: -0.01em;
 	}
 
 	.split {
@@ -90,6 +90,12 @@ const cards = [
 		align-items: flex-start;
 		gap: var(--space-4);
 		max-width: var(--content-max);
+		line-height: 1.65;
+	}
+
+	/* Aprox. 60–70 caracteres por línea */
+	.prose p {
+		max-width: 65ch;
 	}
 
 	.card-list {
@@ -109,12 +115,15 @@ const cards = [
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
 		background-color: var(--color-bg);
-		transition: border-color var(--duration-fast) ease;
+		transition:
+			border-color var(--duration-fast) ease,
+			background-color var(--duration-fast) ease;
 	}
 
 	.card:hover,
 	.card:focus-within {
 		border-color: var(--color-brand);
+		background-color: var(--color-brand-surface);
 	}
 
 	h3 {
@@ -150,12 +159,8 @@ const cards = [
 	}
 
 	@media (min-width: 64rem) {
-		.section {
-			padding-block: var(--space-20);
-		}
-
 		.split {
-			grid-template-columns: 1fr 2fr;
+			grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
 			gap: var(--space-12);
 		}
 
