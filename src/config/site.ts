@@ -37,6 +37,8 @@ export const site = {
 		street: 'Avenida 12 de Octubre',
 		city: 'Ciudad de Panamá',
 		country: 'Panamá',
+		mapsUrl:
+			'https://www.google.com/maps/search/?api=1&query=Iglesia+Presbiteriana+de+Panam%C3%A1&query_place_id=ChIJc9qyD7GprI8RbNlR9FsYGuY',
 	},
 	schedule: [
 		{ id: 'bible-study', day: 'Martes', name: 'Estudio Bíblico y Oración', time: '6:30 p. m.' },

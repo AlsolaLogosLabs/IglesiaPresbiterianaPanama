@@ -9,7 +9,7 @@ import { messages } from '../../i18n/messages';
 import interiorPhoto from '../../assets/photos/interior-reunion.jpg';
 
 const t = messages[toLocale(Astro.currentLocale)].visit;
-const { venue, street, city, country } = site.location;
+const { venue, street, city, country, mapsUrl } = site.location;
 ---
 
 <BaseLayout title={t.title} description={t.metaDescription}>
@@ -25,6 +25,9 @@ const { venue, street, city, country } = site.location;
 						<span>{street}</span>
 						<span>{`${city}, ${country}`}</span>
 					</address>
+					<a class="button button--secondary maps-link" href={mapsUrl}>
+						{t.mapsCta}
+					</a>
 					<div class="location__photo">
 						<Picture
 							src={interiorPhoto}
@@ -98,6 +101,11 @@ const { venue, street, city, country } = site.location;
 	.location {
 		display: grid;
 		gap: var(--space-8);
+	}
+
+	/* En el grid, el botón conserva su ancho natural */
+	.maps-link {
+		justify-self: start;
 	}
 
 	/* Frame del culto: recortado 16:9 en origen; radius como el último sermón en Home */

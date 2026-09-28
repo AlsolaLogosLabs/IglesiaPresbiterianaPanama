@@ -162,6 +162,30 @@ test('feed sermones/rss.xml', async ({ request }) => {
 	expect(body).toContain('<language>es-PA</language>');
 });
 
+// Debe coincidir con site.location.mapsUrl (site.ts depende de import.meta.env y no se importa aquí)
+const MAPS_URL =
+	'https://www.google.com/maps/search/?api=1&query=Iglesia+Presbiteriana+de+Panam%C3%A1&query_place_id=ChIJc9qyD7GprI8RbNlR9FsYGuY';
+
+for (const { prefix, mapsCta } of [
+	{ prefix: '', mapsCta: 'Abrir en Google Maps' },
+	{ prefix: 'en/', mapsCta: 'Open in Google Maps' },
+	{ prefix: 'pt-br/', mapsCta: 'Abrir no Google Maps' },
+]) {
+	// El overflow horizontal ya lo cubre el test de estructura de cada página
+	test(`Visítanos en «/${prefix}»: enlace a Google Maps, foto y horarios`, async ({ page }) => {
+		await page.goto(`${prefix}visitanos/`);
+		const location = page.locator('section[aria-labelledby="ubicacion"]');
+		const maps = location.locator('a[href*="google.com/maps"]');
+		await expect(maps).toHaveCount(1);
+		await expect(maps).toHaveAttribute('href', MAPS_URL);
+		await expect(maps).toHaveText(mapsCta);
+		await expect(location.locator('picture img')).toHaveCount(1);
+		await expect(page.locator('section[aria-labelledby="horarios"] .schedule__time')).toHaveCount(
+			3,
+		);
+	});
+}
+
 test('404 para rutas inexistentes', async ({ page }) => {
 	const response = await page.goto('ruta-que-no-existe/');
 	expect(response?.status()).toBe(404);
