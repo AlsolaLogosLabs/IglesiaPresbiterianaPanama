@@ -256,7 +256,12 @@ test('selector compacto: el nombre accesible incluye el código visible (Label i
 for (const { prefix, lang } of LOCALES) {
 	test(`Header desktop justo en ${DESKTOP_NAV_MIN_WIDTH}px en «${lang}»: sin menú móvil ni overflow`, async ({
 		page,
-	}) => {
+	}, testInfo) => {
+		test.skip(
+			testInfo.project.name !== 'desktop-1280',
+			'El test fija explícitamente el viewport de 1152px y solo necesita una ejecución.',
+		);
+
 		await page.setViewportSize({ width: DESKTOP_NAV_MIN_WIDTH, height: 900 });
 		await page.goto(prefix);
 
