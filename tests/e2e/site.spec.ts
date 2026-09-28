@@ -251,3 +251,30 @@ test('selector compacto: el nombre accesible incluye el código visible (Label i
 		await expect(link).toHaveAccessibleName(new RegExp(`^${code} `));
 	}
 });
+
+// Borde exacto del breakpoint desktop del Header (72rem): navegación y selector en una línea
+for (const { prefix, lang } of LOCALES) {
+	test(`Header desktop justo en ${DESKTOP_NAV_MIN_WIDTH}px en «${lang}»: sin menú móvil ni overflow`, async ({
+		page,
+	}) => {
+		await page.setViewportSize({ width: DESKTOP_NAV_MIN_WIDTH, height: 900 });
+		await page.goto(prefix);
+
+		const desktop = page.locator('.site-header__desktop');
+		await expect(desktop).toBeVisible();
+		await expect(page.locator('details.site-nav--mobile')).toBeHidden();
+		await expect(desktop.locator('nav.site-nav--desktop')).toBeVisible();
+		await expect(desktop.locator('nav.lang')).toBeVisible();
+
+		const overflow = await page.evaluate(() => {
+			const root = document.documentElement;
+			const header = document.querySelector<HTMLElement>('.site-header__inner')!;
+			return {
+				page: root.scrollWidth - root.clientWidth,
+				header: header.scrollWidth - header.clientWidth,
+			};
+		});
+		expect(overflow.page).toBeLessThanOrEqual(0);
+		expect(overflow.header).toBeLessThanOrEqual(0);
+	});
+}
