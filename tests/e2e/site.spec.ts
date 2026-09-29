@@ -247,7 +247,17 @@ for (const { prefix, tocLabel } of [
 		const standards = page.locator('section[aria-labelledby="confesion"] .documents h3');
 		await expect(standards).toHaveCount(3);
 		for (const title of await standards.allInnerTexts()) expect(title).toContain('Westminster');
+		// Resumen de lectura rápida: cuatro principios, fuera del TOC de profundización
+		const summary = page.locator('section[aria-labelledby="resumen-fe"]');
+		await expect(summary.locator('h2#resumen-fe')).toHaveCount(1);
+		await expect(summary.locator('.belief-summary > li')).toHaveCount(4);
+		await expect(summary.locator('.belief-summary h3')).toHaveCount(4);
+		await expect(toc.locator('a[href="#resumen-fe"]')).toHaveCount(0);
+
 		await expect(page.locator('h2#identidad')).toHaveCount(1);
+		await expect(
+			page.locator('section[aria-labelledby="identidad"] .identity-list > li'),
+		).toHaveCount(4);
 		await expect(page.locator('h2#tradicion-reformada')).toHaveCount(1);
 		await expect(
 			page.locator(`section[aria-labelledby="ensenanza"] a[href$="/${prefix}sermones/"]`),
@@ -255,10 +265,34 @@ for (const { prefix, tocLabel } of [
 	});
 }
 
-test('Lo que creemos: la Escritura encabeza el contenido doctrinal', async ({ page }) => {
+test('Lo que creemos: resumen primero y la Escritura encabeza la profundización', async ({
+	page,
+}) => {
 	await page.goto('lo-que-creemos/');
-	await expect(page.locator('main h2').first()).toHaveText('La Escritura, nuestra autoridad');
+	await expect(page.locator('main h2').first()).toHaveText('En pocas palabras');
+	await expect(page.locator('main h2').nth(1)).toHaveText('La Escritura, nuestra autoridad');
 });
+
+for (const { prefix } of LOCALES) {
+	test(`Contacto en «/${prefix}»: exactamente tres redes oficiales`, async ({ page }) => {
+		await page.goto(`${prefix}contacto/`);
+		const cards = page.locator('section[aria-labelledby="redes"] .social-card');
+		await expect(cards).toHaveCount(3);
+		await expect(cards.locator('h3')).toHaveText(['Facebook', 'Instagram', 'YouTube']);
+		for (const link of await cards.locator('a').all()) {
+			await expect(link).toHaveAttribute('href', /^https:\/\//);
+			await expect(link).toHaveAttribute('rel', /noopener/);
+		}
+	});
+
+	test(`Quiénes somos en «/${prefix}»: historia y cinco áreas de servicio`, async ({ page }) => {
+		await page.goto(`${prefix}nosotros/`);
+		await expect(page.locator('h2#historia')).toHaveCount(1);
+		await expect(page.locator('section[aria-labelledby="enfoque"] .focus-list > li')).toHaveCount(
+			5,
+		);
+	});
+}
 
 test('selector compacto: el nombre accesible incluye el código visible (Label in Name)', async ({
 	page,

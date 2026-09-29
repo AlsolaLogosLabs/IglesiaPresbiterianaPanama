@@ -42,7 +42,7 @@ const es = {
 		site.schedule.map((item) => [item.id, { day: item.day, name: item.name }]),
 	) as ServiceLabels,
 	home: {
-		lead: `Somos una iglesia cristiana, bíblica y reformada en ${city}. Te invitamos a acompañarnos en nuestras reuniones semanales.`,
+		lead: `Somos una iglesia cristiana, presbiteriana y reformada en ${city}. La Biblia es nuestra autoridad suprema y buscamos crecer por medio de la enseñanza, el discipulado y el cuidado pastoral.`,
 		visitCta: 'Visítanos',
 		sermonsCta: 'Ver sermones',
 		visitPanel: 'Visítanos',
@@ -52,7 +52,7 @@ const es = {
 		historyCta: 'Conoce nuestra historia',
 		beliefsTitle: 'Lo que creemos',
 		beliefsText:
-			'Somos una iglesia bíblica y reformada que se suscribe a la Confesión de Fe y los Catecismos de Westminster.',
+			'La Escritura es nuestra autoridad suprema. Como iglesia presbiteriana y reformada, nos suscribimos a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor.',
 		beliefsCta: 'Conoce lo que creemos',
 		sermonsTitle: 'Sermones',
 		latestSermon: 'Último sermón',
@@ -64,19 +64,36 @@ const es = {
 		viewYoutube: 'Ver canal oficial en YouTube',
 	},
 	about: {
-		title: 'Nosotros',
-		metaDescription: `Conoce la historia y el enfoque de la ${name}, una iglesia cristiana, bíblica y reformada en ${city}.`,
-		description: `Somos la ${name}, una iglesia cristiana, bíblica y reformada en ${city}.`,
+		title: 'Quiénes somos',
+		metaDescription: `Conoce la historia de la ${name}, una iglesia cristiana, presbiteriana y reformada en ${city}, y cómo busca servir.`,
+		description: `Somos una iglesia cristiana, presbiteriana y reformada en ${city}.`,
 		historyTitle: 'Nuestra historia',
 		history: [
 			`El trabajo que dio origen a la ${name} comenzó en 2011 por medio de la Agencia Presbiteriana de Misiones Transculturales (APMT) de la Iglesia Presbiteriana de Brasil, con el trabajo misionero pionero de Gilberto Botelho.`,
-			'Con el paso de los años, la congregación avanzó en su organización y consolidación como iglesia local.',
-			'Durante 2025 se avanzó en el establecimiento de liderazgo presbiteriano local, incluyendo la elección e instalación de tres presbíteros nacionales.',
+			'Desde entonces, la congregación ha avanzado en su organización como iglesia local. En 2025 dio un paso importante en el establecimiento de liderazgo presbiteriano local con la elección e instalación de tres presbíteros nacionales.',
 		],
-		focusTitle: 'Nuestro enfoque',
+		focusTitle: 'Cómo buscamos servir',
 		focus: [
-			'Buscamos crecer como iglesia por medio de la enseñanza de la Palabra, el discipulado, el cuidado pastoral y la formación de nuevos líderes.',
-			'También deseamos contribuir a la formación de nuevos obreros y a la plantación de más iglesias reformadas en Panamá.',
+			{
+				term: 'Enseñanza bíblica',
+				text: 'Enseñamos la Palabra de Dios para crecer como iglesia.',
+			},
+			{
+				term: 'Discipulado',
+				text: 'Buscamos acompañar a los creyentes en su crecimiento cristiano.',
+			},
+			{
+				term: 'Cuidado pastoral',
+				text: 'Procuramos cuidar pastoralmente de la congregación.',
+			},
+			{
+				term: 'Formación',
+				text: 'Formamos nuevos líderes y obreros para el servicio de la iglesia.',
+			},
+			{
+				term: 'Plantación de iglesias',
+				text: 'Deseamos contribuir a la plantación de más iglesias reformadas en Panamá.',
+			},
 		],
 		moreTitle: 'Conoce más',
 		beliefsCard: {
@@ -98,7 +115,26 @@ const es = {
 	beliefs: {
 		title: 'Lo que creemos',
 		metaDescription: `Conoce la fe cristiana, reformada y presbiteriana de la ${name}, los credos históricos y los Estándares de Westminster que orientan nuestra confesión.`,
-		description: `La ${name} es una iglesia cristiana, bíblica y reformada.`,
+		description: 'La fe que confesamos como iglesia cristiana, presbiteriana y reformada.',
+		summaryTitle: 'En pocas palabras',
+		summary: [
+			{
+				title: 'Autoridad',
+				text: 'La Biblia es la Palabra de Dios y la autoridad suprema para nuestra fe y vida.',
+			},
+			{
+				title: 'Salvación',
+				text: 'Confesamos la salvación por la gracia de Dios mediante Jesucristo.',
+			},
+			{
+				title: 'Confesión',
+				text: 'Nos suscribimos a la Confesión de Fe y a los Catecismos Mayor y Menor de Westminster, subordinados a la Escritura.',
+			},
+			{
+				title: 'Iglesia',
+				text: 'Valoramos la enseñanza y el discipulado, celebramos el Bautismo y la Cena del Señor y reconocemos el gobierno de la iglesia por medio de presbíteros.',
+			},
+		],
 		tocLabel: 'En esta página',
 		toc: {
 			scripture: 'Escritura',
@@ -133,7 +169,7 @@ const es = {
 			},
 		],
 		confessionEyebrow: 'Estándares confesionales',
-		confessionTitle: 'Nuestra confesión reformada y presbiteriana',
+		confessionTitle: 'Los Estándares de Westminster que suscribimos',
 		confessionIntro:
 			'Como iglesia presbiteriana y reformada, nos suscribimos a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor de Westminster. Estos documentos, subordinados a las Sagradas Escrituras, presentan de manera ordenada el sistema de doctrina que confesamos.',
 		standards: [
@@ -150,9 +186,25 @@ const es = {
 				text: 'El Catecismo Menor resume de forma concisa las doctrinas fundamentales de la fe y los deberes de la vida cristiana. Su formato de preguntas y respuestas lo convierte en una herramienta especialmente útil para la enseñanza, el discipulado y la formación de la congregación.',
 			},
 		],
-		identityTitle: 'Nuestra identidad presbiteriana y reformada',
-		identityText:
-			'Como iglesia presbiteriana y reformada, procuramos que la Escritura gobierne nuestra doctrina, nuestra adoración y nuestra vida. Confesamos la salvación por la gracia de Dios mediante Jesucristo, valoramos la enseñanza y el discipulado doctrinal, administramos el Bautismo y la Cena del Señor como los sacramentos instituidos por Cristo y reconocemos el gobierno pastoral de la Iglesia mediante presbíteros.',
+		identityTitle: 'Qué significa ser presbiterianos y reformados',
+		identity: [
+			{
+				term: 'La Escritura',
+				text: 'Procuramos que gobierne nuestra doctrina, nuestra adoración y nuestra vida.',
+			},
+			{
+				term: 'La salvación',
+				text: 'Es por la gracia de Dios mediante Jesucristo.',
+			},
+			{
+				term: 'Los sacramentos',
+				text: 'Administramos el Bautismo y la Cena del Señor, instituidos por Cristo.',
+			},
+			{
+				term: 'El gobierno de la iglesia',
+				text: 'Se ejerce por medio de presbíteros.',
+			},
+		],
 		traditionEyebrow: 'Referencia histórica',
 		traditionTitle: 'Otros documentos de la tradición reformada',
 		traditionText: [
@@ -189,7 +241,7 @@ const es = {
 	visit: {
 		title: 'Visítanos',
 		metaDescription: `Conoce la ubicación y los horarios semanales de la ${name} en ${venue}, ${street}, ${city}.`,
-		description: `Te invitamos a acompañarnos en nuestras reuniones semanales en ${city}.`,
+		description: `Encuentra nuestra ubicación y los horarios de nuestras reuniones semanales en ${city}.`,
 		whereTitle: 'Dónde nos reunimos',
 		photoAlt: `Interior del lugar de reunión de la ${name} durante un culto.`,
 		mapsCta: 'Abrir en Google Maps',
@@ -202,13 +254,7 @@ const es = {
 		metaDescription: `Redes sociales oficiales e información para visitar la ${name} en ${city}.`,
 		description: 'Puedes encontrarnos en nuestros canales oficiales.',
 		socialTitle: 'Redes sociales oficiales',
-		socialText: {
-			Facebook: 'Visita nuestra página oficial en Facebook.',
-			Instagram: 'Visita nuestro perfil oficial en Instagram.',
-			YouTube: 'Visita nuestro canal oficial en YouTube.',
-		} as Record<string, string>,
-		socialFallback: (network: string) => `Visita nuestra cuenta oficial en ${network}.`,
-		socialCta: (network: string) => `Ir a ${network}`,
+		socialCta: (network: string) => `Visitar ${network}`,
 		visitTitle: 'Visítanos',
 		visitText: 'Consulta la ubicación y los horarios de nuestras reuniones.',
 		visitCta: 'Ver información para visitarnos',
@@ -232,7 +278,7 @@ const es = {
 		linksTitle: 'Enlaces externos',
 		linksText: (networks: string) =>
 			`El sitio incluye enlaces a nuestras cuentas oficiales en ${networks}. Al abrir uno de estos enlaces sales de este sitio y pasas al servicio correspondiente.`,
-		embedsTitle: 'Contenido embebido',
+		embedsTitle: 'Contenido incrustado',
 		embedsText:
 			'Las páginas de sermones pueden incorporar videos de YouTube mediante su dominio youtube-nocookie.com, y el listado de sermones puede mostrar miniaturas servidas por YouTube. En esos casos el contenido se carga desde el proveedor dentro de este sitio. Al interactuar con contenido externo, el proveedor correspondiente puede aplicar sus propias políticas y tecnologías.',
 		externalPolicies:
@@ -278,7 +324,7 @@ const en: Messages = {
 		worship: { day: 'Sunday', name: 'Worship Service' },
 	},
 	home: {
-		lead: 'We are a Christian, biblical and Reformed church in Panama City. We invite you to join us at our weekly gatherings.',
+		lead: 'We are a Christian, Presbyterian and Reformed church in Panama City. The Bible is our supreme authority, and we seek to grow through teaching, discipleship and pastoral care.',
 		visitCta: 'Visit us',
 		sermonsCta: 'View sermons',
 		visitPanel: 'Visit us',
@@ -288,7 +334,7 @@ const en: Messages = {
 		historyCta: 'Learn about our history',
 		beliefsTitle: 'What we believe',
 		beliefsText:
-			'We are a biblical and Reformed church that subscribes to the Westminster Confession of Faith and Catechisms.',
+			'Scripture is our supreme authority. As a Presbyterian and Reformed church, we subscribe to the Westminster Confession of Faith and the Larger and Shorter Catechisms.',
 		beliefsCta: 'Learn what we believe',
 		sermonsTitle: 'Sermons',
 		latestSermon: 'Latest sermon',
@@ -301,18 +347,35 @@ const en: Messages = {
 	},
 	about: {
 		title: 'About us',
-		metaDescription: `Learn about the history and focus of the ${name}, a Christian, biblical and Reformed church in Panama City.`,
-		description: `We are the ${name}, a Christian, biblical and Reformed church in Panama City.`,
+		metaDescription: `Learn about the history of the ${name}, a Christian, Presbyterian and Reformed church in Panama City, and how it seeks to serve.`,
+		description: 'We are a Christian, Presbyterian and Reformed church in Panama City.',
 		historyTitle: 'Our history',
 		history: [
 			`The work that gave rise to the ${name} began in 2011 through the Presbyterian Agency for Transcultural Missions (APMT) of the Presbyterian Church of Brazil, with the pioneering missionary work of Gilberto Botelho.`,
-			'Over the years, the congregation advanced in its organization and consolidation as a local church.',
-			'During 2025, progress was made in establishing local Presbyterian leadership, including the election and installation of three national elders.',
+			'Since then, the congregation has grown in its organization as a local church. In 2025 it took an important step in establishing local Presbyterian leadership with the election and installation of three national elders.',
 		],
-		focusTitle: 'Our focus',
+		focusTitle: 'How we seek to serve',
 		focus: [
-			'We seek to grow as a church through the teaching of the Word, discipleship, pastoral care and the training of new leaders.',
-			'We also desire to contribute to the training of new workers and to the planting of more Reformed churches in Panama.',
+			{
+				term: 'Bible teaching',
+				text: 'We teach the Word of God in order to grow as a church.',
+			},
+			{
+				term: 'Discipleship',
+				text: 'We seek to walk alongside believers as they grow in the Christian life.',
+			},
+			{
+				term: 'Pastoral care',
+				text: 'We seek to provide pastoral care for the congregation.',
+			},
+			{
+				term: 'Training',
+				text: 'We train new leaders and workers to serve the church.',
+			},
+			{
+				term: 'Church planting',
+				text: 'We desire to contribute to the planting of more Reformed churches in Panama.',
+			},
 		],
 		moreTitle: 'Learn more',
 		beliefsCard: {
@@ -334,7 +397,26 @@ const en: Messages = {
 	beliefs: {
 		title: 'What we believe',
 		metaDescription: `Learn about the Christian, Reformed and Presbyterian faith of the ${name}, the historic creeds and the Westminster Standards that guide our confession.`,
-		description: `The ${name} is a Christian, biblical and Reformed church.`,
+		description: 'The faith we confess as a Christian, Presbyterian and Reformed church.',
+		summaryTitle: 'At a glance',
+		summary: [
+			{
+				title: 'Authority',
+				text: 'The Bible is the Word of God and the supreme authority for our faith and life.',
+			},
+			{
+				title: 'Salvation',
+				text: 'We confess salvation by the grace of God through Jesus Christ.',
+			},
+			{
+				title: 'Confession',
+				text: 'We subscribe to the Westminster Confession of Faith and the Larger and Shorter Catechisms, subordinate to Scripture.',
+			},
+			{
+				title: 'Church',
+				text: 'We value teaching and discipleship, celebrate Baptism and the Lord’s Supper, and recognize the government of the church through elders.',
+			},
+		],
 		tocLabel: 'On this page',
 		toc: {
 			scripture: 'Scripture',
@@ -369,7 +451,7 @@ const en: Messages = {
 			},
 		],
 		confessionEyebrow: 'Confessional standards',
-		confessionTitle: 'Our Reformed and Presbyterian confession',
+		confessionTitle: 'The Westminster Standards we subscribe to',
 		confessionIntro:
 			'As a Presbyterian and Reformed church, we subscribe to the Westminster Confession of Faith and the Westminster Larger and Shorter Catechisms. These documents, subordinate to Holy Scripture, present in an orderly way the system of doctrine we confess.',
 		standards: [
@@ -386,9 +468,25 @@ const en: Messages = {
 				text: 'The Shorter Catechism concisely summarizes the fundamental doctrines of the faith and the duties of the Christian life. Its question-and-answer format makes it an especially useful tool for teaching, discipleship and the formation of the congregation.',
 			},
 		],
-		identityTitle: 'Our Presbyterian and Reformed identity',
-		identityText:
-			'As a Presbyterian and Reformed church, we seek to have Scripture govern our doctrine, our worship and our life. We confess salvation by the grace of God through Jesus Christ, we value teaching and doctrinal discipleship, we administer Baptism and the Lord’s Supper as the sacraments instituted by Christ, and we recognize the pastoral government of the Church through elders.',
+		identityTitle: 'What it means to be Presbyterian and Reformed',
+		identity: [
+			{
+				term: 'Scripture',
+				text: 'We seek to have it govern our doctrine, our worship and our life.',
+			},
+			{
+				term: 'Salvation',
+				text: 'It is by the grace of God through Jesus Christ.',
+			},
+			{
+				term: 'The sacraments',
+				text: 'We administer Baptism and the Lord’s Supper, instituted by Christ.',
+			},
+			{
+				term: 'Church government',
+				text: 'It is exercised through elders.',
+			},
+		],
 		traditionEyebrow: 'Historical reference',
 		traditionTitle: 'Other documents in the Reformed tradition',
 		traditionText: [
@@ -425,7 +523,7 @@ const en: Messages = {
 	visit: {
 		title: 'Visit us',
 		metaDescription: `Find the location and weekly schedule of the ${name} at ${venue}, ${street}, ${city}.`,
-		description: 'We invite you to join us at our weekly gatherings in Panama City.',
+		description: 'Find our location and the schedule of our weekly gatherings in Panama City.',
 		whereTitle: 'Where we meet',
 		photoAlt: `Interior of the ${name} meeting place during a worship service.`,
 		mapsCta: 'Open in Google Maps',
@@ -438,13 +536,7 @@ const en: Messages = {
 		metaDescription: `Official social media and information for visiting the ${name} in Panama City.`,
 		description: 'You can find us through our official channels.',
 		socialTitle: 'Official social media',
-		socialText: {
-			Facebook: 'Visit our official Facebook page.',
-			Instagram: 'Visit our official Instagram profile.',
-			YouTube: 'Visit our official YouTube channel.',
-		},
-		socialFallback: (network) => `Visit our official ${network} account.`,
-		socialCta: (network) => `Go to ${network}`,
+		socialCta: (network) => `Visit ${network}`,
 		visitTitle: 'Visit us',
 		visitText: 'See the location and schedule of our weekly gatherings.',
 		visitCta: 'See information for visiting us',
@@ -510,7 +602,7 @@ const ptBr: Messages = {
 		worship: { day: 'Domingo', name: 'Culto' },
 	},
 	home: {
-		lead: 'Somos uma igreja cristã, bíblica e reformada na Cidade do Panamá. Convidamos você a nos acompanhar em nossas reuniões semanais.',
+		lead: 'Somos uma igreja cristã, presbiteriana e reformada na Cidade do Panamá. A Bíblia é nossa autoridade suprema, e buscamos crescer por meio do ensino, do discipulado e do cuidado pastoral.',
 		visitCta: 'Visite-nos',
 		sermonsCta: 'Ver sermões',
 		visitPanel: 'Visite-nos',
@@ -520,7 +612,7 @@ const ptBr: Messages = {
 		historyCta: 'Conheça nossa história',
 		beliefsTitle: 'O que cremos',
 		beliefsText:
-			'Somos uma igreja bíblica e reformada que subscreve a Confissão de Fé e os Catecismos de Westminster.',
+			'A Escritura é nossa autoridade suprema. Como igreja presbiteriana e reformada, subscrevemos a Confissão de Fé de Westminster e os Catecismos Maior e Breve.',
 		beliefsCta: 'Conheça o que cremos',
 		sermonsTitle: 'Sermões',
 		latestSermon: 'Último sermão',
@@ -533,18 +625,35 @@ const ptBr: Messages = {
 	},
 	about: {
 		title: 'Sobre nós',
-		metaDescription: `Conheça a história e o foco da ${name}, uma igreja cristã, bíblica e reformada na Cidade do Panamá.`,
-		description: `Somos a ${name}, uma igreja cristã, bíblica e reformada na Cidade do Panamá.`,
+		metaDescription: `Conheça a história da ${name}, uma igreja cristã, presbiteriana e reformada na Cidade do Panamá, e como ela busca servir.`,
+		description: 'Somos uma igreja cristã, presbiteriana e reformada na Cidade do Panamá.',
 		historyTitle: 'Nossa história',
 		history: [
 			`O trabalho que deu origem à ${name} começou em 2011 por meio da Agência Presbiteriana de Missões Transculturais (APMT) da Igreja Presbiteriana do Brasil, com o trabalho missionário pioneiro de Gilberto Botelho.`,
-			'Com o passar dos anos, a congregação avançou em sua organização e consolidação como igreja local.',
-			'Durante 2025, avançou-se no estabelecimento de uma liderança presbiteriana local, incluindo a eleição e instalação de três presbíteros nacionais.',
+			'Desde então, a congregação avançou em sua organização como igreja local. Em 2025, deu um passo importante no estabelecimento de uma liderança presbiteriana local com a eleição e instalação de três presbíteros nacionais.',
 		],
-		focusTitle: 'Nosso foco',
+		focusTitle: 'Como buscamos servir',
 		focus: [
-			'Buscamos crescer como igreja por meio do ensino da Palavra, do discipulado, do cuidado pastoral e da formação de novos líderes.',
-			'Também desejamos contribuir para a formação de novos obreiros e para a plantação de mais igrejas reformadas no Panamá.',
+			{
+				term: 'Ensino bíblico',
+				text: 'Ensinamos a Palavra de Deus para crescer como igreja.',
+			},
+			{
+				term: 'Discipulado',
+				text: 'Buscamos acompanhar os crentes em seu crescimento cristão.',
+			},
+			{
+				term: 'Cuidado pastoral',
+				text: 'Procuramos cuidar pastoralmente da congregação.',
+			},
+			{
+				term: 'Formação',
+				text: 'Formamos novos líderes e obreiros para o serviço da igreja.',
+			},
+			{
+				term: 'Plantação de igrejas',
+				text: 'Desejamos contribuir para a plantação de mais igrejas reformadas no Panamá.',
+			},
 		],
 		moreTitle: 'Saiba mais',
 		beliefsCard: {
@@ -566,7 +675,26 @@ const ptBr: Messages = {
 	beliefs: {
 		title: 'O que cremos',
 		metaDescription: `Conheça a fé cristã, reformada e presbiteriana da ${name}, os credos históricos e os Padrões de Westminster que orientam nossa confissão.`,
-		description: `A ${name} é uma igreja cristã, bíblica e reformada.`,
+		description: 'A fé que confessamos como igreja cristã, presbiteriana e reformada.',
+		summaryTitle: 'Em poucas palavras',
+		summary: [
+			{
+				title: 'Autoridade',
+				text: 'A Bíblia é a Palavra de Deus e a autoridade suprema para nossa fé e vida.',
+			},
+			{
+				title: 'Salvação',
+				text: 'Confessamos a salvação pela graça de Deus mediante Jesus Cristo.',
+			},
+			{
+				title: 'Confissão',
+				text: 'Subscrevemos a Confissão de Fé e os Catecismos Maior e Breve de Westminster, subordinados à Escritura.',
+			},
+			{
+				title: 'Igreja',
+				text: 'Valorizamos o ensino e o discipulado, celebramos o Batismo e a Ceia do Senhor e reconhecemos o governo da igreja por meio de presbíteros.',
+			},
+		],
 		tocLabel: 'Nesta página',
 		toc: {
 			scripture: 'Escritura',
@@ -601,7 +729,7 @@ const ptBr: Messages = {
 			},
 		],
 		confessionEyebrow: 'Padrões confessionais',
-		confessionTitle: 'Nossa confissão reformada e presbiteriana',
+		confessionTitle: 'Os Padrões de Westminster que subscrevemos',
 		confessionIntro:
 			'Como igreja presbiteriana e reformada, subscrevemos a Confissão de Fé de Westminster e os Catecismos Maior e Breve de Westminster. Esses documentos, subordinados às Sagradas Escrituras, apresentam de maneira ordenada o sistema de doutrina que confessamos.',
 		standards: [
@@ -618,9 +746,25 @@ const ptBr: Messages = {
 				text: 'O Breve Catecismo resume de forma concisa as doutrinas fundamentais da fé e os deveres da vida cristã. Seu formato de perguntas e respostas o torna uma ferramenta especialmente útil para o ensino, o discipulado e a formação da congregação.',
 			},
 		],
-		identityTitle: 'Nossa identidade presbiteriana e reformada',
-		identityText:
-			'Como igreja presbiteriana e reformada, buscamos que a Escritura governe nossa doutrina, nossa adoração e nossa vida. Confessamos a salvação pela graça de Deus mediante Jesus Cristo, valorizamos o ensino e o discipulado doutrinário, administramos o Batismo e a Ceia do Senhor como os sacramentos instituídos por Cristo e reconhecemos o governo pastoral da Igreja por meio de presbíteros.',
+		identityTitle: 'O que significa ser presbiterianos e reformados',
+		identity: [
+			{
+				term: 'A Escritura',
+				text: 'Buscamos que ela governe nossa doutrina, nossa adoração e nossa vida.',
+			},
+			{
+				term: 'A salvação',
+				text: 'É pela graça de Deus mediante Jesus Cristo.',
+			},
+			{
+				term: 'Os sacramentos',
+				text: 'Administramos o Batismo e a Ceia do Senhor, instituídos por Cristo.',
+			},
+			{
+				term: 'O governo da igreja',
+				text: 'É exercido por meio de presbíteros.',
+			},
+		],
 		traditionEyebrow: 'Referência histórica',
 		traditionTitle: 'Outros documentos da tradição reformada',
 		traditionText: [
@@ -658,7 +802,7 @@ const ptBr: Messages = {
 		title: 'Visite-nos',
 		metaDescription: `Conheça a localização e os horários semanais da ${name} em ${venue}, ${street}, ${city}.`,
 		description:
-			'Convidamos você a nos acompanhar em nossas reuniões semanais na Cidade do Panamá.',
+			'Encontre nossa localização e os horários de nossas reuniões semanais na Cidade do Panamá.',
 		whereTitle: 'Onde nos reunimos',
 		photoAlt: `Interior do local de reunião da ${name} durante um culto.`,
 		mapsCta: 'Abrir no Google Maps',
@@ -671,13 +815,7 @@ const ptBr: Messages = {
 		metaDescription: `Redes sociais oficiais e informações para visitar a ${name} na Cidade do Panamá.`,
 		description: 'Você pode nos encontrar em nossos canais oficiais.',
 		socialTitle: 'Redes sociais oficiais',
-		socialText: {
-			Facebook: 'Visite nossa página oficial no Facebook.',
-			Instagram: 'Visite nosso perfil oficial no Instagram.',
-			YouTube: 'Visite nosso canal oficial no YouTube.',
-		},
-		socialFallback: (network) => `Visite nossa conta oficial no ${network}.`,
-		socialCta: (network) => `Ir para ${network}`,
+		socialCta: (network) => `Visitar ${network}`,
 		visitTitle: 'Visite-nos',
 		visitText: 'Consulte a localização e os horários de nossas reuniões.',
 		visitCta: 'Ver informações para nos visitar',

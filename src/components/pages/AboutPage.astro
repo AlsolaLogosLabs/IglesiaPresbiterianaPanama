@@ -33,11 +33,14 @@ const cards = [
 		<section class="section section--surface" aria-labelledby="enfoque">
 			<div class="container split">
 				<h2 id="enfoque">{t.focusTitle}</h2>
-				<div class="prose">
-					{t.focus.map((paragraph) => (
-						<p>{paragraph}</p>
+				<ul class="focus-list">
+					{t.focus.map((item) => (
+						<li>
+							<strong>{item.term}</strong>
+							<p>{item.text}</p>
+						</li>
 					))}
-				</div>
+				</ul>
 			</div>
 		</section>
 
@@ -98,6 +101,28 @@ const cards = [
 		max-width: 65ch;
 	}
 
+	/* Enfoque: lista editorial escaneable, separada solo por filetes */
+	.focus-list {
+		display: grid;
+		gap: var(--space-4);
+		max-width: 65ch;
+		padding: 0;
+		list-style: none;
+		line-height: 1.65;
+	}
+
+	.focus-list li {
+		display: grid;
+		gap: var(--space-1);
+		padding-top: var(--space-4);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.focus-list strong {
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-brand);
+	}
+
 	.card-list {
 		display: grid;
 		gap: var(--space-4);
@@ -144,7 +169,8 @@ const cards = [
 			padding-block: var(--space-16);
 		}
 
-		.prose p {
+		.prose p,
+		.focus-list {
 			font-size: var(--font-size-lg);
 		}
 

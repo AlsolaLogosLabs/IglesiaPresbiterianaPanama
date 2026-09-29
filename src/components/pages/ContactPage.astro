@@ -22,7 +22,6 @@ const routes = localizedRoutes(locale);
 					{site.social.map((link) => (
 						<li class="social-card">
 							<h3>{link.name}</h3>
-							<p>{t.socialText[link.name] ?? t.socialFallback(link.name)}</p>
 							<a class="button button--secondary" href={link.url} rel="noopener">
 								{t.socialCta(link.name)}
 							</a>
@@ -92,10 +91,6 @@ const routes = localizedRoutes(locale);
 	h3 {
 		font-size: var(--font-size-xl);
 		letter-spacing: -0.01em;
-	}
-
-	.social-card p {
-		color: var(--color-text-muted);
 	}
 
 	.social-card .button {

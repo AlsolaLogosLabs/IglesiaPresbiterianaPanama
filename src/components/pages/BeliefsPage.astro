@@ -23,6 +23,21 @@ const toc = [
 	<main id="main-content">
 		<PageHeader title={t.title} description={t.description} />
 
+		<!-- Lectura rápida; el TOC apunta solo a las secciones de profundización -->
+		<section class="section summary" aria-labelledby="resumen-fe">
+			<div class="container split">
+				<h2 id="resumen-fe">{t.summaryTitle}</h2>
+				<ul class="belief-summary">
+					{t.summary.map((point) => (
+						<li>
+							<h3>{point.title}</h3>
+							<p>{point.text}</p>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
 		<nav class="toc" aria-label={t.tocLabel}>
 			<div class="container toc__inner">
 				<p class="toc__label" aria-hidden="true">
@@ -90,9 +105,14 @@ const toc = [
 		<section class="section section--surface" aria-labelledby="identidad">
 			<div class="container split">
 				<h2 id="identidad">{t.identityTitle}</h2>
-				<div class="prose">
-					<p>{t.identityText}</p>
-				</div>
+				<ul class="identity-list">
+					{t.identity.map((item) => (
+						<li>
+							<strong>{item.term}</strong>
+							<p>{item.text}</p>
+						</li>
+					))}
+				</ul>
 			</div>
 		</section>
 
@@ -127,6 +147,7 @@ const toc = [
 <style>
 	/* Navegación interna: discreta, sin JS ni sticky; envuelve en móvil */
 	.toc {
+		border-top: 1px solid var(--color-border);
 		border-bottom: 1px solid var(--color-border);
 	}
 
@@ -249,6 +270,39 @@ const toc = [
 		font-weight: var(--font-weight-semibold);
 	}
 
+	/* Resumen y lista de identidad: texto con filetes, sin tarjetas */
+	.belief-summary,
+	.identity-list {
+		display: grid;
+		gap: var(--space-6);
+		padding: 0;
+		list-style: none;
+		line-height: 1.65;
+	}
+
+	.belief-summary li,
+	.identity-list li {
+		display: grid;
+		align-content: start;
+		gap: var(--space-2);
+		padding-top: var(--space-4);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.identity-list {
+		gap: var(--space-4);
+		max-width: 65ch;
+	}
+
+	.identity-list li {
+		gap: var(--space-1);
+	}
+
+	.identity-list strong {
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-brand);
+	}
+
 	.prose .button {
 		margin-top: var(--space-4);
 		font-size: var(--font-size-base);
@@ -259,17 +313,26 @@ const toc = [
 			padding-block: var(--space-16);
 		}
 
-		.prose {
+		.prose,
+		.belief-summary,
+		.identity-list {
 			font-size: 1.0625rem;
 		}
 
 		.prose__intro {
 			font-size: 1.1875rem;
 		}
+
+		.belief-summary {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: var(--space-8);
+		}
 	}
 
 	@media (min-width: 64rem) {
-		.prose {
+		.prose,
+		.belief-summary,
+		.identity-list {
 			font-size: var(--font-size-lg);
 		}
 
