@@ -42,7 +42,7 @@ const es = {
 		site.schedule.map((item) => [item.id, { day: item.day, name: item.name }]),
 	) as ServiceLabels,
 	home: {
-		lead: `Somos una iglesia cristiana, presbiteriana y reformada en ${city}. La Biblia es nuestra autoridad suprema y buscamos crecer por medio de la enseñanza, el discipulado y el cuidado pastoral.`,
+		lead: `Somos una iglesia cristiana, presbiteriana y reformada en ${city}. La Biblia es nuestra autoridad suprema, y buscamos crecer por medio de la enseñanza, el discipulado y la formación para el servicio.`,
 		visitCta: 'Visítanos',
 		sermonsCta: 'Ver sermones',
 		visitPanel: 'Visítanos',
@@ -76,27 +76,27 @@ const es = {
 		focus: [
 			{
 				term: 'Enseñanza bíblica',
-				text: 'Enseñamos la Palabra de Dios para crecer como iglesia.',
+				text: 'Enseñamos la Palabra de Dios para que la congregación conozca, ame y viva la verdad.',
 			},
 			{
-				term: 'Discipulado',
-				text: 'Buscamos acompañar a los creyentes en su crecimiento cristiano.',
+				term: 'Discipulado y madurez',
+				text: 'Acompañamos a los creyentes para que crezcan en conocimiento, carácter, dominio propio y una vida cada vez más responsable delante de Dios.',
 			},
 			{
-				term: 'Cuidado pastoral',
-				text: 'Procuramos cuidar pastoralmente de la congregación.',
+				term: 'Pastoreo para el servicio',
+				text: 'Los pastores y presbíteros procuran cuidar, enseñar y equipar a la iglesia para que cada creyente crezca en madurez y pueda servir con los dones y responsabilidades que ha recibido.',
 			},
 			{
-				term: 'Formación',
-				text: 'Formamos nuevos líderes y obreros para el servicio de la iglesia.',
-			},
-			{
-				term: 'Plantación de iglesias',
-				text: 'Deseamos contribuir a la plantación de más iglesias reformadas en Panamá.',
+				term: 'Formación y multiplicación',
+				text: 'Buscamos formar creyentes capaces de servir, enseñar, acompañar y discipular a otros, para que el evangelio sea conocido y más personas crezcan como discípulos de Cristo.',
 			},
 			{
 				term: 'Vocación y vida diaria',
 				text: 'Animamos a los creyentes a servir a Dios con fidelidad en su familia, trabajo, profesión y demás responsabilidades de la vida.',
+			},
+			{
+				term: 'Misión y plantación de iglesias',
+				text: 'Deseamos formar nuevos obreros, dar testimonio del evangelio y contribuir a la plantación de más iglesias reformadas en Panamá.',
 			},
 		],
 		moreTitle: 'Conoce más',
@@ -136,7 +136,7 @@ const es = {
 			},
 			{
 				title: 'Iglesia',
-				text: 'Valoramos la enseñanza y el discipulado, celebramos el Bautismo y la Cena del Señor y reconocemos el gobierno de la iglesia por medio de presbíteros.',
+				text: 'Cristo edifica a su iglesia por medio de la Palabra, los sacramentos y el servicio de sus oficiales. Los pastores y presbíteros enseñan, cuidan y equipan a la congregación para la madurez y el servicio.',
 			},
 			{
 				title: 'Vocación',
@@ -211,7 +211,7 @@ const es = {
 			},
 			{
 				term: 'El gobierno de la iglesia',
-				text: 'Se ejerce por medio de presbíteros.',
+				text: 'Cristo guía y cuida a su iglesia por medio de sus oficiales. Los presbíteros están llamados a pastorear, enseñar y equipar a la congregación para una vida cristiana madura y activa.',
 			},
 		],
 		vocationEyebrow: 'Vocación y vida cristiana',
@@ -222,6 +222,7 @@ const es = {
 			'El trabajo, la familia, el estudio, las profesiones, la cultura y el servicio al prójimo son ámbitos en los que procuramos vivir con fidelidad, honestidad y gratitud delante de Dios.',
 			'Un médico, un abogado, un maestro, un empresario, un trabajador, un estudiante o una persona dedicada al hogar puede servir fielmente a Dios desde su propia vocación.',
 			'Desde la creación, Dios encomendó al ser humano responsabilidades sobre el mundo que hizo. Entendemos esa tarea como una mayordomía: desarrollar responsablemente los dones recibidos, cuidar la creación y poner nuestro trabajo al servicio de Dios y del prójimo.',
+			'La madurez cristiana también implica aprender a ejercer con fidelidad los dones, capacidades y responsabilidades que Dios nos ha dado. La iglesia procura formar discípulos arraigados en la Palabra, capaces de servir a otros, dar testimonio del evangelio y vivir fielmente bajo el señorío de Cristo en cada ámbito de la vida.',
 		],
 		vocationPoints: [
 			{
@@ -365,7 +366,7 @@ const en: Messages = {
 		worship: { day: 'Sunday', name: 'Worship Service' },
 	},
 	home: {
-		lead: 'We are a Christian, Presbyterian and Reformed church in Panama City. The Bible is our supreme authority, and we seek to grow through teaching, discipleship and pastoral care.',
+		lead: 'We are a Christian, Presbyterian and Reformed church in Panama City. The Bible is our supreme authority, and we seek to grow through teaching, discipleship and equipping for service.',
 		visitCta: 'Visit us',
 		sermonsCta: 'View sermons',
 		visitPanel: 'Visit us',
@@ -399,27 +400,27 @@ const en: Messages = {
 		focus: [
 			{
 				term: 'Bible teaching',
-				text: 'We teach the Word of God in order to grow as a church.',
+				text: 'We teach the Word of God so that the congregation may know, love and live the truth.',
 			},
 			{
-				term: 'Discipleship',
-				text: 'We seek to walk alongside believers as they grow in the Christian life.',
+				term: 'Discipleship and maturity',
+				text: 'We walk alongside believers so that they grow in knowledge, character, self-control and an increasingly responsible life before God.',
 			},
 			{
-				term: 'Pastoral care',
-				text: 'We seek to provide pastoral care for the congregation.',
+				term: 'Equipping for service',
+				text: 'Pastors and elders seek to care for, teach and equip the church so that every believer grows in maturity and can serve with the gifts and responsibilities they have received.',
 			},
 			{
-				term: 'Training',
-				text: 'We train new leaders and workers to serve the church.',
-			},
-			{
-				term: 'Church planting',
-				text: 'We desire to contribute to the planting of more Reformed churches in Panama.',
+				term: 'Training and multiplication',
+				text: 'We seek to train believers who are able to serve, teach, walk alongside and disciple others, so that the gospel may be known and more people may grow as disciples of Christ.',
 			},
 			{
 				term: 'Vocation and daily life',
 				text: 'We encourage believers to serve God faithfully in their family, work, profession and the other responsibilities of life.',
+			},
+			{
+				term: 'Mission and church planting',
+				text: 'We desire to train new workers, bear witness to the gospel and contribute to the planting of more Reformed churches in Panama.',
 			},
 		],
 		moreTitle: 'Learn more',
@@ -459,7 +460,7 @@ const en: Messages = {
 			},
 			{
 				title: 'Church',
-				text: 'We value teaching and discipleship, celebrate Baptism and the Lord’s Supper, and recognize the government of the church through elders.',
+				text: 'Christ builds up His church through the Word, the sacraments and the service of its officers. Pastors and elders teach, care for and equip the congregation for maturity and service.',
 			},
 			{
 				title: 'Vocation',
@@ -534,7 +535,7 @@ const en: Messages = {
 			},
 			{
 				term: 'Church government',
-				text: 'It is exercised through elders.',
+				text: 'Christ guides and cares for His church through its officers. Elders are called to shepherd, teach and equip the congregation for a mature and active Christian life.',
 			},
 		],
 		vocationEyebrow: 'Vocation and Christian life',
@@ -545,6 +546,7 @@ const en: Messages = {
 			'Work, family, study, professions, culture and service to our neighbor are all areas in which we seek to live faithfully, honestly and gratefully before God.',
 			'A doctor, a lawyer, a teacher, a business owner, a worker, a student or someone devoted to caring for the home can faithfully serve God through their own vocation.',
 			'From creation, God entrusted human beings with responsibilities over the world He made. We understand that task as stewardship: responsibly developing the gifts we have received, caring for creation and placing our work at the service of God and our neighbor.',
+			'Christian maturity also means learning to exercise faithfully the gifts, abilities and responsibilities God has given us. The church seeks to form disciples rooted in the Word, able to serve others, bear witness to the gospel and live faithfully under the lordship of Christ in every area of life.',
 		],
 		vocationPoints: [
 			{
@@ -684,7 +686,7 @@ const ptBr: Messages = {
 		worship: { day: 'Domingo', name: 'Culto' },
 	},
 	home: {
-		lead: 'Somos uma igreja cristã, presbiteriana e reformada na Cidade do Panamá. A Bíblia é nossa autoridade suprema, e buscamos crescer por meio do ensino, do discipulado e do cuidado pastoral.',
+		lead: 'Somos uma igreja cristã, presbiteriana e reformada na Cidade do Panamá. A Bíblia é nossa autoridade suprema, e buscamos crescer por meio do ensino, do discipulado e da formação para o serviço.',
 		visitCta: 'Visite-nos',
 		sermonsCta: 'Ver sermões',
 		visitPanel: 'Visite-nos',
@@ -718,27 +720,27 @@ const ptBr: Messages = {
 		focus: [
 			{
 				term: 'Ensino bíblico',
-				text: 'Ensinamos a Palavra de Deus para crescer como igreja.',
+				text: 'Ensinamos a Palavra de Deus para que a congregação conheça, ame e viva a verdade.',
 			},
 			{
-				term: 'Discipulado',
-				text: 'Buscamos acompanhar os crentes em seu crescimento cristão.',
+				term: 'Discipulado e maturidade',
+				text: 'Acompanhamos os crentes para que cresçam em conhecimento, caráter, domínio próprio e uma vida cada vez mais responsável diante de Deus.',
 			},
 			{
-				term: 'Cuidado pastoral',
-				text: 'Procuramos cuidar pastoralmente da congregação.',
+				term: 'Pastoreio para o serviço',
+				text: 'Os pastores e presbíteros procuram cuidar, ensinar e equipar a igreja para que cada crente cresça em maturidade e possa servir com os dons e responsabilidades que recebeu.',
 			},
 			{
-				term: 'Formação',
-				text: 'Formamos novos líderes e obreiros para o serviço da igreja.',
-			},
-			{
-				term: 'Plantação de igrejas',
-				text: 'Desejamos contribuir para a plantação de mais igrejas reformadas no Panamá.',
+				term: 'Formação e multiplicação',
+				text: 'Buscamos formar crentes capazes de servir, ensinar, acompanhar e discipular outros, para que o evangelho seja conhecido e mais pessoas cresçam como discípulos de Cristo.',
 			},
 			{
 				term: 'Vocação e vida diária',
 				text: 'Incentivamos os crentes a servir a Deus com fidelidade em sua família, trabalho, profissão e demais responsabilidades da vida.',
+			},
+			{
+				term: 'Missão e plantação de igrejas',
+				text: 'Desejamos formar novos obreiros, dar testemunho do evangelho e contribuir para a plantação de mais igrejas reformadas no Panamá.',
 			},
 		],
 		moreTitle: 'Saiba mais',
@@ -778,7 +780,7 @@ const ptBr: Messages = {
 			},
 			{
 				title: 'Igreja',
-				text: 'Valorizamos o ensino e o discipulado, celebramos o Batismo e a Ceia do Senhor e reconhecemos o governo da igreja por meio de presbíteros.',
+				text: 'Cristo edifica sua igreja por meio da Palavra, dos sacramentos e do serviço de seus oficiais. Os pastores e presbíteros ensinam, cuidam e equipam a congregação para a maturidade e o serviço.',
 			},
 			{
 				title: 'Vocação',
@@ -853,7 +855,7 @@ const ptBr: Messages = {
 			},
 			{
 				term: 'O governo da igreja',
-				text: 'É exercido por meio de presbíteros.',
+				text: 'Cristo guia e cuida de sua igreja por meio de seus oficiais. Os presbíteros são chamados a pastorear, ensinar e equipar a congregação para uma vida cristã madura e ativa.',
 			},
 		],
 		vocationEyebrow: 'Vocação e vida cristã',
@@ -864,6 +866,7 @@ const ptBr: Messages = {
 			'O trabalho, a família, o estudo, as profissões, a cultura e o serviço ao próximo são âmbitos em que procuramos viver com fidelidade, honestidade e gratidão diante de Deus.',
 			'Um médico, um advogado, um professor, um empresário, um trabalhador, um estudante ou uma pessoa dedicada ao lar pode servir fielmente a Deus em sua própria vocação.',
 			'Desde a criação, Deus confiou ao ser humano responsabilidades sobre o mundo que fez. Entendemos essa tarefa como mordomia: desenvolver com responsabilidade os dons recebidos, cuidar da criação e colocar nosso trabalho a serviço de Deus e do próximo.',
+			'A maturidade cristã também implica aprender a exercer com fidelidade os dons, capacidades e responsabilidades que Deus nos deu. A igreja procura formar discípulos enraizados na Palavra, capazes de servir aos outros, dar testemunho do evangelho e viver fielmente sob o senhorio de Cristo em cada âmbito da vida.',
 		],
 		vocationPoints: [
 			{
