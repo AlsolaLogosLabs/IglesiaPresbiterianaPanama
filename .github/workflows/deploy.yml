@@ -36,7 +36,7 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Build and upload
-        uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
+        uses: withastro/action@3eafd002e65cc31b4f0eae0bb05450d521562247 # v6.1.3
         with:
           node-version: 24
 
