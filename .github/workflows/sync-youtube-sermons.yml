@@ -1,0 +1,101 @@
+name: Sync YouTube sermons
+
+on:
+  schedule:
+    # Miércoles 12:00 p. m. en Panamá (UTC-5, sin horario de verano).
+    - cron: '0 17 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-youtube-sermons
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      SYNC_BRANCH: automation/youtube-sermons
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Check for pending sync
+        id: pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count="$(gh pr list --base main --head "$SYNC_BRANCH" --state open --json number --jq 'length')"
+          if [ "$count" -gt 0 ]; then
+            echo "pending=true" >> "$GITHUB_OUTPUT"
+            echo "Ya existe un PR de sincronización pendiente; no se generará otro."
+          else
+            echo "pending=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Prepare sync branch
+        if: steps.pending.outputs.pending == 'false'
+        run: |
+          git push origin --delete "$SYNC_BRANCH" 2>/dev/null || true
+          git switch -c "$SYNC_BRANCH"
+
+      - name: Detect new YouTube sermons
+        if: steps.pending.outputs.pending == 'false'
+        run: node scripts/sync-youtube-sermons.mjs
+
+      - name: Check generated changes
+        if: steps.pending.outputs.pending == 'false'
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain -- src/content/sermons)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No hay sermones nuevos."
+          fi
+
+      - name: Install dependencies
+        if: steps.changes.outputs.changed == 'true'
+        run: npm ci
+
+      - name: Validate generated content
+        if: steps.changes.outputs.changed == 'true'
+        run: npm run validate
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/sermons
+          git commit -m "chore: sync sermons from YouTube"
+          git push --set-upstream origin "$SYNC_BRANCH"
+
+      - name: Open review pull request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr create \
+            --base main \
+            --head "$SYNC_BRANCH" \
+            --title "chore: sync sermons from YouTube" \
+            --body "Sincronización automática semanal del canal oficial de YouTube.
+
+          Antes de fusionar:
+          - confirmar que cada video corresponde a un sermón;
+          - revisar título y fecha;
+          - completar predicador y texto bíblico cuando estén confirmados.
+
+          El sitio, Home, RSS y sitemap se actualizarán al fusionar este PR y completar CI."
