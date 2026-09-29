@@ -15,6 +15,7 @@ const toc = [
 	{ id: 'fe-historica', label: t.toc.creeds },
 	{ id: 'confesion', label: t.toc.westminster },
 	{ id: 'identidad', label: t.toc.identity },
+	{ id: 'vocacion', label: t.toc.vocation },
 	{ id: 'tradicion-reformada', label: t.toc.tradition },
 ];
 ---
@@ -116,7 +117,40 @@ const toc = [
 			</div>
 		</section>
 
-		<section class="section section--secondary" aria-labelledby="tradicion-reformada">
+		<section class="section" aria-labelledby="vocacion">
+			<div class="container split">
+				<hgroup>
+					<p class="eyebrow">{t.vocationEyebrow}</p>
+					<h2 id="vocacion">{t.vocationTitle}</h2>
+				</hgroup>
+				<div class="prose">
+					<p class="prose__intro">{t.vocationIntro}</p>
+					{t.vocationText.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+					<ul class="identity-list vocation-list">
+						{t.vocationPoints.map((item) => (
+							<li>
+								<strong>{item.term}</strong>
+								<p>{item.text}</p>
+							</li>
+						))}
+					</ul>
+					<!-- Nota histórica secundaria: no es un estándar confesional -->
+					<div class="vocation-note">
+						<p class="eyebrow eyebrow--muted">{t.vocationHistoryLabel}</p>
+						{t.vocationHistory.map((paragraph) => (
+							<p>{paragraph}</p>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			class="section section--surface section--secondary"
+			aria-labelledby="tradicion-reformada"
+		>
 			<div class="container split">
 				<hgroup>
 					<p class="eyebrow eyebrow--muted">{t.traditionEyebrow}</p>
@@ -130,7 +164,7 @@ const toc = [
 			</div>
 		</section>
 
-		<section class="section section--surface" aria-labelledby="ensenanza">
+		<section class="section" aria-labelledby="ensenanza">
 			<div class="container split">
 				<h2 id="ensenanza">{t.teachingTitle}</h2>
 				<div class="prose">
@@ -301,6 +335,27 @@ const toc = [
 	.identity-list strong {
 		font-weight: var(--font-weight-semibold);
 		color: var(--color-brand);
+	}
+
+	/* Vocación: la lista hereda el estilo de identidad dentro de .prose */
+	.vocation-list {
+		width: 100%;
+		margin-top: var(--space-4);
+		font-size: inherit;
+	}
+
+	.vocation-note {
+		display: grid;
+		gap: var(--space-3);
+		width: 100%;
+		margin-top: var(--space-6);
+		padding-top: var(--space-6);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.vocation-note p:not(.eyebrow) {
+		font-size: var(--font-size-base);
+		color: var(--color-text-muted);
 	}
 
 	.prose .button {

@@ -229,10 +229,10 @@ for (const { prefix, tocLabel } of [
 	}) => {
 		await page.goto(`${prefix}lo-que-creemos/`);
 
-		// Navegación interna traducida: 5 anclas, cada una a un h2 existente
+		// Navegación interna traducida: 6 anclas, cada una a un h2 existente
 		const toc = page.getByRole('navigation', { name: tocLabel });
 		const anchors = toc.locator('a');
-		await expect(anchors).toHaveCount(5);
+		await expect(anchors).toHaveCount(6);
 		for (const href of await anchors.evaluateAll((links) =>
 			links.map((link) => link.getAttribute('href') ?? ''),
 		)) {
@@ -247,16 +247,20 @@ for (const { prefix, tocLabel } of [
 		const standards = page.locator('section[aria-labelledby="confesion"] .documents h3');
 		await expect(standards).toHaveCount(3);
 		for (const title of await standards.allInnerTexts()) expect(title).toContain('Westminster');
-		// Resumen de lectura rápida: cuatro principios, fuera del TOC de profundización
+		// Resumen de lectura rápida: cinco principios, fuera del TOC de profundización
 		const summary = page.locator('section[aria-labelledby="resumen-fe"]');
 		await expect(summary.locator('h2#resumen-fe')).toHaveCount(1);
-		await expect(summary.locator('.belief-summary > li')).toHaveCount(4);
-		await expect(summary.locator('.belief-summary h3')).toHaveCount(4);
+		await expect(summary.locator('.belief-summary > li')).toHaveCount(5);
+		await expect(summary.locator('.belief-summary h3')).toHaveCount(5);
 		await expect(toc.locator('a[href="#resumen-fe"]')).toHaveCount(0);
 
 		await expect(page.locator('h2#identidad')).toHaveCount(1);
 		await expect(
 			page.locator('section[aria-labelledby="identidad"] .identity-list > li'),
+		).toHaveCount(4);
+		await expect(page.locator('h2#vocacion')).toHaveCount(1);
+		await expect(
+			page.locator('section[aria-labelledby="vocacion"] .vocation-list > li'),
 		).toHaveCount(4);
 		await expect(page.locator('h2#tradicion-reformada')).toHaveCount(1);
 		await expect(
@@ -285,11 +289,11 @@ for (const { prefix } of LOCALES) {
 		}
 	});
 
-	test(`Quiénes somos en «/${prefix}»: historia y cinco áreas de servicio`, async ({ page }) => {
+	test(`Quiénes somos en «/${prefix}»: historia y seis áreas de servicio`, async ({ page }) => {
 		await page.goto(`${prefix}nosotros/`);
 		await expect(page.locator('h2#historia')).toHaveCount(1);
 		await expect(page.locator('section[aria-labelledby="enfoque"] .focus-list > li')).toHaveCount(
-			5,
+			6,
 		);
 	});
 }

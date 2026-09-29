@@ -52,7 +52,7 @@ const es = {
 		historyCta: 'Conoce nuestra historia',
 		beliefsTitle: 'Lo que creemos',
 		beliefsText:
-			'La Escritura es nuestra autoridad suprema. Como iglesia presbiteriana y reformada, nos suscribimos a la Confesión de Fe de Westminster y a los Catecismos Mayor y Menor.',
+			'La Escritura es nuestra autoridad suprema. Como iglesia presbiteriana y reformada, nos suscribimos a los Estándares de Westminster y creemos que el señorío de Cristo alcanza toda la vida.',
 		beliefsCta: 'Conoce lo que creemos',
 		sermonsTitle: 'Sermones',
 		latestSermon: 'Último sermón',
@@ -94,6 +94,10 @@ const es = {
 				term: 'Plantación de iglesias',
 				text: 'Deseamos contribuir a la plantación de más iglesias reformadas en Panamá.',
 			},
+			{
+				term: 'Vocación y vida diaria',
+				text: 'Animamos a los creyentes a servir a Dios con fidelidad en su familia, trabajo, profesión y demás responsabilidades de la vida.',
+			},
 		],
 		moreTitle: 'Conoce más',
 		beliefsCard: {
@@ -134,6 +138,10 @@ const es = {
 				title: 'Iglesia',
 				text: 'Valoramos la enseñanza y el discipulado, celebramos el Bautismo y la Cena del Señor y reconocemos el gobierno de la iglesia por medio de presbíteros.',
 			},
+			{
+				title: 'Vocación',
+				text: 'Creemos que el señorío de Cristo alcanza toda la vida y que cada creyente está llamado a servir a Dios y al prójimo con fidelidad en su vocación.',
+			},
 		],
 		tocLabel: 'En esta página',
 		toc: {
@@ -141,6 +149,7 @@ const es = {
 			creeds: 'Credos históricos',
 			westminster: 'Westminster',
 			identity: 'Identidad presbiteriana',
+			vocation: 'Vocación',
 			tradition: 'Tradición reformada',
 		},
 		scriptureTitle: 'La Escritura, nuestra autoridad',
@@ -204,6 +213,38 @@ const es = {
 				term: 'El gobierno de la iglesia',
 				text: 'Se ejerce por medio de presbíteros.',
 			},
+		],
+		vocationEyebrow: 'Vocación y vida cristiana',
+		vocationTitle: 'El señorío de Cristo sobre toda la vida',
+		vocationIntro:
+			'Creemos que la fe cristiana no se limita al culto del domingo ni a las actividades de la iglesia. Jesucristo es Señor de toda la vida, y cada creyente está llamado a servir a Dios allí donde Él lo ha colocado.',
+		vocationText: [
+			'El trabajo, la familia, el estudio, las profesiones, la cultura y el servicio al prójimo son ámbitos en los que procuramos vivir con fidelidad, honestidad y gratitud delante de Dios.',
+			'Un médico, un abogado, un maestro, un empresario, un trabajador, un estudiante o una persona dedicada al hogar puede servir fielmente a Dios desde su propia vocación.',
+			'Desde la creación, Dios encomendó al ser humano responsabilidades sobre el mundo que hizo. Entendemos esa tarea como una mayordomía: desarrollar responsablemente los dones recibidos, cuidar la creación y poner nuestro trabajo al servicio de Dios y del prójimo.',
+		],
+		vocationPoints: [
+			{
+				term: 'Vocación',
+				text: 'Servimos a Dios también por medio de las responsabilidades y trabajos a los que somos llamados.',
+			},
+			{
+				term: 'Trabajo',
+				text: 'Procuramos trabajar con honestidad, excelencia y servicio al prójimo.',
+			},
+			{
+				term: 'Mayordomía',
+				text: 'Reconocemos que la creación pertenece a Dios y que debemos usar responsablemente los dones y recursos que recibimos.',
+			},
+			{
+				term: 'Toda la vida',
+				text: 'Familia, estudio, profesión, cultura y servicio forman parte de una vida vivida bajo el señorío de Cristo.',
+			},
+		],
+		vocationHistoryLabel: 'Dentro de la tradición reformada',
+		vocationHistory: [
+			'Esta comprensión de la vocación y de la vida cristiana ha sido desarrollada ampliamente dentro de la tradición reformada. Juan Calvino destacó el valor del llamado de Dios en las vocaciones ordinarias. Abraham Kuyper enfatizó el señorío de Dios sobre todas las dimensiones de la vida y la responsabilidad propia de sus distintas esferas. Herman Bavinck relacionó la vocación, la cultura y el trabajo humano con una vida de servicio bajo el Reino de Dios.',
+			'Estos aportes son referencias valiosas de la tradición reformada; los estándares confesionales que nuestra iglesia suscribe son los Estándares de Westminster, subordinados a la Escritura.',
 		],
 		traditionEyebrow: 'Referencia histórica',
 		traditionTitle: 'Otros documentos de la tradición reformada',
@@ -334,7 +375,7 @@ const en: Messages = {
 		historyCta: 'Learn about our history',
 		beliefsTitle: 'What we believe',
 		beliefsText:
-			'Scripture is our supreme authority. As a Presbyterian and Reformed church, we subscribe to the Westminster Confession of Faith and the Larger and Shorter Catechisms.',
+			'Scripture is our supreme authority. As a Presbyterian and Reformed church, we subscribe to the Westminster Standards and believe that the lordship of Christ extends over all of life.',
 		beliefsCta: 'Learn what we believe',
 		sermonsTitle: 'Sermons',
 		latestSermon: 'Latest sermon',
@@ -376,6 +417,10 @@ const en: Messages = {
 				term: 'Church planting',
 				text: 'We desire to contribute to the planting of more Reformed churches in Panama.',
 			},
+			{
+				term: 'Vocation and daily life',
+				text: 'We encourage believers to serve God faithfully in their family, work, profession and the other responsibilities of life.',
+			},
 		],
 		moreTitle: 'Learn more',
 		beliefsCard: {
@@ -416,6 +461,10 @@ const en: Messages = {
 				title: 'Church',
 				text: 'We value teaching and discipleship, celebrate Baptism and the Lord’s Supper, and recognize the government of the church through elders.',
 			},
+			{
+				title: 'Vocation',
+				text: 'Christ’s lordship extends over all of life, and every believer is called to serve God and neighbor faithfully through their vocation.',
+			},
 		],
 		tocLabel: 'On this page',
 		toc: {
@@ -423,6 +472,7 @@ const en: Messages = {
 			creeds: 'Historic creeds',
 			westminster: 'Westminster',
 			identity: 'Presbyterian identity',
+			vocation: 'Vocation',
 			tradition: 'Reformed tradition',
 		},
 		scriptureTitle: 'Scripture, our authority',
@@ -486,6 +536,38 @@ const en: Messages = {
 				term: 'Church government',
 				text: 'It is exercised through elders.',
 			},
+		],
+		vocationEyebrow: 'Vocation and Christian life',
+		vocationTitle: 'The lordship of Christ over all of life',
+		vocationIntro:
+			'We believe that the Christian faith is not limited to Sunday worship or to the activities of the church. Jesus Christ is Lord of all of life, and every believer is called to serve God wherever He has placed them.',
+		vocationText: [
+			'Work, family, study, professions, culture and service to our neighbor are all areas in which we seek to live faithfully, honestly and gratefully before God.',
+			'A doctor, a lawyer, a teacher, a business owner, a worker, a student or someone devoted to caring for the home can faithfully serve God through their own vocation.',
+			'From creation, God entrusted human beings with responsibilities over the world He made. We understand that task as stewardship: responsibly developing the gifts we have received, caring for creation and placing our work at the service of God and our neighbor.',
+		],
+		vocationPoints: [
+			{
+				term: 'Vocation',
+				text: 'We also serve God through the responsibilities and work to which we are called.',
+			},
+			{
+				term: 'Work',
+				text: 'We seek to work with honesty, excellence and service to our neighbor.',
+			},
+			{
+				term: 'Stewardship',
+				text: 'We recognize that creation belongs to God and that we are to use the gifts and resources we receive responsibly.',
+			},
+			{
+				term: 'All of life',
+				text: 'Family, study, profession, culture and service are part of a life lived under the lordship of Christ.',
+			},
+		],
+		vocationHistoryLabel: 'Within the Reformed tradition',
+		vocationHistory: [
+			'This understanding of vocation and the Christian life has been developed extensively within the Reformed tradition. John Calvin highlighted the value of God’s calling in ordinary vocations. Abraham Kuyper emphasized God’s lordship over every dimension of life and the proper responsibility of its distinct spheres. Herman Bavinck related vocation, culture and human work to a life of service under the Kingdom of God.',
+			'These contributions are valuable references within the Reformed tradition; the confessional standards our church subscribes to are the Westminster Standards, subordinate to Scripture.',
 		],
 		traditionEyebrow: 'Historical reference',
 		traditionTitle: 'Other documents in the Reformed tradition',
@@ -612,7 +694,7 @@ const ptBr: Messages = {
 		historyCta: 'Conheça nossa história',
 		beliefsTitle: 'O que cremos',
 		beliefsText:
-			'A Escritura é nossa autoridade suprema. Como igreja presbiteriana e reformada, subscrevemos a Confissão de Fé de Westminster e os Catecismos Maior e Breve.',
+			'A Escritura é nossa autoridade suprema. Como igreja presbiteriana e reformada, subscrevemos os Padrões de Westminster e cremos que o senhorio de Cristo alcança toda a vida.',
 		beliefsCta: 'Conheça o que cremos',
 		sermonsTitle: 'Sermões',
 		latestSermon: 'Último sermão',
@@ -654,6 +736,10 @@ const ptBr: Messages = {
 				term: 'Plantação de igrejas',
 				text: 'Desejamos contribuir para a plantação de mais igrejas reformadas no Panamá.',
 			},
+			{
+				term: 'Vocação e vida diária',
+				text: 'Incentivamos os crentes a servir a Deus com fidelidade em sua família, trabalho, profissão e demais responsabilidades da vida.',
+			},
 		],
 		moreTitle: 'Saiba mais',
 		beliefsCard: {
@@ -694,6 +780,10 @@ const ptBr: Messages = {
 				title: 'Igreja',
 				text: 'Valorizamos o ensino e o discipulado, celebramos o Batismo e a Ceia do Senhor e reconhecemos o governo da igreja por meio de presbíteros.',
 			},
+			{
+				title: 'Vocação',
+				text: 'Cremos que o senhorio de Cristo alcança toda a vida e que cada crente é chamado a servir fielmente a Deus e ao próximo em sua vocação.',
+			},
 		],
 		tocLabel: 'Nesta página',
 		toc: {
@@ -701,6 +791,7 @@ const ptBr: Messages = {
 			creeds: 'Credos históricos',
 			westminster: 'Westminster',
 			identity: 'Identidade presbiteriana',
+			vocation: 'Vocação',
 			tradition: 'Tradição reformada',
 		},
 		scriptureTitle: 'A Escritura, nossa autoridade',
@@ -764,6 +855,38 @@ const ptBr: Messages = {
 				term: 'O governo da igreja',
 				text: 'É exercido por meio de presbíteros.',
 			},
+		],
+		vocationEyebrow: 'Vocação e vida cristã',
+		vocationTitle: 'O senhorio de Cristo sobre toda a vida',
+		vocationIntro:
+			'Cremos que a fé cristã não se limita ao culto de domingo nem às atividades da igreja. Jesus Cristo é Senhor de toda a vida, e cada crente é chamado a servir a Deus onde Ele o colocou.',
+		vocationText: [
+			'O trabalho, a família, o estudo, as profissões, a cultura e o serviço ao próximo são âmbitos em que procuramos viver com fidelidade, honestidade e gratidão diante de Deus.',
+			'Um médico, um advogado, um professor, um empresário, um trabalhador, um estudante ou uma pessoa dedicada ao lar pode servir fielmente a Deus em sua própria vocação.',
+			'Desde a criação, Deus confiou ao ser humano responsabilidades sobre o mundo que fez. Entendemos essa tarefa como mordomia: desenvolver com responsabilidade os dons recebidos, cuidar da criação e colocar nosso trabalho a serviço de Deus e do próximo.',
+		],
+		vocationPoints: [
+			{
+				term: 'Vocação',
+				text: 'Servimos a Deus também por meio das responsabilidades e trabalhos para os quais somos chamados.',
+			},
+			{
+				term: 'Trabalho',
+				text: 'Procuramos trabalhar com honestidade, excelência e serviço ao próximo.',
+			},
+			{
+				term: 'Mordomia',
+				text: 'Reconhecemos que a criação pertence a Deus e que devemos usar com responsabilidade os dons e recursos que recebemos.',
+			},
+			{
+				term: 'Toda a vida',
+				text: 'Família, estudo, profissão, cultura e serviço fazem parte de uma vida vivida sob o senhorio de Cristo.',
+			},
+		],
+		vocationHistoryLabel: 'Dentro da tradição reformada',
+		vocationHistory: [
+			'Essa compreensão da vocação e da vida cristã foi amplamente desenvolvida dentro da tradição reformada. João Calvino destacou o valor do chamado de Deus nas vocações comuns. Abraham Kuyper enfatizou o senhorio de Deus sobre todas as dimensões da vida e a responsabilidade própria de suas diferentes esferas. Herman Bavinck relacionou a vocação, a cultura e o trabalho humano a uma vida de serviço sob o Reino de Deus.',
+			'Essas contribuições são referências valiosas da tradição reformada; os padrões confessionais que nossa igreja subscreve são os Padrões de Westminster, subordinados à Escritura.',
 		],
 		traditionEyebrow: 'Referência histórica',
 		traditionTitle: 'Outros documentos da tradição reformada',
